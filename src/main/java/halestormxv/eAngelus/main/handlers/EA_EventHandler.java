@@ -1,12 +1,15 @@
 package halestormxv.eAngelus.main.handlers;
 
 import halestormxv.eAngelus.items.EAItem;
+import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -57,7 +60,7 @@ public class EA_EventHandler {
         if (event.getSource().getEntity() instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
-            if (player.getHeldItemMainhand() != null)
+            if (player.getHeldItemMainhand() != ItemStack.EMPTY)
             {
                 if (player.getHeldItemMainhand().getItem() == eAngelusItems.fireSword)
                 {
@@ -85,7 +88,7 @@ public class EA_EventHandler {
         if (event.getEntity() instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer) event.getEntity();
-            if (player.getHeldItemMainhand() != null)
+            if (player.getHeldItemMainhand() != ItemStack.EMPTY)
             {
                 if (player.getHeldItemMainhand().getItem() == eAngelusItems.fireSword)
                 {
@@ -104,6 +107,14 @@ public class EA_EventHandler {
     @SubscribeEvent
     public void breakEvent(BlockEvent.BreakEvent event)
     {
+        if (event.getState().getBlock() == eAngelusBlocks.angelicOre)
+        {
+            event.setExpToDrop(6);
+            BlockPos pos = event.getPos();
+            //event.getWorld().spawnEntity(new EntityItem(event.getWorld(), pos.getX() + 2, pos.getY() + 2, pos.getZ(), new ItemStack(Items.DIAMOND)));
+            EntityPlayer player = event.getPlayer();
+            player.sendMessage(new TextComponentString("\u00A74" + "The scales of morality have tipped to evil."));
+        }
 
     }
 
