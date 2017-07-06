@@ -1,0 +1,51 @@
+#ITEMS
+item.angelic_ingot.name=Angelic Ingot
+item.demonic_ingot.name=Demonic Ingot
+item.topazStone.name=Topaz Gem
+item.angelicDust.name=Angelic Dust
+item.mystalDust.name=Mystal Dust
+item.azuriteStone.name=Azurite Stone
+item.serpentineStone.name=Serpentine Stone
+
+#CARDS
+item.eaCardO.cIgnis.name=ORDER: Ignis
+item.eaCardO.cFortitudo.name=ORDER: Fortitudo
+item.eaCardO.cVentus.name=ORDER: Ventus
+item.eaCardO.cArescet.name=ORDER: Arescet
+item.eaCardO.cLightning.name=ORDER: Lightning
+
+#TOOLS
+item.serpentineHoe.name=Serpentine Hoe
+item.serpentineSpade.name=Serpentine Shovel
+item.serpentineAxe.name=Serpentine Axe
+item.serpentinePick.name=Serpentine Pick
+item.serpentineMulti.name=Serpentine Mattock
+
+
+#WEAPONS
+item.serpentineSword.name=Serpentine Blade
+
+
+#BLOCKS
+tile.angelic_block.name=Angelic Block
+tile.demonic_block.name=Demonic Block
+tile.demonicOre.name=Demonic Ore
+tile.angelicOre.name=Angelic Ore
+tile.topazOre.name=Topaz Ore
+tile.mystalCite.name=Mystal Cite
+tile.azureite_Ore.name=Azurite Ore
+tile.serpentine_Ore.name=Serpentine Ore
+tile.oTable.name=Obsidian Iron Table
+
+#ACHIEVEMENTS
+achievement.GetAngelicOre=Holier-Than-Thou!
+achievement.GetAngelicOre.desc=Find Angelic Ore.
+
+achievement.GetDemonicOre=Darkness In Ore
+achievement.GetDemonicOre.desc=Find Demonic Ore.
+
+achievement.MakeAngelicIngot=By Purest Metal
+achievement.MakeAngelicIngot.desc=Smelt Angelic Ore into Angelic Ingot.
+
+#TABS
+itemGroup.eaCreativeTab=Elementum Angelus
