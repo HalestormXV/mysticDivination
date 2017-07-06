@@ -44,6 +44,8 @@ public class eAngelusItems
 	//Cards
 	public static Item eaCardO;
 
+	//Rare Drops
+	public static Item tarotPaper;
 
 	//Materials
 	public static ToolMaterial Serpentine = EnumHelper.addToolMaterial("Serpentine", 4, 1800, 10.0F, 9.0F, 25);
@@ -52,6 +54,9 @@ public class eAngelusItems
 	{	
 		//Cards
 		//eaCardO = registerItem(new eAngelusCards("eaCardO"), "eaCardO");
+
+		//Rare Drops
+		tarotPaper = registerItem(new EAItem("tarotPaper"), "tarotPaper");
 
 		//Ingots
 		angelic_ingot = registerItem(new AngelicIngot(), "angelic_ingot");
@@ -87,6 +92,10 @@ public class eAngelusItems
 		//}
 		//
 
+		//Rare Drops
+		registerRender(tarotPaper);
+
+		//Items
 		registerRender(angelic_ingot);
 		registerRender(demonic_ingot);
 		registerRender(topazStone);

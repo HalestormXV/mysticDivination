@@ -1,5 +1,7 @@
 package halestormxv.eAngelus.main;
 
+import halestormxv.eAngelus.main.handlers.EA_EventHandler;
+import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.Logger;
 
 import halestormxv.eAngelus.main.handlers.EA_FuelHandler;
@@ -46,7 +48,8 @@ public class EAMain
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		this.proxy.postInit(event);	
+		MinecraftForge.EVENT_BUS.register(new EA_EventHandler());
+		this.proxy.postInit(event);
 	}
 	
 	@EventHandler
