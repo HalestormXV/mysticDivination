@@ -1,13 +1,6 @@
 package halestormxv.eAngelus.main.init;
 
-import halestormxv.eAngelus.items.AngelicIngot;
-import halestormxv.eAngelus.items.EAItem;
-import halestormxv.eAngelus.items.ModItemAxe;
-import halestormxv.eAngelus.items.ModItemHoe;
-import halestormxv.eAngelus.items.ModItemMulti;
-import halestormxv.eAngelus.items.ModItemPick;
-import halestormxv.eAngelus.items.ModItemSpade;
-import halestormxv.eAngelus.items.ModItemSword;
+import halestormxv.eAngelus.items.*;
 import halestormxv.eAngelus.main.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -46,6 +39,7 @@ public class eAngelusItems
 
 	//Rare Drops
 	public static Item tarotPaper;
+	public static Item fireSword;
 
 	//Materials
 	public static ToolMaterial Serpentine = EnumHelper.addToolMaterial("Serpentine", 4, 1800, 10.0F, 9.0F, 25);
@@ -57,6 +51,8 @@ public class eAngelusItems
 
 		//Rare Drops
 		tarotPaper = registerItem(new EAItem("tarotPaper"), "tarotPaper");
+		fireSword = registerItem(new ModItemFlameSword("fireSword", Serpentine), "fireSword");
+
 
 		//Ingots
 		angelic_ingot = registerItem(new AngelicIngot(), "angelic_ingot");
@@ -94,6 +90,7 @@ public class eAngelusItems
 
 		//Rare Drops
 		registerRender(tarotPaper);
+		registerRender(fireSword);
 
 		//Items
 		registerRender(angelic_ingot);

@@ -5,6 +5,7 @@ import halestormxv.eAngelus.main.init.eAngelusItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -53,19 +54,45 @@ public class EA_EventHandler {
     @SubscribeEvent
     public void livingHurt(LivingHurtEvent event)
     {
-
+        if (event.getSource().getEntity() instanceof EntityPlayer)
+        {
+            EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
+            if (player.getHeldItemMainhand() != null)
+            {
+                if (player.getHeldItemMainhand().getItem() == eAngelusItems.fireSword)
+                {
+                    double d = Math.random();
+                    if (d < 0.7)
+                    {
+                        event.getEntity().setFire(8);
+                    }
+                }
+            }
+        }
     }
 
     @SubscribeEvent
     public void itemPickup(EntityItemPickupEvent event)
     {
 
+
     }
 
     @SubscribeEvent
     public void livingUpdate(LivingEvent.LivingUpdateEvent event)
     {
-
+        /*
+        if (event.getEntity() instanceof EntityPlayer)
+        {
+            EntityPlayer player = (EntityPlayer) event.getEntity();
+            if (player.getHeldItemMainhand() != null)
+            {
+                if (player.getHeldItemMainhand().getItem() == eAngelusItems.fireSword)
+                {
+                    player.setGlowing(true);
+                }
+            }
+        }*/
     }
 
     @SubscribeEvent
