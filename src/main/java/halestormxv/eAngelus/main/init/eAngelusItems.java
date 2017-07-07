@@ -23,6 +23,7 @@ public class eAngelusItems
 	public static Item mystalDust;
 	public static Item azuriteStone;
 	public static Item serpentineStone;
+	public static Item scryingOrb;
 
 	//Tools
 	public static Item serpentinePick;
@@ -54,6 +55,9 @@ public class eAngelusItems
 	{	
 		//Cards
 		//eaCardO = registerItem(new eAngelusCards("eaCardO"), "eaCardO");
+
+		//Misc Items
+		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
 
 		//Rare Drops
 		tarotPaper = registerItem(new EAItem("tarotPaper"), "tarotPaper");
@@ -113,6 +117,7 @@ public class eAngelusItems
 		registerRender(mystalDust);
 		registerRender(azuriteStone);
 		registerRender(serpentineStone);
+		registerRender(scryingOrb);
 
 		//Tools
 		registerRender(serpentinePick);
