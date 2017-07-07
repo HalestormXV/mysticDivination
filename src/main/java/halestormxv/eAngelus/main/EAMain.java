@@ -1,6 +1,7 @@
 package halestormxv.eAngelus.main;
 
 import halestormxv.eAngelus.main.handlers.EA_EventHandler;
+import halestormxv.eAngelus.network.eAngelusPacketHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +21,8 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
-public class EAMain 
+
+public class EAMain
 {
 
 	@SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.COMMONPROXY)
@@ -44,6 +46,7 @@ public class EAMain
 		this.proxy.init(event);
 		GameRegistry.registerWorldGenerator(new E_AngWorldGen(), 0);
 		GameRegistry.registerFuelHandler(new EA_FuelHandler());
+		eAngelusPacketHandler.init();
 		//EARemoveRecipes.removeCraftingRecipes(Items.diamond_sword);
 	}
 	

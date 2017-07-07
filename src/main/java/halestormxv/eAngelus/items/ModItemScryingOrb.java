@@ -2,6 +2,7 @@ package halestormxv.eAngelus.items;
 
 import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.init.eAngelusItems;
+import halestormxv.eAngelus.network.packets.ChatUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -49,15 +50,19 @@ public class ModItemScryingOrb extends Item
                     nbt.setDouble("PosX", player.getPosition().getX());
                     nbt.setDouble("PosY", player.getPosition().getY());
                     nbt.setDouble("PosZ", player.getPosition().getZ());
+                    nbt.setLong("totalWorldTime", player.world.getTotalWorldTime());
                     stack.setTagCompound(nbt);
                 }
                 else
                 {
-                    int cooldown = this.getCoolDown(stack);
+                    long totWorldTime = this.getStoredWorldTime(stack);
+                    long currentWorldTime = player.world.getWorldTime();
                     //Check for Reagent
                     if (player.inventory.hasItemStack(new ItemStack(eAngelusItems.mystalDust)))
                     {
-                        if ((stack.getTagCompound() != null) && (cooldown == 0))
+                        System.out.println("Current Stored Time: " + totWorldTime);
+                        System.out.println("Current World Time: " + currentWorldTime);
+                        if ((stack.getTagCompound() != null) && (currentWorldTime > totWorldTime + 200 ))
                         {
                             if (player.isRiding())
                             {
@@ -67,17 +72,17 @@ public class ModItemScryingOrb extends Item
                             double posY = nbt.getDouble("PosY");
                             double posZ = nbt.getDouble("PosZ");
                             player.setPositionAndUpdate(posX + 0.6, posY, posZ + 0.6);
-                            this.startCoolDown(stack);
+                            this.setNewWorldTime(stack, player);
                             this.consumeReagent(stack, world, player);
                         }
                         else
                         {
-                            player.sendMessage(new TextComponentString("The Scrying Orb is on cooldown."));
+                            ChatUtil.sendNoSpam(player, "\u00A74The Scrying Orb is on cooldown.");
                         }
                     }
                     else
                     {
-                        player.sendMessage(new TextComponentString("The Scrying Orb requires Mystal Dust for use."));
+                        ChatUtil.sendNoSpam(player,"\u00A74The Scrying Orb requires Mystal Dust for use.");
                     }
                 }
             }
@@ -108,47 +113,45 @@ public class ModItemScryingOrb extends Item
             tooltip.add("\u00A72" + "Y: "  + posY);
             tooltip.add("\u00A7c" + "Z: "  + posZ);
             tooltip.add("");
-            tooltip.add("\u00A74" + "Cooldown: " + nbt.getInteger("coolDown"));
+            /*if (stack.getTagCompound().getInteger("coolDown") != 0) {
+                tooltip.add("\u00A74" + "Cooldown: " + getCooldownReal(stack) + " Min");
+            }
+            else
+            {
+                tooltip.add("\u00A72" + "Scrying Orb is ready for use.");
+            }*/
         }
     }
 
-    protected void startCoolDown(ItemStack stack)
+    private void setNewWorldTime(ItemStack stack, EntityPlayer player)
     {
         if (stack.getTagCompound() != null)
         {
-            stack.getTagCompound().setInteger("coolDown", 6000);
+            stack.getTagCompound().removeTag("totalWorldTime");
+            stack.getTagCompound().setLong("totalWorldTime", player.world.getTotalWorldTime());
         }
     }
 
-    @Override
-    public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
-        if (!world.isRemote)
+    private long getStoredWorldTime(ItemStack stack) {
+        if ( (stack.getTagCompound() != null) && (stack.getTagCompound().hasKey("totalWorldTime")) )
         {
-            int coolDown = this.getCoolDown(stack);
-            if (coolDown > 0) {
-                stack.getTagCompound().setInteger("coolDown", coolDown - 1);
-            }
-            else if (coolDown < 0)
-            {
-                stack.getTagCompound().setInteger("coolDown", 0);
-            }
-        }
-    }
-
-    protected int getCoolDown(ItemStack stack) {
-        if ( (stack.getTagCompound() != null) && (stack.getTagCompound().hasKey("coolDown")) )
-        {
-            return stack.getTagCompound().getInteger("coolDown");
+            return stack.getTagCompound().getLong("totalWorldTime");
         }
         return 0;
     }
 
-    protected void consumeReagent(ItemStack stack, World worldIn, EntityPlayer entityLiving) {
+    private void consumeReagent(ItemStack stack, World worldIn, EntityPlayer entityLiving) {
         entityLiving.inventory.clearMatchingItems(scryingReagent(stack), -1, 1, null);
     }
 
-    protected Item scryingReagent(ItemStack itemStackIn)
+    private Item scryingReagent(ItemStack itemStackIn)
     {
         return eAngelusItems.mystalDust;
+    }
+
+    //Cooldown Handlers\\
+    public static int getCooldownReal(ItemStack stack) {
+        int time = (int) Math.abs(stack.getTagCompound().getInteger("coolDown"));
+        return (int)((float)time / 1000F);
     }
 }
