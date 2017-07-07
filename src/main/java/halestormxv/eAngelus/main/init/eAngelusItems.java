@@ -1,17 +1,18 @@
 package halestormxv.eAngelus.main.init;
 
 import halestormxv.eAngelus.items.*;
+import halestormxv.eAngelus.main.EACreativeTab;
 import halestormxv.eAngelus.main.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import halestormxv.eAngelus.items.cards.O_card_Fire;
 
 public class eAngelusItems 
 {
@@ -32,7 +33,7 @@ public class eAngelusItems
 
 	//Weapons
 	public static Item serpentineSword;
-	public static Item serpentineShield;
+	//public static Item serpentineShield;
 
 	//Cards
 	public static Item eaCardO;
@@ -41,8 +42,13 @@ public class eAngelusItems
 	public static Item tarotPaper;
 	public static Item fireSword;
 
+	//Consumables
+	public static Item jolluna;
+	public static Item esicuri;
+
 	//Materials
 	public static ToolMaterial Serpentine = EnumHelper.addToolMaterial("Serpentine", 4, 1800, 10.0F, 9.0F, 25);
+	public static ToolMaterial SpecialItems = EnumHelper.addToolMaterial("SpecialItems", 4, 2000, 11.0F, 10.6F, 25);
 
 	public static void initItems() //illustrates both ways to register an item.
 	{	
@@ -51,12 +57,12 @@ public class eAngelusItems
 
 		//Rare Drops
 		tarotPaper = registerItem(new EAItem("tarotPaper"), "tarotPaper");
-		fireSword = registerItem(new ModItemFlameSword("fireSword", Serpentine), "fireSword");
-
+		fireSword = registerItem(new ModItemFlameSword("fireSword", SpecialItems), "fireSword");
 
 		//Ingots
 		angelic_ingot = registerItem(new AngelicIngot(), "angelic_ingot");
 		demonic_ingot = registerItem(new Item().setUnlocalizedName("demonic_ingot").setCreativeTab(Reference.eaCreativeTab), "demonic_ingot");
+
 		//Gems
 		topazStone = registerItem(new EAItem("topazStone"), "topazStone");
 		azuriteStone = registerItem(new EAItem("azuriteStone"), "azuriteStone");
@@ -76,6 +82,13 @@ public class eAngelusItems
 		//Weapons
 		serpentineSword = registerItem(new ModItemSword("serpentineSword", Serpentine), "serpentineSword");
 		//serpentineShield = registerItem(new SerpentSword("serpentinePick", Serpentine), "serpentinePick");
+
+		//Consumables
+		jolluna = new ModItemFood("jolluna", 6, 0.9f, false, new PotionEffect(Potion.getPotionById(10), 200, 3));
+		esicuri = new ModItemFood("esicuri", 4, 0.6f, false);
+
+		registerItem(jolluna, "jolluna");
+		registerItem(esicuri, "esicuri");
 	}
 
 
@@ -111,6 +124,10 @@ public class eAngelusItems
 		//Weapons
 		registerRender(serpentineSword);
 		//registerRender(serpentineShield);
+
+		//Consumables
+		registerRender(jolluna);
+		registerRender(esicuri);
 	}
 
 	public static void registerRender(Item item)

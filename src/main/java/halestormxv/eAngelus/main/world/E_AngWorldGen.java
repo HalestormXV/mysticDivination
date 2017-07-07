@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 public class E_AngWorldGen implements IWorldGenerator {
 	//@formatter:off
 
+	//World Generators
 	private WorldGenerator gen_AngelicOre;
 	private WorldGenerator gen_AzureiteOre;
 	private WorldGenerator gen_DemonicOre;

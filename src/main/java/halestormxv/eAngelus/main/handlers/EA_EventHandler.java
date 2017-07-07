@@ -113,7 +113,16 @@ public class EA_EventHandler {
             BlockPos pos = event.getPos();
             //event.getWorld().spawnEntity(new EntityItem(event.getWorld(), pos.getX() + 2, pos.getY() + 2, pos.getZ(), new ItemStack(Items.DIAMOND)));
             EntityPlayer player = event.getPlayer();
-            player.sendMessage(new TextComponentString("\u00A74" + "The scales of morality have tipped to evil."));
+            player.sendMessage(new TextComponentString("\u00A74" + "Your scales of morality have tipped to sin."));
+        }
+
+        if (event.getState().getBlock() == eAngelusBlocks.demonicOre)
+        {
+            event.setExpToDrop(6);
+            BlockPos pos = event.getPos();
+            //event.getWorld().spawnEntity(new EntityItem(event.getWorld(), pos.getX() + 2, pos.getY() + 2, pos.getZ(), new ItemStack(Items.DIAMOND)));
+            EntityPlayer player = event.getPlayer();
+            player.sendMessage(new TextComponentString("\u00A73" + "Your scales of morality have tipped to virtue."));
         }
 
     }

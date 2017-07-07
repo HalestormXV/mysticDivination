@@ -36,8 +36,8 @@ public class ModItemFlameSword extends ItemSword
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
             tooltip.add("");
-            tooltip.add("\u00A76" + "You fall into my arms.");
-            tooltip.add("\u00A76" + "You are the good gift of destruction's path.");
+            tooltip.add("\u00A76" + "You fall into my arms. You are the");
+            tooltip.add("\u00A76" + "good gift of destruction's path.");
             tooltip.add("\u00A76" + "When life sickens more than disease.");
             tooltip.add("\u00A76" + "Flames shall guide the way...");
     }

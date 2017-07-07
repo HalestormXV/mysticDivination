@@ -7,6 +7,8 @@ item.mystalDust.name=Mystal Dust
 item.azuriteStone.name=Azurite Stone
 item.serpentineStone.name=Serpentine Stone
 item.tarotPaper.name=Tarot Paper
+item.jolluna.name=Jolluna Fruit
+item.esicuri.name=Esicuri Fruit
 
 #CARDS
 item.eaCardO.cIgnis.name=ORDER: Ignis
@@ -50,4 +52,4 @@ achievement.MakeAngelicIngot=By Purest Metal
 achievement.MakeAngelicIngot.desc=Smelt Angelic Ore into Angelic Ingot.
 
 #TABS
-itemGroup.eaCreativeTab=Elementum Angelus
+itemGroup.eaCreativeTab=Mystic Divination
