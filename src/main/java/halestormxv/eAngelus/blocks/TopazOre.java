@@ -34,7 +34,7 @@ public class TopazOre extends Block
 	
 	public int quantityDropped(Random random)
 	{
-		return this == eAngelusBlocks.topazOre ? 1 + random.nextInt(4) : 1;
+		return this == eAngelusBlocks.topazOre ? 1 + random.nextInt(3) : 1;
 	}
 
 }

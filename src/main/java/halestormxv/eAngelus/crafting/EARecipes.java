@@ -77,6 +77,11 @@ public class EARecipes
 				new Object [] {
 						eAngelusBlocks.demonic_block
 				});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.scryingOrb, 1),
+				new Object [] {
+						eAngelusItems.demonic_ingot, eAngelusItems.angelic_ingot, eAngelusItems.tarotPaper, eAngelusItems.azuriteStone
+				});
 		
 		
 		//Smelting Recipes
