@@ -60,8 +60,8 @@ public class ModItemScryingOrb extends Item
                     //Check for Reagent
                     if (player.inventory.hasItemStack(new ItemStack(eAngelusItems.mystalDust)))
                     {
-                        System.out.println("Current Stored Time: " + totWorldTime);
-                        System.out.println("Current World Time: " + currentWorldTime);
+                        //System.out.println("Current Stored Time: " + totWorldTime);
+                        //System.out.println("Current World Time: " + currentWorldTime);
                         if ((stack.getTagCompound() != null) && (currentWorldTime > totWorldTime + 3600 ))
                         {
                             if (player.isRiding())
@@ -87,7 +87,7 @@ public class ModItemScryingOrb extends Item
                 }
             }
             else
-                player.sendMessage(new TextComponentString("You must sneak and right click to store Scrying data."));
+                ChatUtil.sendNoSpam(player,"\u00A74You must sneak and right click to store Scrying data.");
         }
         return new ActionResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }

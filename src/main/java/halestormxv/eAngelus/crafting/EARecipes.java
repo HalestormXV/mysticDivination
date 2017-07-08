@@ -19,6 +19,15 @@ public class EARecipes
 								"###",
 								'#', eAngelusItems.angelic_ingot				
 						});
+
+		GameRegistry.addRecipe(new ItemStack(eAngelusBlocks.demonic_block),
+				new Object []
+						{
+								"###",
+								"###",
+								"###",
+								'#', eAngelusItems.demonic_ingot
+						});
 		
 		
 		GameRegistry.addRecipe(new ItemStack(eAngelusItems.serpentineAxe),
@@ -62,6 +71,11 @@ public class EARecipes
 		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.angelic_ingot, 9), 
 				new Object [] {
 				eAngelusBlocks.angelic_block
+				});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.demonic_ingot, 9),
+				new Object [] {
+						eAngelusBlocks.demonic_block
 				});
 		
 		
