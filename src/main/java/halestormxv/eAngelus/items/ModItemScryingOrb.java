@@ -3,6 +3,7 @@ package halestormxv.eAngelus.items;
 import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.network.packets.ChatUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -50,19 +51,18 @@ public class ModItemScryingOrb extends Item
                     nbt.setDouble("PosX", player.getPosition().getX());
                     nbt.setDouble("PosY", player.getPosition().getY());
                     nbt.setDouble("PosZ", player.getPosition().getZ());
-                    nbt.setLong("totalWorldTime", player.world.getTotalWorldTime());
                     stack.setTagCompound(nbt);
                 }
                 else
                 {
                     long totWorldTime = this.getStoredWorldTime(stack);
-                    long currentWorldTime = player.world.getWorldTime();
+                    long currentWorldTime = player.world.getTotalWorldTime();
                     //Check for Reagent
                     if (player.inventory.hasItemStack(new ItemStack(eAngelusItems.mystalDust)))
                     {
                         System.out.println("Current Stored Time: " + totWorldTime);
                         System.out.println("Current World Time: " + currentWorldTime);
-                        if ((stack.getTagCompound() != null) && (currentWorldTime > totWorldTime + 200 ))
+                        if ((stack.getTagCompound() != null) && (currentWorldTime > totWorldTime + 3600 ))
                         {
                             if (player.isRiding())
                             {
@@ -108,18 +108,37 @@ public class ModItemScryingOrb extends Item
             double posX = nbt.getDouble("PosX");
             double posY = nbt.getDouble("PosY");
             double posZ = nbt.getDouble("PosZ");
+            long storedWorldTime = nbt.getLong("totalWorldTime");
+            long currentWorldTime = Minecraft.getMinecraft().world.getTotalWorldTime();
             tooltip.add("\u00A73" + "DIM: "+ dimID);
             tooltip.add("\u00A7d" + "X: "  + posX);
             tooltip.add("\u00A72" + "Y: "  + posY);
             tooltip.add("\u00A7c" + "Z: "  + posZ);
             tooltip.add("");
-            /*if (stack.getTagCompound().getInteger("coolDown") != 0) {
-                tooltip.add("\u00A74" + "Cooldown: " + getCooldownReal(stack) + " Min");
+            if (getCooldownReal(storedWorldTime, currentWorldTime) > 0)
+            {
+                tooltip.add("\u00A74" + "Cooldown: " + getCooldownReal(storedWorldTime, currentWorldTime) + " Min");
             }
             else
             {
                 tooltip.add("\u00A72" + "Scrying Orb is ready for use.");
-            }*/
+            }
+
+        }
+    }
+
+    //Cooldown Handlers\\
+    private static int getCooldownReal(long storedWorldTime, long currentWorldTime) {
+        long TimeLeftInTicks = 3600 - (currentWorldTime - storedWorldTime);
+        long TimeLeftInMinutes = TimeLeftInTicks / (20 * 60);
+        if (TimeLeftInTicks > 0)
+        {
+            return (int) TimeLeftInMinutes + 1;
+        }
+        else
+        {
+            TimeLeftInMinutes = 0;
+            return (int) TimeLeftInMinutes;
         }
     }
 
@@ -141,17 +160,6 @@ public class ModItemScryingOrb extends Item
     }
 
     private void consumeReagent(ItemStack stack, World worldIn, EntityPlayer entityLiving) {
-        entityLiving.inventory.clearMatchingItems(scryingReagent(stack), -1, 1, null);
-    }
-
-    private Item scryingReagent(ItemStack itemStackIn)
-    {
-        return eAngelusItems.mystalDust;
-    }
-
-    //Cooldown Handlers\\
-    public static int getCooldownReal(ItemStack stack) {
-        int time = (int) Math.abs(stack.getTagCompound().getInteger("coolDown"));
-        return (int)((float)time / 1000F);
+        entityLiving.inventory.clearMatchingItems(eAngelusItems.mystalDust, -1, 1, null);
     }
 }
