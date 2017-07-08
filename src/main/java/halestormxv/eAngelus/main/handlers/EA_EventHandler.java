@@ -1,14 +1,11 @@
 package halestormxv.eAngelus.main.handlers;
 
-import halestormxv.eAngelus.items.EAItem;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -16,7 +13,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -110,21 +106,27 @@ public class EA_EventHandler {
         if (event.getState().getBlock() == eAngelusBlocks.angelicOre)
         {
             event.setExpToDrop(6);
-            BlockPos pos = event.getPos();
+            //BlockPos pos = event.getPos();
             //event.getWorld().spawnEntity(new EntityItem(event.getWorld(), pos.getX() + 2, pos.getY() + 2, pos.getZ(), new ItemStack(Items.DIAMOND)));
-            EntityPlayer player = event.getPlayer();
-            player.sendMessage(new TextComponentString("\u00A74" + "Your scales of morality have tipped to sin."));
+            Random dChance = new Random();
+            int chance = dChance.nextInt(100) + 1;
+            if (chance < 15) {
+                EntityPlayer player = event.getPlayer();
+                player.sendMessage(new TextComponentString("\u00A74" + "Your scales of morality have tipped to sin."));
+            }
         }
 
         if (event.getState().getBlock() == eAngelusBlocks.demonicOre)
         {
             event.setExpToDrop(6);
-            BlockPos pos = event.getPos();
+            //BlockPos pos = event.getPos();
             //event.getWorld().spawnEntity(new EntityItem(event.getWorld(), pos.getX() + 2, pos.getY() + 2, pos.getZ(), new ItemStack(Items.DIAMOND)));
-            EntityPlayer player = event.getPlayer();
-            player.sendMessage(new TextComponentString("\u00A73" + "Your scales of morality have tipped to virtue."));
+            Random dChance = new Random();
+            int chance = dChance.nextInt(100) + 1;
+            if (chance < 15) {
+                EntityPlayer player = event.getPlayer();
+                player.sendMessage(new TextComponentString("\u00A73" + "Your scales of morality have tipped to virtue."));
+            }
         }
-
     }
-
 }
