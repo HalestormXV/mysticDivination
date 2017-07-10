@@ -17,9 +17,15 @@ public class eAngelusPacketHandler
 
     public static final ThreadedNetworkWrapper INSTANCE = new ThreadedNetworkWrapper(Reference.NAME);
 
+    private static int ID = 0;
+    private static int nextID()
+    {
+        return ID++;
+    }
+
     public static void init()
     {
-        INSTANCE.registerMessage(ChatUtil.PacketNoSpamChat.Handler.class, ChatUtil.PacketNoSpamChat.class, 0, Side.CLIENT);
+        INSTANCE.registerMessage(ChatUtil.PacketNoSpamChat.Handler.class, ChatUtil.PacketNoSpamChat.class, nextID(), Side.CLIENT);
     }
 
     public static void sendToAllAround(IMessage message, TileEntity te, int range) {

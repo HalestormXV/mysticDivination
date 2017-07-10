@@ -40,12 +40,14 @@ public class EAMain
 	{
 		ModSounds.init();
 		logger = event.getModLog();
+		Utils.getLogger().info("Pre Initialize");
 		this.proxy.preInit(event);
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		Utils.getLogger().info("Initialize");
 		this.proxy.init(event);
 		GameRegistry.registerFuelHandler(new EA_FuelHandler());
 		eAngelusPacketHandler.init();
@@ -55,6 +57,7 @@ public class EAMain
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		Utils.getLogger().info("Post Initialize");
 		MinecraftForge.EVENT_BUS.register(new EA_EventHandler());
 		MinecraftForge.EVENT_BUS.register(new EA_CapabilityHandler());
 		this.proxy.postInit(event);
