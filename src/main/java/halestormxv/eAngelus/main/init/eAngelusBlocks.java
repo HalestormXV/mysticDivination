@@ -9,7 +9,6 @@ import halestormxv.eAngelus.blocks.MystalCite;
 import halestormxv.eAngelus.blocks.ObsidianIronTable;
 import halestormxv.eAngelus.blocks.SerpentineOre;
 import halestormxv.eAngelus.blocks.TopazOre;
-import halestormxv.eAngelus.items.EAItem;
 import halestormxv.eAngelus.main.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

@@ -3,13 +3,13 @@ package halestormxv.eAngelus.blocks;
 import halestormxv.eAngelus.main.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class AngelicOre extends Block 
 {
-	
 	public AngelicOre() 
 	{
 		super(Material.IRON);

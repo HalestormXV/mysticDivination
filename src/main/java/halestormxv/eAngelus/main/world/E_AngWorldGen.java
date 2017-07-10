@@ -14,8 +14,6 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class E_AngWorldGen implements IWorldGenerator {
-	//@formatter:off
-
 	//World Generators
 	private WorldGenerator gen_AngelicOre;
 	private WorldGenerator gen_AzureiteOre;
@@ -23,8 +21,6 @@ public class E_AngWorldGen implements IWorldGenerator {
 	private WorldGenerator gen_MystalCite;
 	private WorldGenerator gen_SerpentineOre;
 	private WorldGenerator gen_TopazOre;
-
-	//@formatter:on
 
 	public E_AngWorldGen()
 	{
@@ -36,6 +32,18 @@ public class E_AngWorldGen implements IWorldGenerator {
 		gen_TopazOre = new WorldGenMinable(eAngelusBlocks.topazOre.getDefaultState(), 6, BlockMatcher.forBlock(Blocks.STONE));
 	}
 
+	private void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {
+		if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
+			throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
+
+		int heightDiff = maxHeight - minHeight + 1;
+		for (int i = 0; i < chancesToSpawn; i ++) {
+			int x = chunk_X * 16 + rand.nextInt(16);
+			int y = minHeight + rand.nextInt(heightDiff);
+			int z = chunk_Z * 16 + rand.nextInt(16);
+			generator.generate(world, rand, new BlockPos(x, y, z));
+		}
+	}
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) 
@@ -63,20 +71,4 @@ public class E_AngWorldGen implements IWorldGenerator {
 		}
 
 	}
-
-	private void runGenerator(WorldGenerator generator, World world, Random random, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight)
-	{
-		if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
-			throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
-
-		int heightDiff = maxHeight - minHeight + 1;
-		for (int i = 0; i < chancesToSpawn; i++)
-		{
-			int x = chunk_X * 16 + random.nextInt(16);
-			int y = minHeight + random.nextInt(heightDiff);
-			int z = chunk_Z * 16 + random.nextInt(16);
-			generator.generate(world, random, new BlockPos(x, y, z));
-		}
-	}
-
 }

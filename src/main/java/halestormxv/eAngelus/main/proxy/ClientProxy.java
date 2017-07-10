@@ -17,8 +17,6 @@ public class ClientProxy extends CommonProxy
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		super.preInit(event);
-		eAngelusItems.initItems();
-		eAngelusBlocks.initBlocks();
 		EARecipes.initRecipes();
 		EA_Achievements.AchievementRegistry();
 	}
