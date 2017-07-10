@@ -1,5 +1,6 @@
 package halestormxv.eAngelus.main;
 
+import halestormxv.eAngelus.main.handlers.EA_CapabilityHandler;
 import halestormxv.eAngelus.main.handlers.EA_EventHandler;
 import halestormxv.eAngelus.main.handlers.ModSounds;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
@@ -46,7 +47,6 @@ public class EAMain
 	public void init(FMLInitializationEvent event)
 	{
 		this.proxy.init(event);
-		GameRegistry.registerWorldGenerator(new E_AngWorldGen(), 0);
 		GameRegistry.registerFuelHandler(new EA_FuelHandler());
 		eAngelusPacketHandler.init();
 		//EARemoveRecipes.removeCraftingRecipes(Items.diamond_sword);
@@ -56,6 +56,7 @@ public class EAMain
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		MinecraftForge.EVENT_BUS.register(new EA_EventHandler());
+		MinecraftForge.EVENT_BUS.register(new EA_CapabilityHandler());
 		this.proxy.postInit(event);
 	}
 	

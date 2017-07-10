@@ -28,12 +28,12 @@ public class E_AngWorldGen implements IWorldGenerator {
 
 	public E_AngWorldGen()
 	{
-		this.gen_AngelicOre = new WorldGenMinable(eAngelusBlocks.angelicOre.getDefaultState(), 2, BlockMatcher.forBlock(Blocks.STONE));
-		this.gen_AzureiteOre = new WorldGenMinable(eAngelusBlocks.azureite_Ore.getDefaultState(), 4, BlockMatcher.forBlock(Blocks.STONE));
-		this.gen_DemonicOre = new WorldGenMinable(eAngelusBlocks.demonicOre.getDefaultState(), 2, BlockMatcher.forBlock(Blocks.STONE));
-		this.gen_MystalCite = new WorldGenMinable(eAngelusBlocks.mystalCite.getDefaultState(), 3, BlockMatcher.forBlock(Blocks.STONE));
-		this.gen_SerpentineOre = new WorldGenMinable(eAngelusBlocks.serpentine_Ore.getDefaultState(), 3, BlockMatcher.forBlock(Blocks.STONE));
-		this.gen_TopazOre = new WorldGenMinable(eAngelusBlocks.topazOre.getDefaultState(), 6, BlockMatcher.forBlock(Blocks.STONE));
+		gen_AngelicOre = new WorldGenMinable(eAngelusBlocks.angelicOre.getDefaultState(), 2, BlockMatcher.forBlock(Blocks.STONE));
+		gen_AzureiteOre = new WorldGenMinable(eAngelusBlocks.azureite_Ore.getDefaultState(), 4, BlockMatcher.forBlock(Blocks.STONE));
+		gen_DemonicOre = new WorldGenMinable(eAngelusBlocks.demonicOre.getDefaultState(), 2, BlockMatcher.forBlock(Blocks.STONE));
+		gen_MystalCite = new WorldGenMinable(eAngelusBlocks.mystalCite.getDefaultState(), 3, BlockMatcher.forBlock(Blocks.STONE));
+		gen_SerpentineOre = new WorldGenMinable(eAngelusBlocks.serpentine_Ore.getDefaultState(), 3, BlockMatcher.forBlock(Blocks.STONE));
+		gen_TopazOre = new WorldGenMinable(eAngelusBlocks.topazOre.getDefaultState(), 6, BlockMatcher.forBlock(Blocks.STONE));
 	}
 
 
