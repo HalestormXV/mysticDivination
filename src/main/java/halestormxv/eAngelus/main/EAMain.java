@@ -1,6 +1,7 @@
 package halestormxv.eAngelus.main;
 
 import halestormxv.eAngelus.main.handlers.EA_EventHandler;
+import halestormxv.eAngelus.main.handlers.ModSounds;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,6 +37,7 @@ public class EAMain
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		ModSounds.init();
 		logger = event.getModLog();
 		this.proxy.preInit(event);
 	}

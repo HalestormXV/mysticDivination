@@ -1,6 +1,9 @@
 package halestormxv.eAngelus.main.init;
 
 import halestormxv.eAngelus.items.*;
+import halestormxv.eAngelus.items.records.eAngelus_Records;
+import halestormxv.eAngelus.items.records.rec_Mavis;
+import halestormxv.eAngelus.items.records.rec_Motomiya;
 import halestormxv.eAngelus.main.EACreativeTab;
 import halestormxv.eAngelus.main.Reference;
 import net.minecraft.client.Minecraft;
@@ -42,6 +45,8 @@ public class eAngelusItems
 	//Rare Drops
 	public static Item tarotPaper;
 	public static Item fireSword;
+	public static Item recordMavis;
+	public static Item recordMotomiya;
 
 	//Consumables
 	public static Item jolluna;
@@ -62,6 +67,8 @@ public class eAngelusItems
 		//Rare Drops
 		tarotPaper = registerItem(new EAItem("tarotPaper"), "tarotPaper");
 		fireSword = registerItem(new ModItemFlameSword("fireSword", SpecialItems), "fireSword");
+		recordMavis = new rec_Mavis();
+		recordMotomiya = new rec_Motomiya();
 
 		//Ingots
 		angelic_ingot = registerItem(new AngelicIngot(), "angelic_ingot");
@@ -108,6 +115,8 @@ public class eAngelusItems
 		//Rare Drops
 		registerRender(tarotPaper);
 		registerRender(fireSword);
+		registerRender(recordMavis);
+		registerRender(recordMotomiya);
 
 		//Items
 		registerRender(angelic_ingot);

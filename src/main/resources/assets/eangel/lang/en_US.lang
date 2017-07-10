@@ -11,6 +11,12 @@ item.jolluna.name=Jolluna Fruit
 item.esicuri.name=Esicuri Fruit
 item.scryingOrb.name=Scrying Orb
 
+#RECORDS
+item.eangel:recordmavis.name=Mavis Vermillion's Theme
+item.eangel:recordmotomiya.name=Hiromi Motomiya - Breath
+item.record.eAngelus:mavismusic.desc=Fairy's Glitter Theme by Yasuharu Takanashi
+item.record.eAngelus:motomiyaflute.desc=Hiromi Motomiya - Breath
+
 #CARDS
 item.eaCardO.cIgnis.name=ORDER: Ignis
 item.eaCardO.cFortitudo.name=ORDER: Fortitudo
