@@ -1,5 +1,6 @@
 package halestormxv.eAngelus.main;
 
+import halestormxv.eAngelus.client.gui.GuiOverlay;
 import halestormxv.eAngelus.main.handlers.EA_CapabilityHandler;
 import halestormxv.eAngelus.main.handlers.EA_EventHandler;
 import halestormxv.eAngelus.main.handlers.ModSounds;
@@ -60,6 +61,7 @@ public class EAMain
 		Utils.getLogger().info("Post Initialize");
 		MinecraftForge.EVENT_BUS.register(new EA_EventHandler());
 		MinecraftForge.EVENT_BUS.register(new EA_CapabilityHandler());
+		//MinecraftForge.EVENT_BUS.register(new GuiOverlay());
 		this.proxy.postInit(event);
 	}
 	
