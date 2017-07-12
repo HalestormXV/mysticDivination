@@ -1,11 +1,8 @@
 package halestormxv.eAngelus.client.gui;
 
-import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
-import halestormxv.eAngelus.capabilities.moralityProvider;
 import halestormxv.eAngelus.main.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

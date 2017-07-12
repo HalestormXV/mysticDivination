@@ -1,6 +1,6 @@
 package halestormxv.eAngelus.main.handlers;
 
-import halestormxv.eAngelus.capabilities.moralityProvider;
+import halestormxv.eAngelus.capabilities.MoralityCapability.moralityProvider;
 import halestormxv.eAngelus.main.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

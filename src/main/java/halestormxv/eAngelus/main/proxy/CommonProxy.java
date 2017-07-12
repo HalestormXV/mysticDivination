@@ -1,20 +1,16 @@
 package halestormxv.eAngelus.main.proxy;
 
 import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
-import halestormxv.eAngelus.capabilities.moralityScale;
-import halestormxv.eAngelus.capabilities.moralityStorage;
-import halestormxv.eAngelus.client.gui.GuiOverlay;
-import halestormxv.eAngelus.main.EAMain;
+import halestormxv.eAngelus.capabilities.MoralityCapability.moralityScale;
+import halestormxv.eAngelus.capabilities.MoralityCapability.moralityStorage;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.main.world.E_AngWorldGen;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy 

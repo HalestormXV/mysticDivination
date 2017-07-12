@@ -1,4 +1,4 @@
-package halestormxv.eAngelus.capabilities;
+package halestormxv.eAngelus.capabilities.MoralityCapability;
 
 import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
 import net.minecraft.nbt.NBTBase;

@@ -1,8 +1,7 @@
 package halestormxv.eAngelus.main.handlers;
 
 import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
-import halestormxv.eAngelus.capabilities.moralityProvider;
-import halestormxv.eAngelus.capabilities.moralityScale;
+import halestormxv.eAngelus.capabilities.MoralityCapability.moralityProvider;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.network.packets.ChatUtil;
@@ -10,7 +9,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;

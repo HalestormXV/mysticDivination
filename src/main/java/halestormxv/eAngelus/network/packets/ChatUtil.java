@@ -21,11 +21,13 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class ChatUtil
 {
 
-    public static class PacketNoSpamChat implements IMessage {
+    public static class PacketNoSpamChat implements IMessage
+    {
 
         private ITextComponent[] chatLines;
 
-        public PacketNoSpamChat() {
+        public PacketNoSpamChat()
+        {
             chatLines = new ITextComponent[0];
         }
 
