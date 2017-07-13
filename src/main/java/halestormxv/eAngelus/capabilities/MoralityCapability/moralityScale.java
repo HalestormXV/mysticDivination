@@ -8,6 +8,8 @@ import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
 public class moralityScale implements IMorality
 {
     private int morality = 0;
+    //private int maxVirtue = 400;
+    //private int maxSin = -400;
 
     @Override
     public void addSin(int points) //Subtract Morality

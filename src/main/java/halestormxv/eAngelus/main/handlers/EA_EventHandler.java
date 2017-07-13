@@ -2,12 +2,19 @@ package halestormxv.eAngelus.main.handlers;
 
 import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityProvider;
+import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
+import halestormxv.eAngelus.main.proxy.ClientProxy;
+import halestormxv.eAngelus.network.eAngelusPacketHandler;
 import halestormxv.eAngelus.network.packets.ChatUtil;
+import halestormxv.eAngelus.network.packets.FetchMorality;
+import halestormxv.eAngelus.network.packets.SyncMorality;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -19,6 +26,9 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
@@ -120,7 +130,7 @@ public class EA_EventHandler {
     {
         if (event.getState().getBlock() == eAngelusBlocks.angelicOre)
         {
-            event.setExpToDrop(6);
+            event.setExpToDrop(3);
             Random dChance = new Random();
             int chance = dChance.nextInt(100) + 1;
             if (chance < 15) {
@@ -128,12 +138,14 @@ public class EA_EventHandler {
                 IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
                 player.sendMessage(new TextComponentString("\u00A74" + "Your scales of morality have tipped to sin."));
                 morality.addSin(1);
+                /*eAngelusPacketHandler.sendToServer(new SyncMorality(morality.getMorality(), "halestormxv.eAngelus.main.handlers.EA_EventHandler",
+                        Reference.MODID +":morality"));*/
             }
         }
 
         if (event.getState().getBlock() == eAngelusBlocks.demonicOre)
         {
-            event.setExpToDrop(6);
+            event.setExpToDrop(3);
             //BlockPos pos = event.getPos();
             //event.getWorld().spawnEntity(new EntityItem(event.getWorld(), pos.getX() + 2, pos.getY() + 2, pos.getZ(), new ItemStack(Items.DIAMOND)));
             Random dChance = new Random();
