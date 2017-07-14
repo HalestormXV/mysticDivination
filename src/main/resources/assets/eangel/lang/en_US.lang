@@ -10,6 +10,9 @@ item.tarotPaper.name=Tarot Paper
 item.jolluna.name=Jolluna Fruit
 item.esicuri.name=Esicuri Fruit
 item.scryingOrb.name=Scrying Orb
+item.cFortitudo.name=ORDER: Forteza
+item.virtuefruit.name=Virtuous Fruit Medley
+item.sinfulfruit.name=Sinful Fruit Medley
 
 #RECORDS
 item.eangel:recordmavis.name=Mavis Vermillion's Theme

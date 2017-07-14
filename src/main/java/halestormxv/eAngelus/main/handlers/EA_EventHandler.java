@@ -45,9 +45,6 @@ public class EA_EventHandler {
             if (morality.getMorality() == 0) { ChatUtil.sendNoSpam(player, "\u00A7eYour current morality is: "+ morality.getMorality()); }
             if (morality.getMorality() > 0) { ChatUtil.sendNoSpam(player, "\u00A73Your virtuous morality is: "+ morality.getMorality()); }
             if (morality.getMorality() < 0) { ChatUtil.sendNoSpam(player, "\u00A74Your sinful morality is: "+ moralityNoNegative); }
-
-            //ChatUtil.sendNoSpam(player, "\u00A7eYour current morality is: "+ moralityNoNegative);
-            return;
         }
     }
 
@@ -150,8 +147,6 @@ public class EA_EventHandler {
         if (event.getState().getBlock() == eAngelusBlocks.demonicOre)
         {
             event.setExpToDrop(3);
-            //BlockPos pos = event.getPos();
-            //event.getWorld().spawnEntity(new EntityItem(event.getWorld(), pos.getX() + 2, pos.getY() + 2, pos.getZ(), new ItemStack(Items.DIAMOND)));
             Random dChance = new Random();
             int chance = dChance.nextInt(100) + 1;
             if (chance < 15) {
@@ -162,7 +157,6 @@ public class EA_EventHandler {
                 morality.addVirtue(1);
                 if (!player.world.isRemote) { eAngelusPacketHandler.sendTo(new SyncMorality(morality.getMorality()), (EntityPlayerMP) player);}
                 world.playSound(null, player.posX, player.posY, player.posZ, EA_SoundHandler.VIRTUE_INCREASE_LEVEL, SoundCategory.MASTER, 2.0F, 1.0F);
-
             }
         }
     }

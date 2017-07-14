@@ -1,6 +1,7 @@
 package halestormxv.eAngelus.main.init;
 
 import halestormxv.eAngelus.items.*;
+import halestormxv.eAngelus.items.cards.O_card_Strength;
 import halestormxv.eAngelus.items.records.eAngelus_Records;
 import halestormxv.eAngelus.items.records.rec_Mavis;
 import halestormxv.eAngelus.items.records.rec_Motomiya;
@@ -27,6 +28,7 @@ public class eAngelusItems
 	public static Item azuriteStone;
 	public static Item serpentineStone;
 	public static Item scryingOrb;
+	public static Item cFortitudo;
 
 	//Tools
 	public static Item serpentinePick;
@@ -51,6 +53,8 @@ public class eAngelusItems
 	//Consumables
 	public static Item jolluna;
 	public static Item esicuri;
+	public static Item virtuefruit;
+	public static Item sinfulfruit;
 
 	//Materials
 	public static ToolMaterial Serpentine = EnumHelper.addToolMaterial("Serpentine", 4, 1800, 10.0F, 9.0F, 25);
@@ -59,7 +63,7 @@ public class eAngelusItems
 	public static void initItems() //illustrates both ways to register an item.
 	{	
 		//Cards
-		//eaCardO = registerItem(new eAngelusCards("eaCardO"), "eaCardO");
+		cFortitudo = registerItem(new O_card_Strength("cFortitudo"), "cFortitudo");
 
 		//Misc Items
 		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
@@ -97,9 +101,13 @@ public class eAngelusItems
 		//Consumables
 		jolluna = new ModItemFood("jolluna", 6, 0.9f, false, new PotionEffect(Potion.getPotionById(10), 200, 3));
 		esicuri = new ModItemFood("esicuri", 4, 0.6f, false);
+		virtuefruit = new ModItemMoralityFoods("virtuefruit", 4, 0.6f, false);;
+		sinfulfruit = new ModItemMoralityFoods("sinfulfruit", 4, 0.6f, false);;
 
 		registerItem(jolluna, "jolluna");
 		registerItem(esicuri, "esicuri");
+		registerItem(virtuefruit, "virtuefruit");
+		registerItem(sinfulfruit, "sinfulfruit");
 	}
 
 
@@ -127,6 +135,7 @@ public class eAngelusItems
 		registerRender(azuriteStone);
 		registerRender(serpentineStone);
 		registerRender(scryingOrb);
+		registerRender(cFortitudo);
 
 		//Tools
 		registerRender(serpentinePick);
@@ -142,6 +151,8 @@ public class eAngelusItems
 		//Consumables
 		registerRender(jolluna);
 		registerRender(esicuri);
+		registerRender(virtuefruit);
+		registerRender(sinfulfruit);
 	}
 
 	public static void registerRender(Item item)
@@ -152,16 +163,11 @@ public class eAngelusItems
 
 	public static void registerRender(Item item, int meta, String fileName)
 	{
+		GameRegistry.register(item);
+
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item,  meta, 
 				new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
-
-
-
-
-
-
-
 
 	//registerItem Start\\
 	public static Item registerItem(Item item, String name)
