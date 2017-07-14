@@ -1,11 +1,10 @@
 package halestormxv.eAngelus.main.init;
 
 import halestormxv.eAngelus.items.*;
-import halestormxv.eAngelus.items.cards.O_card_Strength;
-import halestormxv.eAngelus.items.records.eAngelus_Records;
+import halestormxv.eAngelus.items.cards.S_card_Strength;
+import halestormxv.eAngelus.items.cards.V_card_Resistance;
 import halestormxv.eAngelus.items.records.rec_Mavis;
 import halestormxv.eAngelus.items.records.rec_Motomiya;
-import halestormxv.eAngelus.main.EACreativeTab;
 import halestormxv.eAngelus.main.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -28,7 +27,7 @@ public class eAngelusItems
 	public static Item azuriteStone;
 	public static Item serpentineStone;
 	public static Item scryingOrb;
-	public static Item cFortitudo;
+
 
 	//Tools
 	public static Item serpentinePick;
@@ -42,7 +41,8 @@ public class eAngelusItems
 	//public static Item serpentineShield;
 
 	//Cards
-	public static Item eaCardO;
+	public static Item cFortitudo;
+	public static Item cResistentia;
 
 	//Rare Drops
 	public static Item tarotPaper;
@@ -63,7 +63,8 @@ public class eAngelusItems
 	public static void initItems() //illustrates both ways to register an item.
 	{	
 		//Cards
-		cFortitudo = registerItem(new O_card_Strength("cFortitudo"), "cFortitudo");
+		cFortitudo = registerItem(new S_card_Strength("cFortitudo"), "cFortitudo");
+		cResistentia = registerItem(new V_card_Resistance("cResistentia"), "cResistentia");
 
 		//Misc Items
 		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
@@ -114,11 +115,8 @@ public class eAngelusItems
 	public static void registerRenders()
 	{
 		//Cards
-		//for (int i = 0; i < eAngelusCards.O_cardNames.length; ++i)
-		//{
-		//	registerRender(eaCardO, i, eAngelusCards.O_cardNames[i]);
-		//}
-		//
+		registerRender(cFortitudo); //Strength Card
+		registerRender(cResistentia); //Resistance Card
 
 		//Rare Drops
 		registerRender(tarotPaper);
@@ -135,7 +133,6 @@ public class eAngelusItems
 		registerRender(azuriteStone);
 		registerRender(serpentineStone);
 		registerRender(scryingOrb);
-		registerRender(cFortitudo);
 
 		//Tools
 		registerRender(serpentinePick);
@@ -146,7 +143,6 @@ public class eAngelusItems
 
 		//Weapons
 		registerRender(serpentineSword);
-		//registerRender(serpentineShield);
 
 		//Consumables
 		registerRender(jolluna);

@@ -19,17 +19,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class O_card_Strength extends Item
+public class V_card_Resistance extends Item
 {
-    private int moralityRequirement = -4;
+    private int moralityRequirement = 4;
 
-    public O_card_Strength(String name)
+    public V_card_Resistance(String name)
     {
         super();
         this.setUnlocalizedName(name);
         this.setCreativeTab(Reference.eaCreativeTab);
         this.maxStackSize = 1;
-        this.setMaxDamage(8);
+        this.setMaxDamage(7);
     }
 
     @Override
@@ -38,12 +38,12 @@ public class O_card_Strength extends Item
         ItemStack itemStack = playerIn.getHeldItem(handIn);
         IMorality morality = playerIn.getCapability(moralityProvider.MORALITY_CAP, null);
         //Check for Reagent and Morality Level
-        if (morality.getMorality() <= moralityRequirement)
+        if (morality.getMorality() >= moralityRequirement)
         {
             if (playerIn.inventory.hasItemStack(new ItemStack(eAngelusItems.mystalDust)))
             {
                 itemStack.damageItem(1, playerIn);
-                playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("strength"), 300, 3));
+                playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("resistance"), 300, 3));
                 this.consumeReagent(itemStack, worldIn, playerIn);
             } else {
                 ChatUtil.sendNoSpam(playerIn, "\u00A74Mystal Dust is a required Catalyst.");
@@ -59,11 +59,11 @@ public class O_card_Strength extends Item
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
         tooltip.add("");
-        tooltip.add("\u00A76" + "The Spear-Danes in days gone by");
-        tooltip.add("\u00A76" + "and the kings who ruled them had");
-        tooltip.add("\u00A76" + "courage and greatness.");
+        tooltip.add("\u00A76" + "The ode lives upon the ideal,");
+        tooltip.add("\u00A76" + "the epic upon the grandiose,");
+        tooltip.add("\u00A76" + "the drama upon the real.");
         tooltip.add("");
-        tooltip.add("\u00A74" + "Item requires sin of: "+Math.abs(moralityRequirement));
+        tooltip.add("\u00A73" + "Item requires virtue of: "+Math.abs(moralityRequirement));
     }
 
     private void consumeReagent(ItemStack stack, World worldIn, EntityPlayer entityLiving) {

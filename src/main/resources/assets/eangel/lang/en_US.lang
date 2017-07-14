@@ -10,7 +10,6 @@ item.tarotPaper.name=Tarot Paper
 item.jolluna.name=Jolluna Fruit
 item.esicuri.name=Esicuri Fruit
 item.scryingOrb.name=Scrying Orb
-item.cFortitudo.name=ORDER: Forteza
 item.virtuefruit.name=Virtuous Fruit Medley
 item.sinfulfruit.name=Sinful Fruit Medley
 
@@ -25,6 +24,9 @@ player.morality.sin.increase=Sin Increased
 player.morality.virtue.increase=Virtue Increased
 
 #CARDS
+item.cFortitudo.name=ORDER: Forteza
+item.cResistentia.name=ORDER: Resistentia
+
 item.eaCardO.cIgnis.name=ORDER: Ignis
 item.eaCardO.cFortitudo.name=ORDER: Fortitudo
 item.eaCardO.cVentus.name=ORDER: Ventus
