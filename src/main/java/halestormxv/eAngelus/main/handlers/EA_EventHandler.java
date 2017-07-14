@@ -2,21 +2,21 @@ package halestormxv.eAngelus.main.handlers;
 
 import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityProvider;
-import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
-import halestormxv.eAngelus.main.proxy.ClientProxy;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
 import halestormxv.eAngelus.network.packets.ChatUtil;
-import halestormxv.eAngelus.network.packets.FetchMorality;
 import halestormxv.eAngelus.network.packets.SyncMorality;
-import net.minecraft.client.Minecraft;
+import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -26,9 +26,6 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
@@ -44,7 +41,12 @@ public class EA_EventHandler {
         {
             EntityPlayer player = (EntityPlayer) event.getEntity();
             IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
-            ChatUtil.sendNoSpam(player, "\u00A7eYour current morality is: "+ morality.getMorality());
+            int moralityNoNegative = displayMorality(player);
+            if (morality.getMorality() == 0) { ChatUtil.sendNoSpam(player, "\u00A7eYour current morality is: "+ morality.getMorality()); }
+            if (morality.getMorality() > 0) { ChatUtil.sendNoSpam(player, "\u00A73Your virtuous morality is: "+ morality.getMorality()); }
+            if (morality.getMorality() < 0) { ChatUtil.sendNoSpam(player, "\u00A74Your sinful morality is: "+ moralityNoNegative); }
+
+            //ChatUtil.sendNoSpam(player, "\u00A7eYour current morality is: "+ moralityNoNegative);
             return;
         }
     }
@@ -135,11 +137,13 @@ public class EA_EventHandler {
             int chance = dChance.nextInt(100) + 1;
             if (chance < 15) {
                 EntityPlayer player = event.getPlayer();
+                World world = event.getWorld();
                 IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
                 player.sendMessage(new TextComponentString("\u00A74" + "Your scales of morality have tipped to sin."));
                 morality.addSin(1);
-                /*eAngelusPacketHandler.sendToServer(new SyncMorality(morality.getMorality(), "halestormxv.eAngelus.main.handlers.EA_EventHandler",
-                        Reference.MODID +":morality"));*/
+                if (!player.world.isRemote) { eAngelusPacketHandler.sendTo(new SyncMorality(morality.getMorality()), (EntityPlayerMP) player);}
+                world.playSound(null, player.posX, player.posY, player.posZ, EA_SoundHandler.SIN_INCREASE_LEVEL, SoundCategory.MASTER, 2.0F, 1.0F);
+
             }
         }
 
@@ -152,10 +156,30 @@ public class EA_EventHandler {
             int chance = dChance.nextInt(100) + 1;
             if (chance < 15) {
                 EntityPlayer player = event.getPlayer();
+                World world = event.getWorld();
                 IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
                 player.sendMessage(new TextComponentString("\u00A73" + "Your scales of morality have tipped to virtue."));
                 morality.addVirtue(1);
+                if (!player.world.isRemote) { eAngelusPacketHandler.sendTo(new SyncMorality(morality.getMorality()), (EntityPlayerMP) player);}
+                world.playSound(null, player.posX, player.posY, player.posZ, EA_SoundHandler.VIRTUE_INCREASE_LEVEL, SoundCategory.MASTER, 2.0F, 1.0F);
+
             }
         }
+    }
+
+    public static int displayMorality(EntityPlayer player)
+    {
+        IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
+        int currentMorality = morality.getMorality();
+        int displayMorality;
+        if (currentMorality < 0) {
+            displayMorality = Math.abs(currentMorality);
+        } else {
+            displayMorality = currentMorality;
+            {
+                return displayMorality;
+            }
+        }
+        return displayMorality;
     }
 }

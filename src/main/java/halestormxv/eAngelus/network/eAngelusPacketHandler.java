@@ -4,7 +4,6 @@ import halestormxv.eAngelus.network.packets.ChatUtil;
 import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.network.packets.FetchMorality;
 import halestormxv.eAngelus.network.packets.SyncMorality;
-import halestormxv.eAngelus.network.packets.SyncMoralityReturn;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
@@ -39,8 +38,7 @@ public class eAngelusPacketHandler
     {
         INSTANCE.registerMessage(ChatUtil.PacketNoSpamChat.Handler.class, ChatUtil.PacketNoSpamChat.class, nextID(), Side.CLIENT);
         INSTANCE.registerMessage(FetchMorality.class, FetchMorality.class, nextID(), Side.SERVER); //Key Bind Fetch Morality
-        INSTANCE.registerMessage(SyncMorality.Handler.class, SyncMorality.class, nextID(), Side.SERVER); //Sync Morality with Server on Server Side
-        INSTANCE.registerMessage(SyncMoralityReturn.Handler.class, SyncMoralityReturn.class, nextID(), Side.CLIENT); //Sync Morality with Server on Client Side
+        INSTANCE.registerMessage(SyncMorality.Handler.class, SyncMorality.class, nextID(), Side.CLIENT);
     }
 
     public static void sendToAllAround(IMessage message, TileEntity te, int range)

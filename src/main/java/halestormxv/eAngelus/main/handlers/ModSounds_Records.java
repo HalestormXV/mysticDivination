@@ -7,11 +7,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 /**
  * Created by Blaze on 7/9/2017.
  */
-public final class ModSounds {
+public final class ModSounds_Records {
 
     public static void init() {
         String[] sounds = {
-
+                //RECORDS GO HERE USE SOUND HANDLER FOR OTHER STUFF\\
                 "eangel:music.mavismusic",
                 "eangel:music.motomiyaflute"
         };
@@ -22,6 +22,6 @@ public final class ModSounds {
         }
     }
 
-    private ModSounds() {}
+    private ModSounds_Records() {}
 
 }

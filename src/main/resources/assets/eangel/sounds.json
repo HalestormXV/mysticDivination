@@ -1,5 +1,14 @@
 {
-
+	"sin_increase": {
+		"category": "master",
+		"subtitle": "eangel.subtitle.sinIncrease",
+		"sounds": [ "eangel:sin_increased" ]
+	},
+	"virtue_increase": {
+		"category": "master",
+		"subtitle": "eangel.subtitle.virtueIncrease",
+		"sounds": [ "eangel:virtue_increased" ]
+	},
 	"music.mavismusic": { "sounds":[{"name": "eangel:music/mavistheme", "stream": true}] },
 	"music.motomiyaflute": { "sounds":[{"name": "eangel:music/motomiyaflute", "stream": true}] }
 }

@@ -17,6 +17,10 @@ item.eangel:recordmotomiya.name=Hiromi Motomiya - Breath
 item.record.eAngelus:mavismusic.desc=Fairy's Glitter Theme by Yasuharu Takanashi
 item.record.eAngelus:motomiyaflute.desc=Hiromi Motomiya - Breath
 
+#SOUNDS
+player.morality.sin.increase=Sin Increased
+player.morality.virtue.increase=Virtue Increased
+
 #CARDS
 item.eaCardO.cIgnis.name=ORDER: Ignis
 item.eaCardO.cFortitudo.name=ORDER: Fortitudo

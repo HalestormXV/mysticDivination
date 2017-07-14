@@ -1,6 +1,7 @@
 package halestormxv.eAngelus.network.packets;
 
 import halestormxv.eAngelus.main.proxy.ClientProxy;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;

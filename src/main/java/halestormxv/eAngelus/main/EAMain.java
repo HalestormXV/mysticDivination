@@ -1,11 +1,8 @@
 package halestormxv.eAngelus.main;
 
 import halestormxv.eAngelus.main.handlers.*;
-import halestormxv.eAngelus.main.proxy.ClientProxy;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import org.apache.logging.log4j.Logger;
 
 import halestormxv.eAngelus.main.proxy.CommonProxy;
@@ -18,7 +15,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import org.lwjgl.input.Keyboard;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 
@@ -36,7 +32,8 @@ public class EAMain
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		ModSounds.init();
+		ModSounds_Records.init();
+		EA_SoundHandler.init();
 		logger = event.getModLog();
 		Utils.getLogger().info("Pre Initialize");
 		this.proxy.preInit(event);
@@ -45,9 +42,6 @@ public class EAMain
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-
-
-
 		Utils.getLogger().info("Initialize");
 		this.proxy.init(event);
 		GameRegistry.registerFuelHandler(new EA_FuelHandler());

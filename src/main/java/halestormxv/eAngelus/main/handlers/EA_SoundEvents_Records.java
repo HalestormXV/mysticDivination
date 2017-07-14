@@ -3,12 +3,10 @@ package halestormxv.eAngelus.main.handlers;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 
-/**
- * Use these to play Botania sounds.
- * Do not access this class before Botania preinits!
- */
-public final class EA_SoundEvents
+
+public final class EA_SoundEvents_Records
 {
+    //Records
     public static final SoundEvent mavismusic = getRegisteredSoundEvent("music.mavismusic");
     public static final SoundEvent motomiyaflute = getRegisteredSoundEvent("music.motomiyaflute");
 
@@ -20,5 +18,5 @@ public final class EA_SoundEvents
 
     }
 
-    private EA_SoundEvents() {}
+    private EA_SoundEvents_Records() {}
 }

@@ -2,6 +2,7 @@ package halestormxv.eAngelus.network.packets;
 
 import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityProvider;
+import halestormxv.eAngelus.main.handlers.EA_EventHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -32,6 +33,9 @@ public class FetchMorality extends PacketBase<FetchMorality>
     {
         IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
         int moralityValue = morality.getMorality();
-        ChatUtil.sendNoSpam(player, "\u00A7eYour current morality is: "+ moralityValue);
+        int moralityNoNegative = EA_EventHandler.displayMorality(player);
+        if (morality.getMorality() == 0) { ChatUtil.sendNoSpam(player, "\u00A7eYour current morality is: "+ moralityValue); }
+        if (morality.getMorality() > 0) { ChatUtil.sendNoSpam(player, "\u00A73Your virtuous morality is: "+ moralityValue); }
+        if (morality.getMorality() < 0) { ChatUtil.sendNoSpam(player, "\u00A74Your sinful morality is: "+ moralityNoNegative); }
     }
 }
