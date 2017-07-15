@@ -1,6 +1,7 @@
 package halestormxv.eAngelus.main.proxy;
 
 import halestormxv.eAngelus.achievements.EA_Achievements;
+import halestormxv.eAngelus.config.eAngelusConfig;
 import halestormxv.eAngelus.crafting.EARecipes;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;

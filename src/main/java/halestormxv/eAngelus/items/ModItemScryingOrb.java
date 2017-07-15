@@ -3,10 +3,9 @@ package halestormxv.eAngelus.items;
 import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.network.packets.ChatUtil;
+import halestormxv.eAngelus.config.eAngelusConfig;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -62,7 +61,7 @@ public class ModItemScryingOrb extends Item
                     {
                         //System.out.println("Current Stored Time: " + totWorldTime);
                         //System.out.println("Current World Time: " + currentWorldTime);
-                        if ((stack.getTagCompound() != null) && (currentWorldTime > totWorldTime + 3600 ))
+                        if ((stack.getTagCompound() != null) && (currentWorldTime > totWorldTime + eAngelusConfig.scryingOrbCooldown ))
                         {
                             if (player.isRiding())
                             {
@@ -129,7 +128,7 @@ public class ModItemScryingOrb extends Item
 
     //Cooldown Handlers\\
     private static int getCooldownReal(long storedWorldTime, long currentWorldTime) {
-        long TimeLeftInTicks = 3600 - (currentWorldTime - storedWorldTime);
+        long TimeLeftInTicks = eAngelusConfig.scryingOrbCooldown - (currentWorldTime - storedWorldTime);
         long TimeLeftInMinutes = TimeLeftInTicks / (20 * 60);
         if (TimeLeftInTicks > 0)
         {

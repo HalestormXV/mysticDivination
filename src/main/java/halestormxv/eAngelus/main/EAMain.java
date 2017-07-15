@@ -1,5 +1,6 @@
 package halestormxv.eAngelus.main;
 
+import halestormxv.eAngelus.config.eAngelusConfig;
 import halestormxv.eAngelus.main.handlers.*;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
+@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY)
 
 public class EAMain
 {
@@ -36,6 +37,7 @@ public class EAMain
 		EA_SoundHandler.init();
 		logger = event.getModLog();
 		Utils.getLogger().info("Pre Initialize");
+		eAngelusConfig.preInit();
 		this.proxy.preInit(event);
 	}
 	

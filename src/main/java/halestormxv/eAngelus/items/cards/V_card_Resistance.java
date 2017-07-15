@@ -2,6 +2,7 @@ package halestormxv.eAngelus.items.cards;
 
 import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityProvider;
+import halestormxv.eAngelus.config.eAngelusConfig;
 import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.network.packets.ChatUtil;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class V_card_Resistance extends Item
 {
-    private int moralityRequirement = 4;
+    private int moralityRequirement = eAngelusConfig.moralityCost_ResistanceCard;
 
     public V_card_Resistance(String name)
     {

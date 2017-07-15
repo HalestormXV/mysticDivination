@@ -1,3 +1,21 @@
+#CONFIGS
+gui.config.main_title=Mystic Divination Configuration
+
+gui.config.category.items=Items
+gui.config.category.items.tooltip=All item settings.
+
+gui.config.category.moralitylevels=Morality Level Requirments
+gui.config.category.moralitylevels.tooltip=Settings for all items requring a morality level.
+
+gui.config.items.scryingorb_cooldown.name=Scrying Orb Cooldown
+gui.config.items.scryingorb_cooldown.comment=The cooldown in ticks for the Scrying Orb
+
+gui.config.items.strength_card_cost.name=Morality Level Required - Forteza
+gui.config.items.strength_card_cost.comment=The morality level required for ORDER: Forteza
+
+gui.config.items.resistance_card_cost.name=Morality Level Required - Resistentia
+gui.config.items.resistance_card_cost.comment=The morality level required for ORDER: Resistentia
+
 #ITEMS
 item.angelic_ingot.name=Angelic Ingot
 item.demonic_ingot.name=Demonic Ingot

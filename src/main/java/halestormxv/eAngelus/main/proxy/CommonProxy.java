@@ -3,6 +3,7 @@ package halestormxv.eAngelus.main.proxy;
 import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityScale;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityStorage;
+import halestormxv.eAngelus.config.eAngelusConfig;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.main.world.E_AngWorldGen;
