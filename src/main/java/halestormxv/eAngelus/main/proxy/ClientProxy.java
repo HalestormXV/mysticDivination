@@ -5,11 +5,15 @@ import halestormxv.eAngelus.config.eAngelusConfig;
 import halestormxv.eAngelus.crafting.EARecipes;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
+import halestormxv.eAngelus.mobs.MobRegistry;
+import halestormxv.eAngelus.mobs.entitys.EntityPhantom;
+import halestormxv.eAngelus.mobs.renders.RenderPhantom;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.IThreadListener;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -27,6 +31,7 @@ public class ClientProxy extends CommonProxy
 		super.preInit(event);
 		EARecipes.initRecipes();
 		EA_Achievements.AchievementRegistry();
+		RenderingRegistry.registerEntityRenderingHandler(EntityPhantom.class, RenderPhantom.FACTORY);
 	}
 	
 	@Override

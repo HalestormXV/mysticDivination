@@ -1,4 +1,4 @@
-package halestormxv.eAngelus.entity;
+package halestormxv.eAngelus.mobs.entitys;
 
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import net.minecraft.block.Block;
@@ -30,12 +30,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
-public class EntityAngel extends EntityMob {
+public class EntityPhantom extends EntityMob
+{
 
 
 	protected static final IAttribute reinforcementChance = (new RangedAttribute((IAttribute)null, "zombie.spawnReinforcements", 0.0D, 0.0D, 1.0D)).setDescription("Spawn Reinforcements Chance");
 
-	public EntityAngel(World worldIn) 
+	public EntityPhantom(World worldIn)
 	{
 		super(worldIn);
 
@@ -64,9 +65,10 @@ public class EntityAngel extends EntityMob {
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(12);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
-		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.0D);
 		this.getAttributeMap().registerAttribute(reinforcementChance).setBaseValue(this.rand.nextDouble() * net.minecraftforge.common.ForgeModContainer.zombieSummonBaseChance);
 	}
@@ -81,7 +83,7 @@ public class EntityAngel extends EntityMob {
         this.getDataManager().register(ARMS_RAISED, Boolean.valueOf(false));*/
 	}
 
-	@Override
+	/*@Override
 	protected SoundEvent getAmbientSound()
 	{
 		return SoundEvents.ENTITY_ZOMBIE_AMBIENT;
@@ -103,7 +105,7 @@ public class EntityAngel extends EntityMob {
 	protected void playStepSound(BlockPos pos, Block blockIn)
 	{
 		this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 1.0F);
-	}
+	}*/
 
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute()
@@ -114,24 +116,6 @@ public class EntityAngel extends EntityMob {
 	@Override
 	public void onLivingUpdate()
 	{
-		if(this.world.isDaytime() && !this.world.isRemote)
-		{
-			float f = this.getBrightness(1.0F);
-			BlockPos blockpos = new BlockPos(this.posX, (double) Math.round(this.posY), this.posZ);
-
-			if(f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.world.canSeeSky(blockpos))
-			{
-				boolean flag = true;
-				if((EntityEquipmentSlot.HEAD) != null)
-				{
-					flag = false;
-				}
-				if(flag)
-				{
-					this.setFire(8);
-				}
-			}
-		}
 		super.onLivingUpdate();
 	}
 	

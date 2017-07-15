@@ -2,6 +2,7 @@ package halestormxv.eAngelus.main;
 
 import halestormxv.eAngelus.config.eAngelusConfig;
 import halestormxv.eAngelus.main.handlers.*;
+import halestormxv.eAngelus.mobs.MobRegistry;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.Logger;
@@ -34,6 +35,7 @@ public class EAMain
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		ModSounds_Records.init();
+		MobRegistry.register();
 		EA_SoundHandler.init();
 		logger = event.getModLog();
 		Utils.getLogger().info("Pre Initialize");
