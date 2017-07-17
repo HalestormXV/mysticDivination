@@ -1,5 +1,6 @@
 package halestormxv.eAngelus.mobs.entitys;
 
+import halestormxv.eAngelus.main.handlers.EA_SoundHandler;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -65,7 +66,7 @@ public class EntityPhantom extends EntityMob
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(12);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40);
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
@@ -83,25 +84,25 @@ public class EntityPhantom extends EntityMob
         this.getDataManager().register(ARMS_RAISED, Boolean.valueOf(false));*/
 	}
 
-	/*@Override
+	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return SoundEvents.ENTITY_ZOMBIE_AMBIENT;
-	}
-
-	@Override
-	protected SoundEvent getHurtSound()
-	{
-		return SoundEvents.ENTITY_ZOMBIE_HURT;
+		return EA_SoundHandler.PHANTOM_BREATH_SOUND;
 	}
 
 	@Override
 	protected SoundEvent getDeathSound()
 	{
-		return SoundEvents.ENTITY_ZOMBIE_DEATH;
+		return EA_SoundHandler.PHANTOM_DEATH_SOUND;
 	}
 
 	@Override
+	protected SoundEvent getHurtSound()
+	{
+		return EA_SoundHandler.PHANTOM_HURT_SOUND;
+	}
+
+	/*@Override
 	protected void playStepSound(BlockPos pos, Block blockIn)
 	{
 		this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 1.0F);

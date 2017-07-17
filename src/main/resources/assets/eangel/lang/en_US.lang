@@ -16,6 +16,12 @@ gui.config.items.strength_card_cost.comment=The morality level required for ORDE
 gui.config.items.resistance_card_cost.name=Morality Level Required - Resistentia
 gui.config.items.resistance_card_cost.comment=The morality level required for ORDER: Resistentia
 
+gui.config.items.speed_card_cost.name=Mystal Dust Required - Ventus
+gui.config.items.speed_card_cost.comment=The Mystal Dust amount required for ORDER: Ventus
+
+#ENTITIES
+entity.phantom.name=Eidolon
+
 #ITEMS
 item.angelic_ingot.name=Angelic Ingot
 item.demonic_ingot.name=Demonic Ingot
@@ -30,6 +36,8 @@ item.esicuri.name=Esicuri Fruit
 item.scryingOrb.name=Scrying Orb
 item.virtuefruit.name=Virtuous Fruit Medley
 item.sinfulfruit.name=Sinful Fruit Medley
+item.celBolt.name=Energy Blast
+item.serpentineGunblade.name=Serpentine Gunblade
 
 #RECORDS
 item.eangel:recordmavis.name=Mavis Vermillion's Theme
@@ -44,6 +52,7 @@ player.morality.virtue.increase=Virtue Increased
 #CARDS
 item.cFortitudo.name=ORDER: Forteza
 item.cResistentia.name=ORDER: Resistentia
+item.cVentus.name=ORDER: Ventus
 
 item.eaCardO.cIgnis.name=ORDER: Ignis
 item.eaCardO.cFortitudo.name=ORDER: Fortitudo

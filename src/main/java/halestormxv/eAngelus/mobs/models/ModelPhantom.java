@@ -22,7 +22,7 @@ public class ModelPhantom extends ModelBase
     public ModelPhantom()
     {
         this.textureWidth = 64;
-        this.textureHeight = 32;
+        this.textureHeight = 64;
 
         this.LeftArm = new ModelRenderer(this, 40, 16);
         this.LeftArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
@@ -61,23 +61,23 @@ public class ModelPhantom extends ModelBase
         GlStateManager.translate(-this.LeftArm.rotationPointX * scale, -this.LeftArm.rotationPointY * scale, -this.LeftArm.rotationPointZ * scale);
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.LeftArm.render(scale);
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.LeftLeg.render(scale);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.Head.render(scale);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.Body.render(scale);
         GlStateManager.disableBlend();
         GlStateManager.pushMatrix();
@@ -88,18 +88,18 @@ public class ModelPhantom extends ModelBase
         GlStateManager.translate(-this.RightArm.rotationPointX * scale, -this.RightArm.rotationPointY * scale, -this.RightArm.rotationPointZ * scale);
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.RightArm.render(scale);
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.RightLeg.render(scale);
         GlStateManager.disableBlend();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 0.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.Hood.render(scale);
         GlStateManager.disableBlend();
     }

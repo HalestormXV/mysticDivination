@@ -22,10 +22,12 @@ public class eAngelusConfig
     private static Configuration config = null;
 
     public static final String CATEGORY_NAME_ITEMS = "Items";
-    public static final String CATEGORY_NAME_MORALITYCOSTS = "Morality Costs";
+    public static final String CATEGORY_NAME_MORALITYCOSTS = "Card Costs";
+
     public static int scryingOrbCooldown;
     public static int moralityCost_ResistanceCard;
     public static int moralityCost_StrengthCard;
+    public static int reagentCost_SpeedCard;
 
     public static void preInit()
     {
@@ -80,6 +82,10 @@ public class eAngelusConfig
         Property propCard_Resistance = config.get(CATEGORY_NAME_MORALITYCOSTS, "morality_cooldowns_resistance_card", 4);
         propCard_Resistance.setLanguageKey("gui.config.items.resistance_card_cost.name");
         propCard_Resistance.setComment("gui.config.items.resistance_card_cost.comment");
+        //===========================SPEED CARD===========================\\
+        Property propCard_Speed = config.get(CATEGORY_NAME_MORALITYCOSTS, "morality_cooldowns_speed_card", 2);
+        propCard_Speed.setLanguageKey("gui.config.items.speed_card_cost.name");
+        propCard_Speed.setComment("gui.config.items.speed_card_cost.comment");
 
 
 
@@ -88,6 +94,7 @@ public class eAngelusConfig
         propertyOrderItems.add(propertyScryingOrbCooldown.getName());
         propertyOrderItems.add(propCard_Strength.getName());
         propertyOrderItems.add(propCard_Resistance.getName());
+        propertyOrderItems.add(propCard_Speed.getName());
 
         config.setCategoryPropertyOrder(CATEGORY_NAME_ITEMS, propertyOrderItems);
         config.setCategoryPropertyOrder(CATEGORY_NAME_MORALITYCOSTS, propertyOrderItems);
@@ -97,11 +104,14 @@ public class eAngelusConfig
             scryingOrbCooldown = propertyScryingOrbCooldown.getInt();
             moralityCost_StrengthCard = propCard_Strength.getInt();
             moralityCost_ResistanceCard = propCard_Resistance.getInt();
+            reagentCost_SpeedCard = propCard_Speed.getInt();
+
         }
 
         propertyScryingOrbCooldown.set(scryingOrbCooldown);
         propCard_Strength.set(moralityCost_StrengthCard);
         propCard_Resistance.set(moralityCost_ResistanceCard);
+        propCard_Speed.set(reagentCost_SpeedCard);
 
         if (config.hasChanged())
             config.save();

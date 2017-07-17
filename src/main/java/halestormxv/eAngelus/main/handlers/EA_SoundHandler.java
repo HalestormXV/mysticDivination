@@ -14,6 +14,10 @@ public class EA_SoundHandler
 
     public static SoundEvent SIN_INCREASE_LEVEL;
     public static SoundEvent VIRTUE_INCREASE_LEVEL;
+    public static SoundEvent PHANTOM_BREATH_SOUND;
+    public static SoundEvent PHANTOM_HURT_SOUND;
+    public static SoundEvent PHANTOM_DEATH_SOUND;
+    public static SoundEvent GUNBLADE_FIRE;
 
     public static void init()
     {
@@ -21,6 +25,10 @@ public class EA_SoundHandler
 
         SIN_INCREASE_LEVEL = register("sin_increase");
         VIRTUE_INCREASE_LEVEL = register("virtue_increase");
+        PHANTOM_BREATH_SOUND = register("phantom_breathing");
+        PHANTOM_HURT_SOUND = register("phantom_hurt");
+        PHANTOM_DEATH_SOUND = register("phantom_death");
+        GUNBLADE_FIRE = register("gunblade_fire");
     }
 
     public static SoundEvent register(String name)

@@ -9,6 +9,26 @@
 		"subtitle": "eangel.subtitle.virtueIncrease",
 		"sounds": [ "eangel:virtue_increased" ]
 	},
+	"phantom_breathing": {
+		"category": "master",
+		"subtitle": "eangel.subtitle.phantomBreathing",
+		"sounds": [ "eangel:phantombreath" ]
+	},
+	"phantom_hurt": {
+		"category": "master",
+		"subtitle": "eangel.subtitle.phantomHurt",
+		"sounds": [ "eangel:phantomhurt" ]
+	},
+	"phantom_death": {
+		"category": "master",
+		"subtitle": "eangel.subtitle.phantomDeath",
+		"sounds": [ "eangel:phantomdeath" ]
+	},
+	"gunblade_fire": {
+		"category": "master",
+		"subtitle": "eangel.subtitle.gunbladeFire",
+		"sounds": [ "eangel:gunblade_fire" ]
+	},
 	"music.mavismusic": { "sounds":[{"name": "eangel:music/mavistheme", "stream": true}] },
 	"music.motomiyaflute": { "sounds":[{"name": "eangel:music/motomiyaflute", "stream": true}] }
 }

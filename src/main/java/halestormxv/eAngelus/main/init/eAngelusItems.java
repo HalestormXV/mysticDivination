@@ -1,6 +1,7 @@
 package halestormxv.eAngelus.main.init;
 
 import halestormxv.eAngelus.items.*;
+import halestormxv.eAngelus.items.cards.N_card_Speed;
 import halestormxv.eAngelus.items.cards.S_card_Strength;
 import halestormxv.eAngelus.items.cards.V_card_Resistance;
 import halestormxv.eAngelus.items.records.rec_Mavis;
@@ -27,7 +28,7 @@ public class eAngelusItems
 	public static Item azuriteStone;
 	public static Item serpentineStone;
 	public static Item scryingOrb;
-
+	public static Item celBolt;
 
 	//Tools
 	public static Item serpentinePick;
@@ -38,11 +39,12 @@ public class eAngelusItems
 
 	//Weapons
 	public static Item serpentineSword;
-	//public static Item serpentineShield;
+	public static Item serpentineGunblade;
 
 	//Cards
 	public static Item cFortitudo;
 	public static Item cResistentia;
+	public static Item cVentus;
 
 	//Rare Drops
 	public static Item tarotPaper;
@@ -65,9 +67,11 @@ public class eAngelusItems
 		//Cards
 		cFortitudo = registerItem(new S_card_Strength("cFortitudo"), "cFortitudo");
 		cResistentia = registerItem(new V_card_Resistance("cResistentia"), "cResistentia");
+		cVentus = registerItem(new N_card_Speed("cVentus"), "cVentus");
 
 		//Misc Items
 		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
+		celBolt = registerItem(new EAItem("celBolt"), "celBolt");
 
 		//Rare Drops
 		tarotPaper = registerItem(new EAItem("tarotPaper"), "tarotPaper");
@@ -95,9 +99,12 @@ public class eAngelusItems
 		serpentinePick = registerItem(new ModItemPick("serpentinePick", Serpentine), "serpentinePick");
 		serpentineMulti = registerItem(new ModItemMulti("serpentineMulti", Serpentine), "serpentineMulti");
 
+
 		//Weapons
 		serpentineSword = registerItem(new ModItemSword("serpentineSword", Serpentine), "serpentineSword");
+		serpentineGunblade = registerItem(new ModItemsGunblade("serpentineGunblade", Serpentine), "serpentineGunblade");
 		//serpentineShield = registerItem(new SerpentSword("serpentinePick", Serpentine), "serpentinePick");
+
 
 		//Consumables
 		jolluna = new ModItemFood("jolluna", 6, 0.9f, false, new PotionEffect(Potion.getPotionById(10), 200, 3));
@@ -117,6 +124,7 @@ public class eAngelusItems
 		//Cards
 		registerRender(cFortitudo); //Strength Card
 		registerRender(cResistentia); //Resistance Card
+		registerRender(cVentus); //Speed Card
 
 		//Rare Drops
 		registerRender(tarotPaper);
@@ -133,6 +141,7 @@ public class eAngelusItems
 		registerRender(azuriteStone);
 		registerRender(serpentineStone);
 		registerRender(scryingOrb);
+		registerRender(celBolt);
 
 		//Tools
 		registerRender(serpentinePick);
@@ -143,6 +152,7 @@ public class eAngelusItems
 
 		//Weapons
 		registerRender(serpentineSword);
+		registerRender(serpentineGunblade);
 
 		//Consumables
 		registerRender(jolluna);
