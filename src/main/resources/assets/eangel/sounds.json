@@ -24,6 +24,11 @@
 		"subtitle": "eangel.subtitle.phantomDeath",
 		"sounds": [ "eangel:phantomdeath" ]
 	},
+	"creeper_prime_breath": {
+		"category": "master",
+		"subtitle": "eangel.subtitle.creeper_prime_breath",
+		"sounds": [ "eangel:creeperprimebreath" ]
+	},
 	"gunblade_fire": {
 		"category": "master",
 		"subtitle": "eangel.subtitle.gunbladeFire",

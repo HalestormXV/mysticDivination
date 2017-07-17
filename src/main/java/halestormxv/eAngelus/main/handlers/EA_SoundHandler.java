@@ -18,6 +18,7 @@ public class EA_SoundHandler
     public static SoundEvent PHANTOM_HURT_SOUND;
     public static SoundEvent PHANTOM_DEATH_SOUND;
     public static SoundEvent GUNBLADE_FIRE;
+    public static SoundEvent CREEPER_PRIME_BREATH;
 
     public static void init()
     {
@@ -29,6 +30,7 @@ public class EA_SoundHandler
         PHANTOM_HURT_SOUND = register("phantom_hurt");
         PHANTOM_DEATH_SOUND = register("phantom_death");
         GUNBLADE_FIRE = register("gunblade_fire");
+        CREEPER_PRIME_BREATH = register("creeper_prime_breath");
     }
 
     public static SoundEvent register(String name)

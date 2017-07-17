@@ -5,9 +5,10 @@ import halestormxv.eAngelus.crafting.EARecipes;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.mobs.entitys.EntityCelestialBolt;
+import halestormxv.eAngelus.mobs.entitys.EntityCreeperPrime;
 import halestormxv.eAngelus.mobs.entitys.EntityPhantom;
-import halestormxv.eAngelus.mobs.models.ModelBolt;
 import halestormxv.eAngelus.mobs.renders.RenderEnergyBall;
+import halestormxv.eAngelus.mobs.renders.RenderCreeperPrime;
 import halestormxv.eAngelus.mobs.renders.RenderPhantom;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
@@ -37,6 +38,7 @@ public class ClientProxy extends CommonProxy
 		EARecipes.initRecipes();
 		EA_Achievements.AchievementRegistry();
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhantom.class, RenderPhantom.FACTORY);
+		RenderingRegistry.registerEntityRenderingHandler(EntityCreeperPrime.class, RenderCreeperPrime.FACTORY);
 		registerEntityRenderer(EntityCelestialBolt.class, RenderEnergyBall.class);
 
 	}

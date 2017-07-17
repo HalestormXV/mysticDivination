@@ -1,86 +1,62 @@
 package halestormxv.eAngelus.mobs.entitys;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
+
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-import java.util.Arrays;
 
-public class EntityCelestialBolt extends EntityThrowable
-{
-    public static final float GRAVITY = 0.3F;
-    public static final Block[] BOLT_BREAKS_THROUGH =
-            {Blocks.TALLGRASS, Blocks.VINE, Blocks.RED_FLOWER, Blocks.YELLOW_FLOWER, Blocks.BROWN_MUSHROOM_BLOCK, Blocks.BROWN_MUSHROOM,
-                    Blocks.RED_MUSHROOM_BLOCK, Blocks.RED_MUSHROOM, Blocks.REEDS, Blocks.DOUBLE_PLANT, Blocks.DEADBUSH, Blocks.WHEAT,
-                    Blocks.WATERLILY, Blocks.CARROTS, Blocks.POTATOES, Blocks.SNOW_LAYER};
+public class EntityCelestialBolt extends EntityThrowable {
+    public static final float explosionPower = 0.75F;
+    public static final int empRadius = 4;
 
-    public EntityCelestialBolt(World worldIn)
-    {
-        super(worldIn);
+    public EntityCelestialBolt(World world) {
+        super(world);
     }
 
-    public EntityCelestialBolt(World worldIn, double x, double y, double z)
-    {
-        super(worldIn, x, y, z);
+    public EntityCelestialBolt(World world, EntityLivingBase entity) {
+        super(world, entity);
     }
 
-    public EntityCelestialBolt(World worldIn, EntityLivingBase throwerIn)
-    {
-        super(worldIn, throwerIn);
-    }
-
-    public void inflictDamage(RayTraceResult result)
-    {
-        result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 4);
+    private void explode() {
+        int bx = (int) posX;
+        int by = (int) posY;
+        int bz = (int) posZ;
+        world.createExplosion(this, posX, posY, posZ, 0.75F, true);
+        setDead();
     }
 
     @Override
-    protected float getGravityVelocity()
-    {
-        return this.GRAVITY;
+    public void onUpdate() {
+        super.onUpdate();
+        if (ticksExisted > 20) {
+            explode();
+        }
+
+        for (int i = 0; i < 10; i++) {
+            double x = (double) (rand.nextInt(10) - 5) / 8.0D;
+            double y = (double) (rand.nextInt(10) - 5) / 8.0D;
+            double z = (double) (rand.nextInt(10) - 5) / 8.0D;
+            world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, x, y, z);
+        }
+    }
+
+    @Override
+    protected float getGravityVelocity() {
+        return 0.005F;
     }
 
     @Override
     protected void onImpact(RayTraceResult result)
     {
         {
-            if (result.typeOfHit == RayTraceResult.Type.BLOCK)
+            if (result.entityHit != null)
             {
-                Block block = this.world.getBlockState(result.getBlockPos()).getBlock();
-
-                if (Arrays.asList(BOLT_BREAKS_THROUGH).contains(block))
-                {
-                    BlockPos blockpos = result.getBlockPos();
-                    IBlockState blockstate = this.world.getBlockState(blockpos);
-                    TileEntity te = this.world.getTileEntity(blockpos);
-
-                    if (this.getThrower() instanceof EntityPlayer) // if thrower is a player
-                    {
-                        EntityPlayer player = (EntityPlayer)this.getThrower();
-                        this.world.destroyBlock(blockpos, false);
-                    }
-                }
-                else
-                {
-                    this.setDead();
-                }
+                //this.inflictDamage(result);
             }
-            else
-            {
-                if (result.entityHit != null)
-                {
-                    this.inflictDamage(result);
-                }
-                this.setDead();
-            }
+            this.setDead();
         }
     }
 }
