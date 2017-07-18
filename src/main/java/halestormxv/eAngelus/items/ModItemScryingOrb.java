@@ -109,7 +109,7 @@ public class ModItemScryingOrb extends Item
             double posZ = nbt.getDouble("PosZ");
             long storedWorldTime = nbt.getLong("totalWorldTime");
             long currentWorldTime = Minecraft.getMinecraft().world.getTotalWorldTime();
-            tooltip.add("\u00A73" + "DIM: "+ dimID);
+            //tooltip.add("\u00A73" + "DIM: "+ dimID);
             tooltip.add("\u00A7d" + "X: "  + posX);
             tooltip.add("\u00A72" + "Y: "  + posY);
             tooltip.add("\u00A7c" + "Z: "  + posZ);

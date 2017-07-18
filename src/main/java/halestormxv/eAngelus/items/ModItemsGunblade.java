@@ -88,9 +88,14 @@ public class ModItemsGunblade extends ItemSword
                 playerIn.addExperienceLevel((int)-powerCost);
                 playerIn.swingArm(handIn);
                 itemStack.damageItem(10, playerIn);
-                if (!worldIn.isRemote){worldIn.spawnEntity(new EntityCelestialBolt(worldIn, playerIn));  }
+                if (!worldIn.isRemote)
+                {
+                    EntityCelestialBolt celestialBolt = new EntityCelestialBolt(worldIn, playerIn);
+                    celestialBolt.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+                    worldIn.spawnEntity(celestialBolt);
+                }
             } else {
-                ChatUtil.sendNoSpam(playerIn, ("\u00A74You do not have enough Celestial Power to fire this weapon."));
+                ChatUtil.sendNoSpam(playerIn, ("\u00A74You do not have enough power to fire this weapon."));
             }
         }
         return  new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));

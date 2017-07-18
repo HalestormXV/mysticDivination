@@ -10,6 +10,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeSavannaMutated;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 
@@ -18,8 +19,13 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
  */
 public class MobRegistry
 {
+    private static final Biome[] spawnInAll = new Biome[]
+            {Biomes.BEACH, Biomes.MUSHROOM_ISLAND, Biomes.FOREST,
+            Biomes.MUTATED_SWAMPLAND, Biomes.DESERT, Biomes.PLAINS, Biomes.TAIGA, Biomes.BIRCH_FOREST,
+            Biomes.BIRCH_FOREST_HILLS, Biomes.COLD_BEACH, Biomes.SWAMPLAND, Biomes.JUNGLE, Biomes.DEFAULT, Biomes.ICE_PLAINS, Biomes.ICE_MOUNTAINS};
+
     private static final Biome[] phantomSpawns = new Biome[] {Biomes.MUSHROOM_ISLAND, Biomes.HELL, Biomes.FOREST, Biomes.MUTATED_SWAMPLAND, Biomes.DESERT, Biomes.PLAINS, Biomes.TAIGA};
-    private static final Biome[] creeperPrimeSpawns = new Biome[] {Biomes.DEFAULT};
+
 
     public static void register()
     {
@@ -32,7 +38,7 @@ public class MobRegistry
     public static void registerSpawnable(Class entityClass, String name, int id, int mainColor, int subColor) {
         EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID, name), entityClass, name, id, EAMain.instance, 64, 3, true, mainColor, subColor);
         EntityRegistry.addSpawn(EntityPhantom.class, 10, 1, 4, EnumCreatureType.MONSTER, phantomSpawns);
-        EntityRegistry.addSpawn(EntityCreeperPrime.class, 14, 1, 6, EnumCreatureType.MONSTER, creeperPrimeSpawns);
+        EntityRegistry.addSpawn(EntityCreeperPrime.class, 14, 1, 6, EnumCreatureType.MONSTER, spawnInAll);
     }
 }
 

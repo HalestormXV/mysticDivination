@@ -38,6 +38,7 @@ public class RenderEnergyBall extends Render<EntityCelestialBolt>
         this.renderItem.renderItem(getItemStack(entity), ItemCameraTransforms.TransformType.GROUND);
         GlStateManager.enableColorMaterial();
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
+        GlStateManager.popMatrix();
     }
 
     public ItemStack getItemStack(EntityCelestialBolt entity)
