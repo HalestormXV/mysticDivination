@@ -38,6 +38,9 @@ item.virtuefruit.name=Virtuous Fruit Medley
 item.sinfulfruit.name=Sinful Fruit Medley
 item.celBolt.name=Energy Blast
 item.serpentineGunblade.name=Serpentine Gunblade [WIP]
+item.essence.chariot.name=Essence of the Chariot
+item.essence.knight.name=Essence of the Knight
+item.essence.strength.name=Essence of Strength
 
 #RECORDS
 item.eangel:recordmavis.name=Mavis Vermillion's Theme

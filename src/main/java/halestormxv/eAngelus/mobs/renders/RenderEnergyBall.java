@@ -9,11 +9,14 @@ import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-
+@SideOnly(Side.CLIENT)
 public class RenderEnergyBall extends Render<EntityCelestialBolt>
 {
     private static final ResourceLocation celestialBoltTexture = new ResourceLocation(Reference.MODID, "textures/items/cel_bolt.png");
@@ -35,8 +38,9 @@ public class RenderEnergyBall extends Render<EntityCelestialBolt>
         GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate((float)(this.renderManager.options.thirdPersonView == 2 ? -1 : 1) * this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
-        this.renderItem.renderItem(getItemStack(entity), ItemCameraTransforms.TransformType.GROUND);
+        this.renderItem.renderItem(getItemStack(entity), ItemCameraTransforms.TransformType.FIRST_PERSON_RIGHT_HAND);
         GlStateManager.enableColorMaterial();
+        Minecraft.getMinecraft().renderEngine.bindTexture(celestialBoltTexture);
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
         GlStateManager.popMatrix();
     }

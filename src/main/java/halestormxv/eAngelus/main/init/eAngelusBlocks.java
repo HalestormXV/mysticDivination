@@ -10,6 +10,7 @@ import halestormxv.eAngelus.blocks.ObsidianIronTable;
 import halestormxv.eAngelus.blocks.SerpentineOre;
 import halestormxv.eAngelus.blocks.TopazOre;
 import halestormxv.eAngelus.main.Reference;
+import halestormxv.eAngelus.main.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -78,9 +79,11 @@ public class eAngelusBlocks
 	}
 	
 	public static void registerRender(Block block)
-	{		
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block),  0, 
-		new ModelResourceLocation(block.getRegistryName(), "inventory"));
+	{
+		if(block.getRegistryName() != null) {
+			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+		}else{
+			Utils.getLogger().error("You had a null registration of something.");}
 	}
 	
 	

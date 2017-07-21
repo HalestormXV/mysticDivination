@@ -19,8 +19,6 @@ public class CommonProxy
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		CapabilityManager.INSTANCE.register(IMorality.class, new moralityStorage(), moralityScale.class);
-		eAngelusItems.initItems();
-		eAngelusBlocks.initBlocks();
 	}
 	
 	public void init(FMLInitializationEvent event)

@@ -2,6 +2,9 @@ package halestormxv.eAngelus.main;
 
 import halestormxv.eAngelus.config.eAngelusConfig;
 import halestormxv.eAngelus.main.handlers.*;
+import halestormxv.eAngelus.main.init.eAngelusBlocks;
+import halestormxv.eAngelus.main.init.eAngelusItems;
+import halestormxv.eAngelus.main.proxy.ClientProxy;
 import halestormxv.eAngelus.mobs.MobRegistry;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,10 +40,13 @@ public class EAMain
 		ModSounds_Records.init();
 		MobRegistry.register();
 		EA_SoundHandler.init();
-		logger = event.getModLog();
+		eAngelusItems.initItems();
+		eAngelusBlocks.initBlocks();
 		Utils.getLogger().info("Pre Initialize");
 		eAngelusConfig.preInit();
+		logger = event.getModLog();
 		this.proxy.preInit(event);
+
 	}
 	
 	@EventHandler

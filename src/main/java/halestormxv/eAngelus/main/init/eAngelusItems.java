@@ -1,5 +1,6 @@
 package halestormxv.eAngelus.main.init;
 
+import com.sun.org.apache.regexp.internal.RE;
 import halestormxv.eAngelus.items.*;
 import halestormxv.eAngelus.items.cards.N_card_Speed;
 import halestormxv.eAngelus.items.cards.S_card_Strength;
@@ -7,6 +8,8 @@ import halestormxv.eAngelus.items.cards.V_card_Resistance;
 import halestormxv.eAngelus.items.records.rec_Mavis;
 import halestormxv.eAngelus.items.records.rec_Motomiya;
 import halestormxv.eAngelus.main.Reference;
+import halestormxv.eAngelus.main.Utils;
+import halestormxv.eAngelus.main.handlers.EA_EnumHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,6 +18,7 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -29,6 +33,7 @@ public class eAngelusItems
 	public static Item serpentineStone;
 	public static Item scryingOrb;
 	public static Item celBolt;
+	public static Item essence;
 
 	//Tools
 	public static Item serpentinePick;
@@ -72,6 +77,7 @@ public class eAngelusItems
 		//Misc Items
 		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
 		celBolt = registerItem(new EAItem("celBolt"), "celBolt");
+		essence = new CardEssence("essence");
 
 		//Rare Drops
 		tarotPaper = registerItem(new EAItem("tarotPaper"), "tarotPaper");
@@ -103,8 +109,6 @@ public class eAngelusItems
 		//Weapons
 		serpentineSword = registerItem(new ModItemSword("serpentineSword", Serpentine), "serpentineSword");
 		serpentineGunblade = registerItem(new ModItemsGunblade("serpentineGunblade", Serpentine), "serpentineGunblade");
-		//serpentineShield = registerItem(new SerpentSword("serpentinePick", Serpentine), "serpentinePick");
-
 
 		//Consumables
 		jolluna = new ModItemFood("jolluna", 6, 0.9f, false, new PotionEffect(Potion.getPotionById(10), 200, 3));
@@ -116,11 +120,16 @@ public class eAngelusItems
 		registerItem(esicuri, "esicuri");
 		registerItem(virtuefruit, "virtuefruit");
 		registerItem(sinfulfruit, "sinfulfruit");
+		goodRegisterItem(essence);
 	}
 
 
 	public static void registerRenders()
 	{
+		for (int i = 0; i < EA_EnumHandler.CardEssences.values().length; i++)
+		{
+			goodRegisterRender(essence, i, Reference.MODID+":essence_" + EA_EnumHandler.CardEssences.values()[i].getName());
+		}
 		//Cards
 		registerRender(cFortitudo); //Strength Card
 		registerRender(cResistentia); //Resistance Card
@@ -163,16 +172,13 @@ public class eAngelusItems
 
 	public static void registerRender(Item item)
 	{
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item,  0, 
-				new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 
 	public static void registerRender(Item item, int meta, String fileName)
 	{
-		GameRegistry.register(item);
-
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item,  meta, 
-				new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		//GameRegistry.register(item);
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 
 	//registerItem Start\\
@@ -185,6 +191,18 @@ public class eAngelusItems
 	{
 		GameRegistry.register(item, new ResourceLocation(Reference.MODID, name));
 		return item;
+	}
+
+	public static void goodRegisterRender(Item item, int meta, String fileName)
+	{
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(new ResourceLocation(fileName), "inventory"));
+	}
+
+	public static void goodRegisterItem(Item item)
+	{
+		item.setCreativeTab(Reference.eaCreativeTab);
+		GameRegistry.register(item);
+		Utils.getLogger().info("Registered item: " + item.getUnlocalizedName().substring(5));
 	}
 	//registerItem End\\
 }

@@ -11,6 +11,8 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityCelestialBolt extends EntityThrowable {
     private float explosionRadius = 1.3F;
@@ -21,13 +23,15 @@ public class EntityCelestialBolt extends EntityThrowable {
         super(world);
     }
 
-    public EntityCelestialBolt(World world, EntityLivingBase entity) {
+    public EntityCelestialBolt(World world, EntityLivingBase entity)
+    {
         super(world, entity);
         if (entity instanceof EntityPlayer)
         {
             orbPower = (float)(((EntityPlayer) entity).experienceLevel) / 3;
         }
     }
+
 
     private void explode() {
         int bx = (int) posX;
@@ -38,17 +42,17 @@ public class EntityCelestialBolt extends EntityThrowable {
     }
 
     @Override
-    public void onUpdate() {
+    public void onUpdate()
+    {
         super.onUpdate();
-        if (ticksExisted > 20) {
-            explode();
-        }
-
+       // if (ticksExisted > 20) {
+      //      explode();
+       // }
         for (int i = 0; i < 10; i++) {
             double x = (double) (rand.nextInt(10) - 5) / 8.0D;
             double y = (double) (rand.nextInt(10) - 5) / 8.0D;
             double z = (double) (rand.nextInt(10) - 5) / 8.0D;
-            world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, x, y, z);
+            world.spawnParticle(EnumParticleTypes.REDSTONE, posX, posY, posZ, x, y, z);
         }
     }
 
@@ -87,9 +91,9 @@ public class EntityCelestialBolt extends EntityThrowable {
         this.motionX += entityThrower.motionX;
         this.motionZ += entityThrower.motionZ;
 
-        if (!entityThrower.onGround) {
+        //if (!entityThrower.onGround) {
             this.motionY += entityThrower.motionY;
-        }
+        //}
     }
 
     /**
@@ -114,5 +118,14 @@ public class EntityCelestialBolt extends EntityThrowable {
         this.rotationPitch = (float) (MathHelper.atan2(y, (double) f1) * (180D / Math.PI));
         this.prevRotationYaw = this.rotationYaw;
         this.prevRotationPitch = this.rotationPitch;
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public boolean isInRangeToRenderDist(double par1)
+    {
+        double d1 = this.getEntityBoundingBox().getAverageEdgeLength() * 4.0D;
+        d1 *= 64.0D;
+        return par1 < d1 * d1;
     }
 }

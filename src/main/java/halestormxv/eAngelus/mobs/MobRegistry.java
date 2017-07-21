@@ -11,7 +11,9 @@ import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeSavannaMutated;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.IForgeRegistry;
 
 
 /**
@@ -22,9 +24,12 @@ public class MobRegistry
     private static final Biome[] spawnInAll = new Biome[]
             {Biomes.BEACH, Biomes.MUSHROOM_ISLAND, Biomes.FOREST,
             Biomes.MUTATED_SWAMPLAND, Biomes.DESERT, Biomes.PLAINS, Biomes.TAIGA, Biomes.BIRCH_FOREST,
-            Biomes.BIRCH_FOREST_HILLS, Biomes.COLD_BEACH, Biomes.SWAMPLAND, Biomes.JUNGLE, Biomes.DEFAULT, Biomes.ICE_PLAINS, Biomes.ICE_MOUNTAINS};
+            Biomes.BIRCH_FOREST_HILLS, Biomes.COLD_BEACH, Biomes.SWAMPLAND, Biomes.JUNGLE, Biomes.DEFAULT, Biomes.ICE_PLAINS, Biomes.ICE_MOUNTAINS, Biomes.EXTREME_HILLS};
 
     private static final Biome[] phantomSpawns = new Biome[] {Biomes.MUSHROOM_ISLAND, Biomes.HELL, Biomes.FOREST, Biomes.MUTATED_SWAMPLAND, Biomes.DESERT, Biomes.PLAINS, Biomes.TAIGA};
+
+    //public static final Biomes[] typeAllSpawns = new Biome[] {BiomeDictionary.getBiomes(BiomeDictionary.Type.HOT)};
+
 
 
     public static void register()
@@ -35,10 +40,10 @@ public class MobRegistry
         MobRegistry.registerSpawnable(EntityCelestialBolt.class, "cel_bolt", 2, 0x88D215, 0x15B2D2);
     }
 
-    public static void registerSpawnable(Class entityClass, String name, int id, int mainColor, int subColor) {
+    private static void registerSpawnable(Class entityClass, String name, int id, int mainColor, int subColor) {
         EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID, name), entityClass, name, id, EAMain.instance, 64, 3, true, mainColor, subColor);
-        EntityRegistry.addSpawn(EntityPhantom.class, 10, 1, 4, EnumCreatureType.MONSTER, phantomSpawns);
-        EntityRegistry.addSpawn(EntityCreeperPrime.class, 14, 1, 6, EnumCreatureType.MONSTER, spawnInAll);
+        EntityRegistry.addSpawn(EntityPhantom.class, 18, 1, 8, EnumCreatureType.MONSTER, phantomSpawns);
+        EntityRegistry.addSpawn(EntityCreeperPrime.class, 20, 1, 10, EnumCreatureType.MONSTER, spawnInAll);
     }
 }
 

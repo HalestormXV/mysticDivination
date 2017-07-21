@@ -2,6 +2,8 @@ package halestormxv.eAngelus.main.proxy;
 
 import halestormxv.eAngelus.achievements.EA_Achievements;
 import halestormxv.eAngelus.crafting.EARecipes;
+import halestormxv.eAngelus.main.Reference;
+import halestormxv.eAngelus.main.handlers.EA_EnumHandler;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.mobs.entitys.EntityCelestialBolt;
@@ -11,12 +13,14 @@ import halestormxv.eAngelus.mobs.renders.RenderEnergyBall;
 import halestormxv.eAngelus.mobs.renders.RenderCreeperPrime;
 import halestormxv.eAngelus.mobs.renders.RenderPhantom;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.IThreadListener;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -40,16 +44,15 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhantom.class, RenderPhantom.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityCreeperPrime.class, RenderCreeperPrime.FACTORY);
 		registerEntityRenderer(EntityCelestialBolt.class, RenderEnergyBall.class);
-
+		eAngelusItems.registerRenders();
+		eAngelusBlocks.registerRenders();
+		//registerModelBakeryStuff();
 	}
 	
 	@Override
 	public void init(FMLInitializationEvent event)
 	{
 		super.init(event);
-		eAngelusItems.registerRenders();
-		eAngelusBlocks.registerRenders();
-		registerModelBakeryStuff();
 		keyBindings = new KeyBinding[1];
 		keyBindings[0] = new KeyBinding("eangelus.getmorality.desc", Keyboard.KEY_M, "eangelus.keymapping.category");
 		for (int i = 0; i < ClientProxy.keyBindings.length; ++i)
@@ -61,16 +64,16 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		super.postInit(event);	
+		super.postInit(event);
 	}
 	
 	@Override
 	public void registerModelBakeryStuff() 
 	{
-		//for (int i = 0; i < eAngelusCards.O_cardNames.length; ++i)
-		//{
-		//ModelBakery.registerItemVariants(eAngelusItems.eaCardO, new ResourceLocation("eangel:"+eAngelusCards.O_cardNames[i]));
-		//}
+		ModelBakery.registerItemVariants(eAngelusItems.essence,
+				new ResourceLocation(Reference.MODID, "essence_chariot"),
+				new ResourceLocation(Reference.MODID,"essence_knight"),
+				new ResourceLocation(Reference.MODID,"essence_strength"));
 	}
 
 	public IThreadListener getThreadListener(final MessageContext context) {
