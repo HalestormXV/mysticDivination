@@ -37,13 +37,13 @@ public class EAMain
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		eAngelusConfig.preInit();
 		ModSounds_Records.init();
 		MobRegistry.register();
 		EA_SoundHandler.init();
 		eAngelusItems.initItems();
 		eAngelusBlocks.initBlocks();
 		Utils.getLogger().info("Pre Initialize");
-		eAngelusConfig.preInit();
 		logger = event.getModLog();
 		this.proxy.preInit(event);
 

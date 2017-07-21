@@ -213,7 +213,7 @@ public class EntityCreeperPrime extends EntityCreeper
             if (cause.getEntity() instanceof EntitySkeleton)
             {
                 int i = Item.getIdFromItem(eAngelusItems.recordMotomiya);
-                int j = Item.getIdFromItem(Items.RECORD_WAIT);
+                int j = Item.getIdFromItem(eAngelusItems.recordMavis);
                 int k = i + this.rand.nextInt(j - i + 1);
                 this.dropItem(Item.getItemById(k), 1);
             }

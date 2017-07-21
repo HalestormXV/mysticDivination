@@ -79,8 +79,26 @@ public class EARecipes
 				});
 
 		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.scryingOrb, 1),
+			new Object [] {
+					eAngelusItems.demonic_ingot, eAngelusItems.angelic_ingot, eAngelusItems.tarotPaper, eAngelusItems.azuriteStone
+			});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.cFortitudo, 1),
 				new Object [] {
-						eAngelusItems.demonic_ingot, eAngelusItems.angelic_ingot, eAngelusItems.tarotPaper, eAngelusItems.azuriteStone
+						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 2),  eAngelusItems.tarotPaper,
+						eAngelusItems.azuriteStone, eAngelusItems.mystalDust, eAngelusItems.topazStone
+				});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.cResistentia, 1),
+				new Object [] {
+						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 1),  eAngelusItems.tarotPaper,
+						eAngelusItems.azuriteStone, eAngelusItems.mystalDust, eAngelusItems.topazStone
+				});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.cVentus, 1),
+				new Object [] {
+						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 0),  eAngelusItems.tarotPaper,
+						eAngelusItems.azuriteStone, eAngelusItems.mystalDust, eAngelusItems.topazStone
 				});
 		
 		
