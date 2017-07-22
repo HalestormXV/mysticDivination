@@ -47,13 +47,13 @@ public class ModItemMoralityFoods extends ItemFood
         {
             IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
             morality.addVirtue(6);
-            ChatUtil.sendNoSpam(player,"\u00A73" + "You have eaten a heavenly fruit. Virtue increased by 6.");
+            ChatUtil.sendNoSpam(player,"\u00A73" + "You have eaten a heavenly fruit. Virtue increased by 6. I'm only human, after all.");
         }
         if (stack.getItem() == eAngelusItems.sinfulfruit)
         {
             IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
             morality.addSin(6);
-            ChatUtil.sendNoSpam(player,"\u00A74" + "You have eaten forbidden fruit. Sin increased by 6.");
+            ChatUtil.sendNoSpam(player,"\u00A74" + "You have eaten forbidden fruit. Sin increased by 6. Don't put the blame on me.");
         }
 
 

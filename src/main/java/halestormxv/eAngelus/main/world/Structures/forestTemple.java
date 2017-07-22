@@ -2,12 +2,6 @@ package halestormxv.eAngelus.main.world.Structures;
 
 import java.util.Random;
 
-import net.minecraft.block.BlockOldLog;
-import net.minecraft.block.BlockPlanks;
-import net.minecraft.block.BlockStairs;
-import net.minecraft.block.BlockTallGrass;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -30,9 +24,123 @@ public class forestTemple extends WorldGenerator implements IWorldGenerator
     }
 
     @Override
-    public boolean generate(World worldIn, Random r, BlockPos bp) {
+    public boolean generate(World worldIn, Random r, BlockPos bp)
+    {
         //Change k, i, or j to offset the structure
         int k = 0;
+        int i = 0;
+        int j = 0;
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 0, k + 0), Blocks.DIRT.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 0, k + 1), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 0, k + 2), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 0, k + 3), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 0, k + 4), Blocks.DIRT.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 1, k + 0), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 1, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 1, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 1, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 1, k + 4), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 2, k + 0), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 2, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 2, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 2, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 2, k + 4), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 3, k + 0), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 3, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 3, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 3, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 3, k + 4), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 0, k + 0), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 0, k + 1), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 0, k + 2), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 0, k + 3), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 0, k + 4), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 1, k + 0), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 1, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 1, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 1, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 1, k + 4), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 2, k + 0), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 2, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 2, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 2, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 2, k + 4), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 3, k + 0), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 3, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 3, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 3, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 1, j + 3, k + 4), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 0, k + 0), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 0, k + 1), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 0, k + 2), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 0, k + 3), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 0, k + 4), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 1, k + 0), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 1, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 1, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 1, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 1, k + 4), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 2, k + 0), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 2, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 2, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 2, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 2, k + 4), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 3, k + 0), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 3, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 3, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 3, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 2, j + 3, k + 4), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 0, k + 0), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 0, k + 1), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 0, k + 2), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 0, k + 3), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 0, k + 4), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 1, k + 0), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 1, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 1, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 1, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 1, k + 4), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 2, k + 0), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 2, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 2, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 2, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 2, k + 4), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 3, k + 0), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 3, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 3, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 3, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 3, j + 3, k + 4), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 0, k + 0), Blocks.DIRT.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 0, k + 1), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 0, k + 2), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 0, k + 3), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 0, k + 4), Blocks.DIRT.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 1, k + 0), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 1, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 1, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 1, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 1, k + 4), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 2, k + 0), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 2, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 2, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 2, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 2, k + 4), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 3, k + 0), Blocks.STONEBRICK.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 3, k + 1), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 3, k + 2), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 3, k + 3), Blocks.AIR.getDefaultState());
+        this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 4, j + 3, k + 4), Blocks.STONEBRICK.getDefaultState());
+        return true;
+    }
+
+    @Override
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
+    {
+    }
+
+
+        //Change k, i, or j to offset the structure
+       /* int k = 0;
         int i = 0;
         int j = 0;
         this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 0, j + 0, k + 0), Blocks.DIRT.getDefaultState());
@@ -2384,11 +2492,11 @@ public class forestTemple extends WorldGenerator implements IWorldGenerator
         this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 13, j + 11, k + 11), Blocks.AIR.getDefaultState());
         this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 13, j + 11, k + 12), Blocks.AIR.getDefaultState());
         this.setBlockAndNotifyAdequately(worldIn, bp.add(i + 13, j + 11, k + 13), Blocks.AIR.getDefaultState());
-        return true;
-    }
+
 
     @Override
-    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-    }
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
+    {
+    }*/
 }
 
