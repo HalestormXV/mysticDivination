@@ -10,6 +10,9 @@ gui.config.category.moralitylevels.tooltip=Settings for all items requring a mor
 gui.config.items.scryingorb_cooldown.name=Scrying Orb Cooldown
 gui.config.items.scryingorb_cooldown.comment=The cooldown in ticks for the Scrying Orb
 
+gui.config.items.scryingorb_cost.name=Scrying Orb Mystal Dust Cost
+gui.config.items.scryingorb_cost.comment=The cost of Mystal Dust Required for Scrying Orb use.
+
 gui.config.items.strength_card_cost.name=Morality Level Required - Forteza
 gui.config.items.strength_card_cost.comment=The morality level required for ORDER: Forteza
 

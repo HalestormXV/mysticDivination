@@ -28,6 +28,7 @@ public class eAngelusConfig
     public static int moralityCost_ResistanceCard;
     public static int moralityCost_StrengthCard;
     public static int reagentCost_SpeedCard;
+    public static int reagentCost_ScryingOrb;
 
     public static void preInit()
     {
@@ -73,6 +74,10 @@ public class eAngelusConfig
         propertyScryingOrbCooldown.setMinValue(1200);
         propertyScryingOrbCooldown.setMaxValue(12000);
 
+        Property propertyScryingOrbCost = config.get(CATEGORY_NAME_ITEMS, "property_cost", 4);
+        propertyScryingOrbCost.setLanguageKey("gui.config.items.scryingorb_cost.name");
+        propertyScryingOrbCost.setComment("gui.config.items.scryingorb_cost.comment");
+
         //Morality Cost Values
         //===========================STRENGTH CARD===========================\\
         Property propCard_Strength = config.get(CATEGORY_NAME_MORALITYCOSTS, "morality_cooldowns_strength_card", -4);
@@ -92,6 +97,7 @@ public class eAngelusConfig
         //DONT FORGET TOT ADD TO THE ARRAY!
         List<String> propertyOrderItems = new ArrayList<String>();
         propertyOrderItems.add(propertyScryingOrbCooldown.getName());
+        propertyOrderItems.add(propertyScryingOrbCost.getName());
         propertyOrderItems.add(propCard_Strength.getName());
         propertyOrderItems.add(propCard_Resistance.getName());
         propertyOrderItems.add(propCard_Speed.getName());
@@ -102,6 +108,7 @@ public class eAngelusConfig
         if (readFieldsFromConfig)
         {
             scryingOrbCooldown = propertyScryingOrbCooldown.getInt();
+            reagentCost_ScryingOrb = propertyScryingOrbCost.getInt();
             moralityCost_StrengthCard = propCard_Strength.getInt();
             moralityCost_ResistanceCard = propCard_Resistance.getInt();
             reagentCost_SpeedCard = propCard_Speed.getInt();
@@ -109,6 +116,7 @@ public class eAngelusConfig
         }
 
         propertyScryingOrbCooldown.set(scryingOrbCooldown);
+        propertyScryingOrbCost.set(reagentCost_ScryingOrb);
         propCard_Strength.set(moralityCost_StrengthCard);
         propCard_Resistance.set(moralityCost_ResistanceCard);
         propCard_Speed.set(reagentCost_SpeedCard);

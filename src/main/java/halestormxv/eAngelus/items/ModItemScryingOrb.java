@@ -25,6 +25,8 @@ import java.util.List;
 
 public class ModItemScryingOrb extends Item
 {
+    private int mystalRequirment = eAngelusConfig.reagentCost_ScryingOrb;
+
     public ModItemScryingOrb(String name)
     {
         super();
@@ -54,10 +56,12 @@ public class ModItemScryingOrb extends Item
                 }
                 else
                 {
+                    ItemStack mystalDust = new ItemStack(eAngelusItems.mystalDust);
+                    int reagentAmount = checkForReagentQuantity(mystalDust, player);
                     long totWorldTime = this.getStoredWorldTime(stack);
                     long currentWorldTime = player.world.getTotalWorldTime();
                     //Check for Reagent
-                    if (player.inventory.hasItemStack(new ItemStack(eAngelusItems.mystalDust)))
+                    if (reagentAmount >= mystalRequirment)
                     {
                         //System.out.println("Current Stored Time: " + totWorldTime);
                         //System.out.println("Current World Time: " + currentWorldTime);
@@ -67,9 +71,11 @@ public class ModItemScryingOrb extends Item
                             {
                                 player.dismountRidingEntity();
                             }
+                            int fetchDim = nbt.getInteger("Dim");
                             double posX = nbt.getDouble("PosX");
                             double posY = nbt.getDouble("PosY");
                             double posZ = nbt.getDouble("PosZ");
+                            if (player.dimension != fetchDim) { player.changeDimension(fetchDim); }
                             player.setPositionAndUpdate(posX + 0.6, posY, posZ + 0.6);
                             this.setNewWorldTime(stack, player);
                             this.consumeReagent(stack, world, player);
@@ -81,7 +87,7 @@ public class ModItemScryingOrb extends Item
                     }
                     else
                     {
-                        ChatUtil.sendNoSpam(player,"\u00A74The Scrying Orb requires Mystal Dust for use.");
+                        ChatUtil.sendNoSpam(player,"\u00A74The Scrying Orb requires "+mystalRequirment+" Mystal Dust for use.");
                     }
                 }
             }
@@ -109,7 +115,7 @@ public class ModItemScryingOrb extends Item
             double posZ = nbt.getDouble("PosZ");
             long storedWorldTime = nbt.getLong("totalWorldTime");
             long currentWorldTime = Minecraft.getMinecraft().world.getTotalWorldTime();
-            //tooltip.add("\u00A73" + "DIM: "+ dimID);
+            tooltip.add("\u00A73" + "DIM: "+ dimID);
             tooltip.add("\u00A7d" + "X: "  + posX);
             tooltip.add("\u00A72" + "Y: "  + posY);
             tooltip.add("\u00A7c" + "Z: "  + posZ);
@@ -159,6 +165,28 @@ public class ModItemScryingOrb extends Item
     }
 
     private void consumeReagent(ItemStack stack, World worldIn, EntityPlayer entityLiving) {
-        entityLiving.inventory.clearMatchingItems(eAngelusItems.mystalDust, -1, 1, null);
+        entityLiving.inventory.clearMatchingItems(eAngelusItems.mystalDust, -1, mystalRequirment, null);
+    }
+
+    private int checkForReagentQuantity(ItemStack itemStack, EntityPlayer player)
+    {
+        int count = 0;
+        Item mystalDustItem = itemStack.getItem();
+        boolean hasReagent = player.inventory.hasItemStack(itemStack);
+        if (hasReagent)
+        {
+            for (int slot = 0; slot < player.inventory.getSizeInventory(); slot++)
+            {
+                ItemStack stack = player.inventory.getStackInSlot(slot);
+                if (stack != null && stack.getItem().equals(mystalDustItem)) {
+                    int total = count += stack.getCount();
+                    return total;
+                }
+            }
+        } else {
+            return 0;
+        }
+        //How'd you even get here?
+        return 0;
     }
 }
