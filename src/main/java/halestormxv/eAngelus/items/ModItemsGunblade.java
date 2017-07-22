@@ -92,7 +92,7 @@ public class ModItemsGunblade extends ItemSword
                 {
                     EntityCelestialBolt celestialBolt = new EntityCelestialBolt(worldIn, playerIn);
                     celestialBolt.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
-                    worldIn.spawnEntity(celestialBolt);
+                    playerIn.world.spawnEntity(celestialBolt);
                 }
             } else {
                 ChatUtil.sendNoSpam(playerIn, ("\u00A74You do not have enough power to fire this weapon."));

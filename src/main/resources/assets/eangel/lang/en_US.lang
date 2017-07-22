@@ -41,6 +41,11 @@ item.serpentineGunblade.name=Serpentine Gunblade [WIP]
 item.essence.chariot.name=Essence of the Chariot
 item.essence.knight.name=Essence of the Knight
 item.essence.strength.name=Essence of Strength
+item.runestone.basic.name=Base Runestone
+item.runestone.frost.name=Frost Runestone
+item.runestone.flame.name=Flame Runestone
+item.runestone.earth.name=Earth Runestone
+item.runestone.death.name=Death Runestone
 
 #RECORDS
 item.eangel:recordmavis.name=Mavis Vermillion's Theme

@@ -34,6 +34,7 @@ public class eAngelusItems
 	public static Item scryingOrb;
 	public static Item celBolt;
 	public static Item essence;
+	public static Item runestone;
 
 	//Tools
 	public static Item serpentinePick;
@@ -78,6 +79,7 @@ public class eAngelusItems
 		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
 		celBolt = registerItem(new EAItem("celBolt"), "celBolt");
 		essence = new CardEssence("essence");
+		runestone = new runeStones("runestone");
 
 		//Rare Drops
 		tarotPaper = registerItem(new EAItem("tarotPaper"), "tarotPaper");
@@ -121,6 +123,7 @@ public class eAngelusItems
 		registerItem(virtuefruit, "virtuefruit");
 		registerItem(sinfulfruit, "sinfulfruit");
 		goodRegisterItem(essence);
+		goodRegisterItem(runestone);
 	}
 
 
@@ -129,6 +132,10 @@ public class eAngelusItems
 		for (int i = 0; i < EA_EnumHandler.CardEssences.values().length; i++)
 		{
 			goodRegisterRender(essence, i, Reference.MODID+":essence_" + EA_EnumHandler.CardEssences.values()[i].getName());
+		}
+		for (int i = 0; i < EA_EnumHandler.RuneStones.values().length; i++)
+		{
+			goodRegisterRender(runestone, i, Reference.MODID+":runestone_" + EA_EnumHandler.RuneStones.values()[i].getName());
 		}
 		//Cards
 		registerRender(cFortitudo); //Strength Card

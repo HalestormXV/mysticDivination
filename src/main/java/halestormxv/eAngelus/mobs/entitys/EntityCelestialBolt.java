@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
@@ -14,7 +15,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityCelestialBolt extends EntityThrowable {
+public class EntityCelestialBolt extends EntityThrowable
+{
     private float explosionRadius = 1.3F;
     private double orbPower;
 
@@ -48,7 +50,7 @@ public class EntityCelestialBolt extends EntityThrowable {
        // if (ticksExisted > 20) {
       //      explode();
        // }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 30; i++) {
             double x = (double) (rand.nextInt(10) - 5) / 8.0D;
             double y = (double) (rand.nextInt(10) - 5) / 8.0D;
             double z = (double) (rand.nextInt(10) - 5) / 8.0D;
