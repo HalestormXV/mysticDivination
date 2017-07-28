@@ -55,7 +55,7 @@ public class SyncMorality implements IMessage
                     EntityPlayer player = mc.getMinecraft().player;
                     IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
                     morality.set(message.moralityValue);
-                    System.out.println("The morality has been synced to: " + message.moralityValue);
+                    //System.out.println("The morality has been synced to: " + message.moralityValue);
                 }
             });
 
