@@ -42,7 +42,7 @@ public class N_card_Speed extends Item {
         if (hasReagent && reagentAmount >= dustRequirement)
         {
             itemStack.damageItem(1, playerIn);
-            playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("speed"), 400, 4));
+            playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("speed"), 1800, 4));
             this.consumeReagent(itemStack, worldIn, playerIn);
         } else {
             ChatUtil.sendNoSpam(playerIn, "\u00A74Mystal Dust is a required Catalyst.");

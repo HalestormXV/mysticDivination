@@ -65,6 +65,30 @@ public class EARecipes
 				
 				'S', eAngelusItems.serpentineSpade, 's', Items.STICK, 'P', eAngelusItems.serpentinePick, 
 				'A', eAngelusItems.serpentineAxe, 'H', eAngelusItems.serpentineHoe);
+
+		GameRegistry.addRecipe(new ItemStack(eAngelusBlocks.alter_chariot),
+				"*t*",
+				"DFA",
+				"***",
+
+				't', eAngelusItems.topazStone, 'D', eAngelusBlocks.demonic_block, 'F', Items.FEATHER,
+				'A', eAngelusBlocks.angelic_block);
+
+		GameRegistry.addRecipe(new ItemStack(eAngelusBlocks.alter_knight),
+				"*a*",
+				"DFA",
+				"***",
+
+				'a', eAngelusItems.azuriteStone, 'D', eAngelusBlocks.demonic_block, 'F', Items.DIAMOND_CHESTPLATE,
+				'A', eAngelusBlocks.angelic_block);
+
+		GameRegistry.addRecipe(new ItemStack(eAngelusBlocks.alter_strength),
+				"*s*",
+				"DFA",
+				"***",
+
+				's', eAngelusItems.serpentineStone, 'D', eAngelusBlocks.demonic_block, 'F', Items.DIAMOND_SWORD,
+				'A', eAngelusBlocks.angelic_block);
 		
 		
 		//Shapeless Crafting
@@ -85,19 +109,19 @@ public class EARecipes
 
 		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.cFortitudo, 1),
 				new Object [] {
-						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 2),  eAngelusItems.tarotPaper,
+						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 3),  eAngelusItems.tarotPaper,
 						eAngelusItems.azuriteStone, eAngelusItems.mystalDust, eAngelusItems.topazStone
 				});
 
 		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.cResistentia, 1),
 				new Object [] {
-						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 1),  eAngelusItems.tarotPaper,
+						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 2),  eAngelusItems.tarotPaper,
 						eAngelusItems.azuriteStone, eAngelusItems.mystalDust, eAngelusItems.topazStone
 				});
 
 		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.cVentus, 1),
 				new Object [] {
-						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 0),  eAngelusItems.tarotPaper,
+						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 1),  eAngelusItems.tarotPaper,
 						eAngelusItems.azuriteStone, eAngelusItems.mystalDust, eAngelusItems.topazStone
 				});
 		

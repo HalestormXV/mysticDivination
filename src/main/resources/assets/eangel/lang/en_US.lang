@@ -22,8 +22,17 @@ gui.config.items.resistance_card_cost.comment=The morality level required for OR
 gui.config.items.speed_card_cost.name=Mystal Dust Required - Ventus
 gui.config.items.speed_card_cost.comment=The Mystal Dust amount required for ORDER: Ventus
 
+gui.config.items.soul_charge_cost.name=Soul Charges Required for Alterss
+gui.config.items.soul_charge_cost.comment=The amount of kills needed to convert a Blank Essence.
+
+
+#KEYMAPPINGS
+eangelus.keymapping.category=Mystic Divination Keybindings
+eangelus.getmorality.desc=Check Morality Level
+
 #ENTITIES
 entity.phantom.name=Eidolon
+entity.creeper_prime.name=Creeper Prime
 
 #ITEMS
 item.angelic_ingot.name=Angelic Ingot
@@ -41,6 +50,7 @@ item.virtuefruit.name=Virtuous Fruit Medley
 item.sinfulfruit.name=Sinful Fruit Medley
 item.celBolt.name=Energy Blast
 item.serpentineGunblade.name=Serpentine Gunblade [WIP]
+item.essence.empty.name=Empty Essence
 item.essence.chariot.name=Essence of the Chariot
 item.essence.knight.name=Essence of the Knight
 item.essence.strength.name=Essence of Strength
@@ -94,6 +104,9 @@ tile.mystalCite.name=Mystal Cite
 tile.azureite_Ore.name=Azurite Ore
 tile.serpentine_Ore.name=Serpentine Ore
 tile.oTable.name=Obsidian Iron Table
+tile.alter_chariot.name=Alter of The Chariot
+tile.alter_knight.name=Alter of The Knight
+tile.alter_strength.name=Alter of Strength
 
 #ACHIEVEMENTS
 achievement.GetAngelicOre=Holier-Than-Thou!

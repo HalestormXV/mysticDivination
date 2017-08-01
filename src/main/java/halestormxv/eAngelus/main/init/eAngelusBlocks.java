@@ -1,14 +1,6 @@
 package halestormxv.eAngelus.main.init;
 
-import halestormxv.eAngelus.blocks.AngelicBlock;
-import halestormxv.eAngelus.blocks.AngelicOre;
-import halestormxv.eAngelus.blocks.AzureiteOre;
-import halestormxv.eAngelus.blocks.DemonicBlock;
-import halestormxv.eAngelus.blocks.DemonicOre;
-import halestormxv.eAngelus.blocks.MystalCite;
-import halestormxv.eAngelus.blocks.ObsidianIronTable;
-import halestormxv.eAngelus.blocks.SerpentineOre;
-import halestormxv.eAngelus.blocks.TopazOre;
+import halestormxv.eAngelus.blocks.*;
 import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.Utils;
 import net.minecraft.block.Block;
@@ -34,6 +26,9 @@ public class eAngelusBlocks
 	public static AzureiteOre azureite_Ore;
 	public static SerpentineOre serpentine_Ore;
 	public static ObsidianIronTable oTable;
+	public static alter_Chariot alter_chariot;
+	public static alter_Knight alter_knight;
+	public static alter_Strength alter_strength;
 
 	//Gems
 	public static TopazOre topazOre;
@@ -43,6 +38,9 @@ public class eAngelusBlocks
 	public static void initBlocks()
 	{
 		//Blocks
+		alter_chariot = new alter_Chariot();
+		alter_knight = new alter_Knight();
+		alter_strength = new alter_Strength();
 		angelic_block = new AngelicBlock();
 		angelic_block.setUnlocalizedName("angelic_block");
 		angelic_block.setCreativeTab(Reference.eaCreativeTab);
@@ -65,6 +63,9 @@ public class eAngelusBlocks
 		//Blocks
 		registerRender(angelic_block);
 		registerRender(demonic_block);
+		registerRender(alter_chariot);
+		registerRender(alter_knight);
+		registerRender(alter_strength);
 		
 		//Ores
 		registerRender(angelicOre);

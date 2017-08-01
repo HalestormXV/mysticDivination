@@ -8,16 +8,21 @@ import halestormxv.eAngelus.network.eAngelusPacketHandler;
 import halestormxv.eAngelus.network.packets.ChatUtil;
 import halestormxv.eAngelus.network.packets.SyncMorality;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -107,6 +112,36 @@ public class EA_EventHandler {
                 }
             }
         }*/
+    }
+
+    @SubscribeEvent
+    public void entityDeath(LivingDeathEvent event)
+    {
+        if ( (event.getSource().getEntity() instanceof EntityPlayer) && (event.getEntity() instanceof EntityMob) )
+        {
+            Item blankEssence = eAngelusItems.essence;
+            EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
+            for (int slot = 0; slot < player.inventory.getSizeInventory(); slot++)
+            {
+                ItemStack stack = player.inventory.getStackInSlot(slot);
+                if (stack != null && stack.getItem().equals(blankEssence) && stack.getMetadata() == 0)
+                {
+                    NBTTagCompound nbt = stack.getTagCompound();
+                    if (nbt == null)
+                    {
+                        nbt = new NBTTagCompound();
+                        nbt.setInteger("killCount", 1);
+                        stack.setTagCompound(nbt);
+                    }
+                    else
+                    {
+                        int fetchKills = nbt.getInteger("killCount");
+                        int newKills = fetchKills + 1;
+                        nbt.setInteger("killCount", newKills);
+                    }
+                }
+            }
+        }
     }
 
     @SubscribeEvent

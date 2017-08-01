@@ -10,9 +10,10 @@ public class EA_EnumHandler
 {
     public static enum CardEssences implements IStringSerializable
     {
-        CHARIOT("chariot", 0),
-        KNIGHT("knight", 1),
-        STRENGTH("strength", 2);
+        BLANK("empty", 0),
+        CHARIOT("chariot", 1),
+        KNIGHT("knight", 2),
+        STRENGTH("strength", 3);
 
         private int ID;
         private String name;

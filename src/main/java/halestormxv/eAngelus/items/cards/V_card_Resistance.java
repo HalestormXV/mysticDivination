@@ -44,7 +44,7 @@ public class V_card_Resistance extends Item
             if (playerIn.inventory.hasItemStack(new ItemStack(eAngelusItems.mystalDust)))
             {
                 itemStack.damageItem(1, playerIn);
-                playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("resistance"), 300, 3));
+                playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("resistance"), 1800, 4));
                 this.consumeReagent(itemStack, worldIn, playerIn);
             } else {
                 ChatUtil.sendNoSpam(playerIn, "\u00A74Mystal Dust is a required Catalyst.");

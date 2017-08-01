@@ -65,8 +65,8 @@ public class eAngelusItems
 	public static Item sinfulfruit;
 
 	//Materials
-	public static ToolMaterial Serpentine = EnumHelper.addToolMaterial("Serpentine", 4, 1800, 10.0F, 9.0F, 25);
-	public static ToolMaterial SpecialItems = EnumHelper.addToolMaterial("SpecialItems", 4, 2000, 11.0F, 10.6F, 25);
+	public static ToolMaterial Serpentine = EnumHelper.addToolMaterial("Serpentine", 4, 1800, 10.0F, 7.6F, 25);
+	public static ToolMaterial SpecialItems = EnumHelper.addToolMaterial("SpecialItems", 4, 2000, 11.0F, 9.2F, 25);
 
 	public static void initItems() //illustrates both ways to register an item.
 	{	

@@ -44,7 +44,7 @@ public class S_card_Strength extends Item
             if (playerIn.inventory.hasItemStack(new ItemStack(eAngelusItems.mystalDust)))
             {
                 itemStack.damageItem(1, playerIn);
-                playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("strength"), 300, 3));
+                playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("strength"), 1800, 4));
                 this.consumeReagent(itemStack, worldIn, playerIn);
             } else {
                 ChatUtil.sendNoSpam(playerIn, "\u00A74Mystal Dust is a required Catalyst.");

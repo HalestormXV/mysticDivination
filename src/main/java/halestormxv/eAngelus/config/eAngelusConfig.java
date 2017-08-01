@@ -29,6 +29,7 @@ public class eAngelusConfig
     public static int moralityCost_StrengthCard;
     public static int reagentCost_SpeedCard;
     public static int reagentCost_ScryingOrb;
+    public static int soulChargeReq;
 
     public static void preInit()
     {
@@ -78,6 +79,10 @@ public class eAngelusConfig
         propertyScryingOrbCost.setLanguageKey("gui.config.items.scryingorb_cost.name");
         propertyScryingOrbCost.setComment("gui.config.items.scryingorb_cost.comment");
 
+        Property propSoulChargeCost = config.get(CATEGORY_NAME_ITEMS, "soulcharge_cost", 50);
+        propSoulChargeCost.setLanguageKey("gui.config.items.soul_charge_cost.name");
+        propSoulChargeCost.setComment("gui.config.items.soul_charge_cost.comment");
+
         //Morality Cost Values
         //===========================STRENGTH CARD===========================\\
         Property propCard_Strength = config.get(CATEGORY_NAME_MORALITYCOSTS, "morality_cooldowns_strength_card", -4);
@@ -98,6 +103,7 @@ public class eAngelusConfig
         List<String> propertyOrderItems = new ArrayList<String>();
         propertyOrderItems.add(propertyScryingOrbCooldown.getName());
         propertyOrderItems.add(propertyScryingOrbCost.getName());
+        propertyOrderItems.add(propSoulChargeCost.getName());
         propertyOrderItems.add(propCard_Strength.getName());
         propertyOrderItems.add(propCard_Resistance.getName());
         propertyOrderItems.add(propCard_Speed.getName());
@@ -108,6 +114,7 @@ public class eAngelusConfig
         if (readFieldsFromConfig)
         {
             scryingOrbCooldown = propertyScryingOrbCooldown.getInt();
+            soulChargeReq = propSoulChargeCost.getInt();
             reagentCost_ScryingOrb = propertyScryingOrbCost.getInt();
             moralityCost_StrengthCard = propCard_Strength.getInt();
             moralityCost_ResistanceCard = propCard_Resistance.getInt();
@@ -117,6 +124,7 @@ public class eAngelusConfig
 
         propertyScryingOrbCooldown.set(scryingOrbCooldown);
         propertyScryingOrbCost.set(reagentCost_ScryingOrb);
+        propSoulChargeCost.set(soulChargeReq);
         propCard_Strength.set(moralityCost_StrengthCard);
         propCard_Resistance.set(moralityCost_ResistanceCard);
         propCard_Speed.set(reagentCost_SpeedCard);
