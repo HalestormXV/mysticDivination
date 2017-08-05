@@ -7,6 +7,7 @@ import halestormxv.eAngelus.config.eAngelusConfig;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.main.world.E_AngWorldGen;
+import halestormxv.eAngelus.main.world.Structures.generateKnightAlter;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -24,6 +25,7 @@ public class CommonProxy
 	public void init(FMLInitializationEvent event)
 	{
 		GameRegistry.registerWorldGenerator(new E_AngWorldGen(), 0);
+		//GameRegistry.registerWorldGenerator(new generateKnightAlter(), 1);
 	}
 	
 	public void postInit(FMLPostInitializationEvent event)

@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
@@ -117,6 +118,7 @@ public class EA_EventHandler {
     @SubscribeEvent
     public void entityDeath(LivingDeathEvent event)
     {
+        //Check for EmptyEssence
         if ( (event.getSource().getEntity() instanceof EntityPlayer) && (event.getEntity() instanceof EntityMob) )
         {
             Item blankEssence = eAngelusItems.essence;
@@ -142,6 +144,20 @@ public class EA_EventHandler {
                 }
             }
         }
+
+        //Check for Village Death and Add Sin
+        if ( (event.getSource().getEntity() instanceof EntityPlayer) && (event.getEntity() instanceof EntityVillager) )
+        {
+            EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
+            World world = player.getEntityWorld();
+            IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
+            player.sendMessage(new TextComponentString("\u00A74" + "Your scales of morality have tipped to sin."));
+            morality.addSin(1);
+            if (!player.world.isRemote) { eAngelusPacketHandler.sendTo(new SyncMorality(morality.getMorality()), (EntityPlayerMP) player);}
+            world.playSound(null, player.posX, player.posY, player.posZ, EA_SoundHandler.SIN_INCREASE_LEVEL, SoundCategory.MASTER, 2.0F, 1.0F);
+        }
+
+
     }
 
     @SubscribeEvent

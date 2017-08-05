@@ -89,6 +89,13 @@ public class EARecipes
 
 				's', eAngelusItems.serpentineStone, 'D', eAngelusBlocks.demonic_block, 'F', Items.DIAMOND_SWORD,
 				'A', eAngelusBlocks.angelic_block);
+
+		GameRegistry.addRecipe(new ItemStack(eAngelusItems.essence),
+				"*G*",
+				"GTG",
+				"*G*",
+
+				'G', Items.GOLD_INGOT, 'T', eAngelusItems.tarotPaper);
 		
 		
 		//Shapeless Crafting
