@@ -54,7 +54,7 @@ public class EAMain
 	{
 		Utils.getLogger().info("Initialize");
 		this.proxy.init(event);
-		GameRegistry.registerFuelHandler(new EA_FuelHandler());
+		//GameRegistry.registerFuelHandler(new EA_FuelHandler());
 		eAngelusPacketHandler.init();
 		MinecraftForge.EVENT_BUS.register(new EA_KeyInputHandler());
 	}

@@ -39,7 +39,6 @@ public class ClientProxy extends CommonProxy
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		super.preInit(event);
-		EARecipes.initRecipes();
 		EA_Achievements.AchievementRegistry();
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhantom.class, RenderPhantom.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityCreeperPrime.class, RenderCreeperPrime.FACTORY);

@@ -28,7 +28,13 @@ public class EARecipes
 								"###",
 								'#', eAngelusItems.demonic_ingot
 						});
-		
+
+		GameRegistry.addRecipe(new ItemStack(eAngelusItems.serpentineSword),
+				"*S*",
+				"aSd",
+				"*s*",
+
+				'S', eAngelusItems.serpentineStone, 's', Items.STICK, 'a', eAngelusItems.angelic_ingot, 'd', eAngelusItems.demonic_ingot);
 		
 		GameRegistry.addRecipe(new ItemStack(eAngelusItems.serpentineAxe),
 				"*SS", 

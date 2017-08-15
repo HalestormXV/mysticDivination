@@ -25,11 +25,16 @@ public class eAngelusConfig
     public static final String CATEGORY_NAME_MORALITYCOSTS = "Card Costs";
 
     public static int scryingOrbCooldown;
+    public static int soulChargeReq;
+
+    //Morality Costs
     public static int moralityCost_ResistanceCard;
     public static int moralityCost_StrengthCard;
+
+    //Reagent Costs
     public static int reagentCost_SpeedCard;
+    public static int reagentCost_TimeCard;
     public static int reagentCost_ScryingOrb;
-    public static int soulChargeReq;
 
     public static void preInit()
     {
@@ -96,7 +101,10 @@ public class eAngelusConfig
         Property propCard_Speed = config.get(CATEGORY_NAME_MORALITYCOSTS, "morality_cooldowns_speed_card", 2);
         propCard_Speed.setLanguageKey("gui.config.items.speed_card_cost.name");
         propCard_Speed.setComment("gui.config.items.speed_card_cost.comment");
-
+        //===========================TIME CARD===========================\\
+        Property propCard_Time = config.get(CATEGORY_NAME_MORALITYCOSTS, "morality_cooldowns_time_card", 4);
+        propCard_Time.setLanguageKey("gui.config.items.time_card_cost.name");
+        propCard_Time.setComment("gui.config.items.time_card_cost.comment");
 
 
         //DONT FORGET TOT ADD TO THE ARRAY!
@@ -107,6 +115,7 @@ public class eAngelusConfig
         propertyOrderItems.add(propCard_Strength.getName());
         propertyOrderItems.add(propCard_Resistance.getName());
         propertyOrderItems.add(propCard_Speed.getName());
+        propertyOrderItems.add(propCard_Time.getName());
 
         config.setCategoryPropertyOrder(CATEGORY_NAME_ITEMS, propertyOrderItems);
         config.setCategoryPropertyOrder(CATEGORY_NAME_MORALITYCOSTS, propertyOrderItems);
@@ -119,7 +128,7 @@ public class eAngelusConfig
             moralityCost_StrengthCard = propCard_Strength.getInt();
             moralityCost_ResistanceCard = propCard_Resistance.getInt();
             reagentCost_SpeedCard = propCard_Speed.getInt();
-
+            reagentCost_TimeCard = propCard_Time.getInt();
         }
 
         propertyScryingOrbCooldown.set(scryingOrbCooldown);
@@ -128,6 +137,7 @@ public class eAngelusConfig
         propCard_Strength.set(moralityCost_StrengthCard);
         propCard_Resistance.set(moralityCost_ResistanceCard);
         propCard_Speed.set(reagentCost_SpeedCard);
+        propCard_Time.set(reagentCost_TimeCard);
 
         if (config.hasChanged())
             config.save();

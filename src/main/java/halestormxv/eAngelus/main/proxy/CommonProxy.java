@@ -4,6 +4,7 @@ import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityScale;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityStorage;
 import halestormxv.eAngelus.config.eAngelusConfig;
+import halestormxv.eAngelus.crafting.EARecipes;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.main.world.E_AngWorldGen;
@@ -19,6 +20,7 @@ public class CommonProxy
 {
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		EARecipes.initRecipes();
 		CapabilityManager.INSTANCE.register(IMorality.class, new moralityStorage(), moralityScale.class);
 	}
 	
