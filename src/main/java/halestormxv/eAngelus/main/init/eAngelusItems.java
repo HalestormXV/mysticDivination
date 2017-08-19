@@ -2,10 +2,7 @@ package halestormxv.eAngelus.main.init;
 
 import com.sun.org.apache.regexp.internal.RE;
 import halestormxv.eAngelus.items.*;
-import halestormxv.eAngelus.items.cards.N_card_Speed;
-import halestormxv.eAngelus.items.cards.N_card_Time;
-import halestormxv.eAngelus.items.cards.S_card_Strength;
-import halestormxv.eAngelus.items.cards.V_card_Resistance;
+import halestormxv.eAngelus.items.cards.*;
 import halestormxv.eAngelus.items.records.rec_Mavis;
 import halestormxv.eAngelus.items.records.rec_Motomiya;
 import halestormxv.eAngelus.main.Reference;
@@ -53,6 +50,7 @@ public class eAngelusItems
 	public static Item cResistentia;
 	public static Item cVentus;
 	public static Item cTempus;
+	public static Item cDefluet;
 
 	//Rare Drops
 	public static Item tarotPaper;
@@ -77,6 +75,7 @@ public class eAngelusItems
 		cResistentia = registerItem(new V_card_Resistance("cResistentia"), "cResistentia");
 		cVentus = registerItem(new N_card_Speed("cVentus"), "cVentus");
 		cTempus = registerItem(new N_card_Time("cTempus"), "cTempus");
+		cDefluet = registerItem(new S_card_Wither("cDefluet"), "cDefluet");
 
 		//Misc Items
 		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
@@ -145,6 +144,7 @@ public class eAngelusItems
 		registerRender(cResistentia); //Resistance Card
 		registerRender(cVentus); //Speed Card
 		registerRender(cTempus); //Time Card
+		registerRender(cDefluet); //Wither Card
 
 		//Rare Drops
 		registerRender(tarotPaper);

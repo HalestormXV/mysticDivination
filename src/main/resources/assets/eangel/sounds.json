@@ -29,6 +29,16 @@
 		"subtitle": "eangel.subtitle.creeper_prime_breath",
 		"sounds": [ "eangel:creeperprimebreath" ]
 	},
+	"wither_card_use": {
+		"category": "master",
+		"subtitle": "eangel.subtitle.wither_card_use",
+		"sounds": [ "eangel:wither_card_cast" ]
+	},
+	"wither_card_execute": {
+		"category": "master",
+		"subtitle": "eangel.subtitle.wither_card_execute",
+		"sounds": [ "eangel:wither_card_execute" ]
+	},
 	"gunblade_fire": {
 		"category": "master",
 		"subtitle": "eangel.subtitle.gunbladeFire",
