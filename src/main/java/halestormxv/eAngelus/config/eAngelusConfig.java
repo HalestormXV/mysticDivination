@@ -33,6 +33,7 @@ public class eAngelusConfig
     public static int moralityCost_ResistanceCard;
     public static int moralityCost_StrengthCard;
     public static int moralityCost_WitherCard;
+    public static int moralityCost_AbsorbCard;
 
     //Reagent Costs
     public static int reagentCost_SpeedCard;
@@ -106,7 +107,7 @@ public class eAngelusConfig
         Property propCard_Strength = config.get(CATEGORY_NAME_MORALITYCOSTS, "Morality Level Requirement: Strength", -4);
         propCard_Strength.setLanguageKey("gui.config.items.strength_card_cost.name");
         propCard_Strength.setComment("gui.config.items.strength_card_cost.comment");
-        //===========================RESITANCE CARD===========================\\
+        //===========================RESISTANCE CARD===========================\\
         Property propCard_Resistance = config.get(CATEGORY_NAME_MORALITYCOSTS, "Morality Level Requirement: Resistance", 4);
         propCard_Resistance.setLanguageKey("gui.config.items.resistance_card_cost.name");
         propCard_Resistance.setComment("gui.config.items.resistance_card_cost.comment");
@@ -118,6 +119,10 @@ public class eAngelusConfig
         Property propWither_Card = config.get(CATEGORY_NAME_MORALITYCOSTS, "Morality Level Requirement: Wither", -6);
         propWither_Card.setLanguageKey("gui.config.items.wither_card_cost.name");
         propWither_Card.setComment("gui.config.items.wither_card_cost.comment");
+        //===========================ABSORB CARD===========================\\
+        Property propAbsorb_Card = config.get(CATEGORY_NAME_MORALITYCOSTS, "Morality Level Requirement: Absorption", 6);
+        propAbsorb_Card.setLanguageKey("gui.config.items.absorb_card_cost.name");
+        propAbsorb_Card.setComment("gui.config.items.absorb_card_cost.comment");
 
         //Misc
         Property propSoulChargeCost = config.get(CATEGORY_NAME_ITEMS, "Soulcharge Conversion Cost", 50);
@@ -135,19 +140,24 @@ public class eAngelusConfig
         propertyOrderItems.add(propCard_Speed.getName());
         propertyOrderItems.add(propCard_Time.getName());
         propertyOrderItems.add(propWither_Card.getName());
+        propertyOrderItems.add(propAbsorb_Card.getName());
 
         config.setCategoryPropertyOrder(CATEGORY_NAME_ITEMS, propertyOrderItems);
         config.setCategoryPropertyOrder(CATEGORY_NAME_MORALITYCOSTS, propertyOrderItems);
 
         if (readFieldsFromConfig)
         {
+            //Cooldown Default Values Setup
             scryingOrbCooldown = propertyScryingOrbCooldown.getInt();
             witherCardCooldown = propWitherCardCooldown.getInt();
             soulChargeReq = propSoulChargeCost.getInt();
-            reagentCost_ScryingOrb = propertyScryingOrbCost.getInt();
+            //Morality Default Values Setup
             moralityCost_StrengthCard = propCard_Strength.getInt();
             moralityCost_ResistanceCard = propCard_Resistance.getInt();
             moralityCost_WitherCard = propWither_Card.getInt();
+            moralityCost_AbsorbCard = propAbsorb_Card.getInt();
+            //Reagent Costs Default Values Setup
+            reagentCost_ScryingOrb = propertyScryingOrbCost.getInt();
             reagentCost_SpeedCard = propCard_Speed.getInt();
             reagentCost_TimeCard = propCard_Time.getInt();
         }

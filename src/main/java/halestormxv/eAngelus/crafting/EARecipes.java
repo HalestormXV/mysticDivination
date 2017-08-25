@@ -137,7 +137,11 @@ public class EARecipes
 						eAngelusItems.tarotPaper, new ItemStack(eAngelusItems.essence, 1, 1),  eAngelusItems.tarotPaper,
 						eAngelusItems.azuriteStone, eAngelusItems.mystalDust, eAngelusItems.topazStone
 				});
-		
+
+		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.mysticKeystone, 1),
+				new Object [] {
+						eAngelusItems.tarotPaper, Items.IRON_INGOT, Items.DIAMOND, Items.IRON_INGOT
+				});
 		
 		//Smelting Recipes
 		GameRegistry.addSmelting(eAngelusBlocks.angelicOre, new ItemStack(eAngelusItems.angelic_ingot), 13.0F);

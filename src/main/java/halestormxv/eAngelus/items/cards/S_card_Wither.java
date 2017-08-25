@@ -165,7 +165,7 @@ public class S_card_Wither  extends Item
 
     private static int getCooldownReal(long storedWorldTime, long currentWorldTime)
     {
-        long TimeLeftInTicks = eAngelusConfig.scryingOrbCooldown - (currentWorldTime - storedWorldTime);
+        long TimeLeftInTicks = eAngelusConfig.witherCardCooldown - (currentWorldTime - storedWorldTime);
         long TimeLeftInMinutes = TimeLeftInTicks / (20 * 60);
         if (TimeLeftInTicks > 0)
         {

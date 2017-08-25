@@ -33,6 +33,7 @@ public class eAngelusItems
 	public static Item celBolt;
 	public static Item essence;
 	public static Item runestone;
+	public static Item mysticKeystone;
 
 	//Tools
 	public static Item serpentinePick;
@@ -51,6 +52,7 @@ public class eAngelusItems
 	public static Item cVentus;
 	public static Item cTempus;
 	public static Item cDefluet;
+	public static Item cClypeus;
 
 	//Rare Drops
 	public static Item tarotPaper;
@@ -76,9 +78,11 @@ public class eAngelusItems
 		cVentus = registerItem(new N_card_Speed("cVentus"), "cVentus");
 		cTempus = registerItem(new N_card_Time("cTempus"), "cTempus");
 		cDefluet = registerItem(new S_card_Wither("cDefluet"), "cDefluet");
+		cClypeus = registerItem(new V_card_Absorb("cClypeus"), "cClypeus");
 
 		//Misc Items
 		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
+		mysticKeystone = registerItem(new MysticKeystone("mysticKeystone"), "mysticKeystone");
 		celBolt = registerItem(new EAItem("celBolt"), "celBolt");
 		essence = new CardEssence("essence");
 		runestone = new runeStones("runestone");
@@ -145,6 +149,7 @@ public class eAngelusItems
 		registerRender(cVentus); //Speed Card
 		registerRender(cTempus); //Time Card
 		registerRender(cDefluet); //Wither Card
+		registerRender(cClypeus); //Absorb Card
 
 		//Rare Drops
 		registerRender(tarotPaper);
@@ -161,6 +166,7 @@ public class eAngelusItems
 		registerRender(azuriteStone);
 		registerRender(serpentineStone);
 		registerRender(scryingOrb);
+		registerRender(mysticKeystone);
 		registerRender(celBolt);
 
 		//Tools

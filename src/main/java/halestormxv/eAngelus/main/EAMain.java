@@ -65,6 +65,7 @@ public class EAMain
 		Utils.getLogger().info("Post Initialize");
 		MinecraftForge.EVENT_BUS.register(new EA_EventHandler());
 		MinecraftForge.EVENT_BUS.register(new EA_CapabilityHandler());
+		MinecraftForge.EVENT_BUS.register(new EA_ChestHandler());
 		this.proxy.postInit(event);
 	}
 	
