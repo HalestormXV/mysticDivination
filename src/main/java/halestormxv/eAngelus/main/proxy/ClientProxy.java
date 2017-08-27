@@ -52,6 +52,7 @@ public class ClientProxy extends CommonProxy
 	public void init(FMLInitializationEvent event)
 	{
 		super.init(event);
+		eAngelusBlocks.ashRegisterRenders();
 		keyBindings = new KeyBinding[1];
 		keyBindings[0] = new KeyBinding("eangelus.getmorality.desc", Keyboard.KEY_M, "eangelus.keymapping.category");
 		for (int i = 0; i < ClientProxy.keyBindings.length; ++i)
@@ -90,8 +91,6 @@ public class ClientProxy extends CommonProxy
 			return context.getServerHandler().playerEntity;
 		}
 	}
-
-
 
 	private static <E extends Entity> void registerEntityRenderer(Class<E> entityClass, Class<? extends Render<E>> renderClass)
 	{

@@ -64,8 +64,10 @@ item.runestone.death.name=Death Runestone
 #RECORDS
 item.eangel:recordmavis.name=Mavis Vermillion's Theme
 item.eangel:recordmotomiya.name=Hiromi Motomiya - Breath
+item.eangel:recordkishuu.name=Yasuharu Takanashi - Kishuu
 item.record.eAngelus:mavismusic.desc=Fairy's Glitter Theme by Yasuharu Takanashi
 item.record.eAngelus:motomiyaflute.desc=Hiromi Motomiya - Breath
+item.record.eAngelus:kishuu.desc=Yasuharu Takanashi - Kishuu
 
 #SOUNDS
 player.morality.sin.increase=Sin Increased
@@ -110,6 +112,9 @@ tile.oTable.name=Obsidian Iron Table
 tile.alter_chariot.name=Alter of The Chariot
 tile.alter_knight.name=Alter of The Knight
 tile.alter_strength.name=Alter of Strength
+tile.dual_furnace.name=Augury Kiln
+
+container.dual_furnace=Augry Kiln
 
 #ACHIEVEMENTS
 achievement.GetAngelicOre=Holier-Than-Thou!

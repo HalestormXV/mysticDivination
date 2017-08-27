@@ -54,6 +54,7 @@ public class MysticKeystone extends Item
                 }
                 else
                 {
+                    //tileTag = new NBTTagCompound();
                     tileTag.setString("divinationLock_k_kname", stack.getDisplayName());
                     tileTag.setString("divinationLock_k_pname", player.getName());
                     tileTag.setString("divinationLock", player.getName());

@@ -9,6 +9,7 @@ public final class EA_SoundEvents_Records
     //Records
     public static final SoundEvent mavismusic = getRegisteredSoundEvent("music.mavismusic");
     public static final SoundEvent motomiyaflute = getRegisteredSoundEvent("music.motomiyaflute");
+    public static final SoundEvent kishuurecord = getRegisteredSoundEvent("music.kishuu");
 
 
 

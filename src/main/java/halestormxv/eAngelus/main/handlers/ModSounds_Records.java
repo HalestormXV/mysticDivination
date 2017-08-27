@@ -13,7 +13,8 @@ public final class ModSounds_Records {
         String[] sounds = {
                 //RECORDS GO HERE USE SOUND HANDLER FOR OTHER STUFF\\
                 "eangel:music.mavismusic",
-                "eangel:music.motomiyaflute"
+                "eangel:music.motomiyaflute",
+                "eangel:music.kishuu"
         };
 
         for (String s : sounds) {

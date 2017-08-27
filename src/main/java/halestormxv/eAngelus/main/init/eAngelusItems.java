@@ -3,6 +3,7 @@ package halestormxv.eAngelus.main.init;
 import com.sun.org.apache.regexp.internal.RE;
 import halestormxv.eAngelus.items.*;
 import halestormxv.eAngelus.items.cards.*;
+import halestormxv.eAngelus.items.records.rec_Kishuu;
 import halestormxv.eAngelus.items.records.rec_Mavis;
 import halestormxv.eAngelus.items.records.rec_Motomiya;
 import halestormxv.eAngelus.main.Reference;
@@ -59,6 +60,7 @@ public class eAngelusItems
 	public static Item fireSword;
 	public static Item recordMavis;
 	public static Item recordMotomiya;
+	public static Item recordKishuu;
 
 	//Consumables
 	public static Item jolluna;
@@ -92,6 +94,7 @@ public class eAngelusItems
 		fireSword = registerItem(new ModItemFlameSword("fireSword", SpecialItems), "fireSword");
 		recordMavis = new rec_Mavis();
 		recordMotomiya = new rec_Motomiya();
+		recordKishuu = new rec_Kishuu();
 
 		//Ingots
 		angelic_ingot = registerItem(new AngelicIngot(), "angelic_ingot");
@@ -156,6 +159,7 @@ public class eAngelusItems
 		registerRender(fireSword);
 		registerRender(recordMavis);
 		registerRender(recordMotomiya);
+		registerRender(recordKishuu);
 
 		//Items
 		registerRender(angelic_ingot);

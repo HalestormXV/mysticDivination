@@ -45,5 +45,6 @@
 		"sounds": [ "eangel:gunblade_fire" ]
 	},
 	"music.mavismusic": { "sounds":[{"name": "eangel:music/mavistheme", "stream": true}] },
+	"music.kishuu": { "sounds":[{"name": "eangel:music/kishuumusic", "stream": true}] },
 	"music.motomiyaflute": { "sounds":[{"name": "eangel:music/motomiyaflute", "stream": true}] }
 }

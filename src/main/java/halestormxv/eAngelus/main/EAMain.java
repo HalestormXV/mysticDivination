@@ -1,6 +1,7 @@
 package halestormxv.eAngelus.main;
 
 import halestormxv.eAngelus.config.eAngelusConfig;
+import halestormxv.eAngelus.gui.DualFurnaceGuiHandler;
 import halestormxv.eAngelus.main.handlers.*;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
@@ -8,6 +9,7 @@ import halestormxv.eAngelus.main.proxy.ClientProxy;
 import halestormxv.eAngelus.mobs.MobRegistry;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.Logger;
 
 import halestormxv.eAngelus.main.proxy.CommonProxy;
@@ -43,6 +45,8 @@ public class EAMain
 		EA_SoundHandler.init();
 		eAngelusItems.initItems();
 		eAngelusBlocks.initBlocks();
+		eAngelusBlocks.ashInit();
+		eAngelusBlocks.ashRegister();
 		Utils.getLogger().info("Pre Initialize");
 		logger = event.getModLog();
 		this.proxy.preInit(event);
@@ -57,6 +61,7 @@ public class EAMain
 		//GameRegistry.registerFuelHandler(new EA_FuelHandler());
 		eAngelusPacketHandler.init();
 		MinecraftForge.EVENT_BUS.register(new EA_KeyInputHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MODID, new DualFurnaceGuiHandler());
 	}
 	
 	@EventHandler

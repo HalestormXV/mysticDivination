@@ -1,4 +1,4 @@
-package halestormxv.eAngelus.client.gui;
+package halestormxv.eAngelus.gui;
 
 import halestormxv.eAngelus.main.Reference;
 import net.minecraft.client.Minecraft;
