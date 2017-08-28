@@ -6,6 +6,7 @@ import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -13,6 +14,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
@@ -22,6 +25,9 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemStackHandler;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by Blaze on 8/26/2017.
@@ -206,35 +212,6 @@ public class TileEntityDualFurnace extends TileEntity implements IInventory, ITi
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound compound) {
-        super.readFromNBT(compound);
-        this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
-        ItemStackHelper.loadAllItems(compound, this.inventory);
-        this.burnTime = compound.getInteger("BurnTime");
-        this.cookTime = compound.getInteger("CookTime");
-        this.totalCookTime = compound.getInteger("CookTimeTotal");
-        this.currentBurnTime = getItemBurnTime((ItemStack)this.inventory.get(2));
-
-        if(compound.hasKey("CustomName", 8))
-            this.setCustomName(compound.getString("CustomName"));
-    }
-
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
-    {
-        super.writeToNBT(compound);
-        compound.setInteger("BurnTime", (short)this.burnTime);
-        compound.setInteger("CookTime", (short)this.cookTime);
-        compound.setInteger("CookTimeTotal", (short)this.totalCookTime);
-        ItemStackHelper.loadAllItems(compound, this.inventory);
-
-        if(this.hasCustomName())
-            compound.setString("CustomName", this.customName);
-
-        return compound;
-    }
-
-    @Override
     public void update()
     {
         boolean flag = this.isBurning();
@@ -292,7 +269,7 @@ public class TileEntityDualFurnace extends TileEntity implements IInventory, ITi
             }
         }
         if(flag1)
-        this.markDirty();
+            this.markDirty();
     }
 
     private boolean canSmelt()
@@ -345,7 +322,7 @@ public class TileEntityDualFurnace extends TileEntity implements IInventory, ITi
             if (!item.getRegistryName().getResourceDomain().equals("minecraft"))
             {
                 int burnTime = net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
-                if (burnTime != 0) return burnTime;
+                if (burnTime != 0)  return burnTime;
             }
             return item ==
                     Item.getItemFromBlock(Blocks.WOODEN_SLAB) ? 150
@@ -376,5 +353,63 @@ public class TileEntityDualFurnace extends TileEntity implements IInventory, ITi
     public static boolean isItemFuel(ItemStack fuel)
     {
         return getItemBurnTime(fuel) > 0;
+    }
+
+    @Override
+    @Nullable
+    public SPacketUpdateTileEntity getUpdatePacket() {
+        return new SPacketUpdateTileEntity(this.pos, 3, this.getUpdateTag());
+    }
+
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        return this.writeToNBT(new NBTTagCompound());
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+        super.onDataPacket(net, pkt);
+        handleUpdateTag(pkt.getNbtCompound());
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
+        this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        ItemStackHelper.loadAllItems(compound, this.inventory);
+        this.burnTime = compound.getInteger("BurnTime");
+        this.cookTime = compound.getInteger("CookTime");
+        this.totalCookTime = compound.getInteger("CookTimeTotal");
+        this.currentBurnTime = getItemBurnTime((ItemStack)this.inventory.get(2));
+
+        if(compound.hasKey("CustomName", 8))
+            this.setCustomName(compound.getString("CustomName"));
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        super.writeToNBT(compound);
+        compound.setInteger("BurnTime", (short)this.burnTime);
+        compound.setInteger("CookTime", (short)this.cookTime);
+        compound.setInteger("CookTimeTotal", (short)this.totalCookTime);
+        ItemStackHelper.saveAllItems(compound, this.inventory);
+
+        if(this.hasCustomName())
+            compound.setString("CustomName", this.customName);
+
+        return compound;
+    }
+
+    private void sendUpdates()
+    {
+        world.markBlockRangeForRenderUpdate(pos, pos);
+        world.notifyBlockUpdate(pos, getState(), getState(), 3);
+        world.scheduleBlockUpdate(pos,this.getBlockType(),0,0);
+        markDirty();
+    }
+
+    private IBlockState getState()
+    {
+        return world.getBlockState(pos);
     }
 }

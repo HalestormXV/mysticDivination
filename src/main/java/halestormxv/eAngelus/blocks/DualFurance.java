@@ -89,10 +89,11 @@ public class DualFurance extends Block implements ITileEntityProvider
         IBlockState state = worldIn.getBlockState(pos);
         TileEntity tileEntity = worldIn.getTileEntity(pos);
 
-        if(active)
+        if(active) {
             worldIn.setBlockState(pos, eAngelusBlocks.dual_furnace.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, true), 3);
-        else
+        } else {
             worldIn.setBlockState(pos, eAngelusBlocks.dual_furnace.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, false), 3);
+        }
 
         if(tileEntity != null)
         {
