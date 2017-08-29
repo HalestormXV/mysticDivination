@@ -35,6 +35,7 @@ public class eAngelusItems
 	public static Item essence;
 	public static Item runestone;
 	public static Item mysticKeystone;
+	public static Item divineKeystoneOP;
 
 	//Tools
 	public static Item serpentinePick;
@@ -85,6 +86,7 @@ public class eAngelusItems
 		//Misc Items
 		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
 		mysticKeystone = registerItem(new MysticKeystone("mysticKeystone"), "mysticKeystone");
+		divineKeystoneOP = registerItem(new DivineKeystoneOP("divineKeystone"), "divineKeystone");
 		celBolt = registerItem(new EAItem("celBolt"), "celBolt");
 		essence = new CardEssence("essence");
 		runestone = new runeStones("runestone");
@@ -171,6 +173,7 @@ public class eAngelusItems
 		registerRender(serpentineStone);
 		registerRender(scryingOrb);
 		registerRender(mysticKeystone);
+		registerRender(divineKeystoneOP);
 		registerRender(celBolt);
 
 		//Tools

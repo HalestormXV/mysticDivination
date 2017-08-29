@@ -41,13 +41,17 @@ public class DualFurance extends Block implements ITileEntityProvider
         setUnlocalizedName("dual_furnace");
         setRegistryName("blockdualfurnace");
         setCreativeTab(Reference.eaCreativeTab);
+        this.setHardness(2.8F);
+        this.setResistance(3.2F);
+        this.setHarvestLevel("pickaxe", 2);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
     }
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return Item.getItemFromBlock(eAngelusBlocks.dual_furnace);
+        //return Item.getItemFromBlock(eAngelusBlocks.dual_furnace);
+        return Item.getItemFromBlock(this);
     }
 
     @Override

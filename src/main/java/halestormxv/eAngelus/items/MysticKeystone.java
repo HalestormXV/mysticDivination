@@ -17,7 +17,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
 import java.util.List;
 
 /**
@@ -31,7 +30,7 @@ public class MysticKeystone extends Item
         this.setUnlocalizedName(name);
         this.setCreativeTab(Reference.eaCreativeTab);
         this.setMaxStackSize(1);
-        this.setMaxDamage(6);
+        this.setMaxDamage(7);
     }
 
     public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
@@ -44,29 +43,31 @@ public class MysticKeystone extends Item
             {
                 TileEntity tileChest = world.getTileEntity(pos);
                 NBTTagCompound tileTag = tileChest.getTileData();
+                NBTTagCompound stackTag = stack.getTagCompound();
+
                 if ((tileTag.hasKey("divinationLock_k_kname")) && (tileTag.getString("divinationLock_k_kname").equals(stack.getDisplayName())))
                 {
                     tileTag.removeTag("divinationLock_k_kname");
                     tileTag.removeTag("divinationLock_k_pname");
                     tileTag.removeTag("divinationLock");
+                    ChatUtil.sendNoSpam(player, "\u00A76The Mystic Bindings have been dispelled, the chest is no longer secured.");
                     stack.damageItem(1, player);
-                    ChatUtil.sendNoSpam(player,"\u00A76The Mystic Bindings have been dispelled, the chest is no longer secured.");
                 }
                 else
                 {
-                    //tileTag = new NBTTagCompound();
+                    if (stackTag == null)
+                    {
+                        stackTag = new NBTTagCompound();
+                        stackTag.setString("playerUUID", player.getPersistentID().toString());
+                        stack.setTagCompound(stackTag);
+                    }
                     tileTag.setString("divinationLock_k_kname", stack.getDisplayName());
-                    tileTag.setString("divinationLock_k_pname", player.getName());
-                    tileTag.setString("divinationLock", player.getName());
-                    //tileTag.setString("divinationLock", player.getName());
-                    //tileTag.setString("divinationLock_k_pname", player.getPersistentID().toString());
+                    tileTag.setString("divinationLock_k_pname", player.getPersistentID().toString());
+                    tileTag.setString("divinationLock", player.getPersistentID().toString());
+                    //System.out.println("The UUID set was: "+player.getPersistentID().toString());
+                    ChatUtil.sendNoSpam(player, "\u00A76Mystic Bindings have been placed on the chest. Only you may access it.");
                     stack.damageItem(1, player);
-                    ChatUtil.sendNoSpam(player,"\u00A76Mystic Bindings have been placed on the chest. Only you may access it.");
                 }
-            }
-            else
-            {
-                //System.out.println("Not a chest silly.");
             }
         }
         return EnumActionResult.PASS;
@@ -82,11 +83,14 @@ public class MysticKeystone extends Item
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
+        NBTTagCompound stackNBT = stack.getTagCompound();
         tooltip.add("");
         tooltip.add("\u00A76" + "While sneaking and right-clicking a chest");
         tooltip.add("\u00A76" + "it will cast a Mystic Bindings spell.");
         tooltip.add("\u00A76" + "This spell prevents the chest from being opened");
         tooltip.add("\u00A76" + "or broken unless it is by the casting player.");
         tooltip.add("");
+        if (stack.getTagCompound() != null)
+            tooltip.add("ID: " + stackNBT.getString("playerUUID"));
     }
 }

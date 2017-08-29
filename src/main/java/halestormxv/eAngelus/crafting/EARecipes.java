@@ -140,7 +140,7 @@ public class EARecipes
 
 		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.mysticKeystone, 1),
 				new Object [] {
-						eAngelusItems.tarotPaper, Items.IRON_INGOT, Items.DIAMOND, Items.IRON_INGOT
+						eAngelusItems.tarotPaper, Items.IRON_INGOT, Items.GOLD_INGOT, Items.IRON_INGOT
 				});
 		
 		//Smelting Recipes
