@@ -19,10 +19,12 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
@@ -266,10 +268,18 @@ public class TileEntityDualFurnace extends TileEntity implements IInventory, ITi
             {
                 flag1 = true;
                 DualFurance.setState(this.isBurning(), this.world, this.pos);
+                sendUpdates();
             }
         }
         if(flag1)
+        {
             this.markDirty();
+        }
+    }
+
+    @Override
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
+        return oldState.getBlock() != newState.getBlock();
     }
 
     private boolean canSmelt()
@@ -356,20 +366,11 @@ public class TileEntityDualFurnace extends TileEntity implements IInventory, ITi
     }
 
     @Override
-    @Nullable
     public SPacketUpdateTileEntity getUpdatePacket() {
-        return new SPacketUpdateTileEntity(this.pos, 3, this.getUpdateTag());
-    }
-
-    @Override
-    public NBTTagCompound getUpdateTag() {
-        return this.writeToNBT(new NBTTagCompound());
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-        super.onDataPacket(net, pkt);
-        handleUpdateTag(pkt.getNbtCompound());
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        int metadata = getBlockMetadata();
+        return new SPacketUpdateTileEntity(this.pos, metadata, nbt);
     }
 
     @Override
@@ -406,6 +407,42 @@ public class TileEntityDualFurnace extends TileEntity implements IInventory, ITi
         world.notifyBlockUpdate(pos, getState(), getState(), 3);
         world.scheduleBlockUpdate(pos,this.getBlockType(),0,0);
         markDirty();
+    }
+
+    /**
+     * Reads the nbt when it receives a packet
+     */
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+        this.readFromNBT(pkt.getNbtCompound());
+    }
+
+    /**
+     * Gets the nbt for a new packet
+     */
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        return nbt;
+    }
+
+    /**
+     * Handles when you get an update
+     */
+    @Override
+    public void handleUpdateTag(NBTTagCompound tag) {
+        this.readFromNBT(tag);
+    }
+
+    /**
+     * Gets the tile entities nbt with all of the data stored in it
+     */
+    @Override
+    public NBTTagCompound getTileData() {
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        return nbt;
     }
 
     private IBlockState getState()
