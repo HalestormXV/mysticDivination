@@ -1,5 +1,6 @@
 package halestormxv.eAngelus.blocks;
 
+import akka.actor.Props;
 import halestormxv.eAngelus.gui.DualFurnaceGuiHandler;
 import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
@@ -23,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -144,17 +146,21 @@ public class DualFurance extends Block implements ITileEntityProvider
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        EnumFacing facing = EnumFacing.getFront(meta);
+        EnumFacing facing = EnumFacing.getHorizontal(meta);
         if(facing.getAxis() == EnumFacing.Axis.Y)
             facing = EnumFacing.NORTH;
 
-        return this.getDefaultState().withProperty(FACING, facing);
+        boolean blockIsActive = (meta & 8) > 2;
+
+        return this.getDefaultState().withProperty(FACING, facing).withProperty(BURNING, blockIsActive);
     }
 
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(FACING)).getIndex();
+        int blockIsActive = (state.getValue(BURNING) ? 1 : 0) << 3;
+        int facingDirection = ((EnumFacing)state.getValue(FACING)).getIndex();
+        return facingDirection | blockIsActive;
     }
 
     @Override
@@ -173,5 +179,10 @@ public class DualFurance extends Block implements ITileEntityProvider
     protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, new IProperty[] {BURNING, FACING});
+    }
+
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+        return super.getActualState(state, worldIn, pos);
     }
 }

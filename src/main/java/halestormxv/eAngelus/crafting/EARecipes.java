@@ -1,7 +1,9 @@
 package halestormxv.eAngelus.crafting;
 
+import halestormxv.eAngelus.blocks.DualFurance;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -146,6 +148,8 @@ public class EARecipes
 		//Smelting Recipes
 		GameRegistry.addSmelting(eAngelusBlocks.angelicOre, new ItemStack(eAngelusItems.angelic_ingot), 13.0F);
 		GameRegistry.addSmelting(eAngelusBlocks.demonicOre, new ItemStack(eAngelusItems.demonic_ingot), 13.0F);
+
+		//Dual Furance Recipes
 	}
 
 }

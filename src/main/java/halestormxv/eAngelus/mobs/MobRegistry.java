@@ -43,7 +43,7 @@ public class MobRegistry
     private static void registerSpawnable(Class entityClass, String name, int id, int mainColor, int subColor) {
         EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID, name), entityClass, name, id, EAMain.instance, 64, 3, true, mainColor, subColor);
         EntityRegistry.addSpawn(EntityPhantom.class, 18, 1, 8, EnumCreatureType.MONSTER, phantomSpawns);
-        EntityRegistry.addSpawn(EntityCreeperPrime.class, 20, 1, 10, EnumCreatureType.MONSTER, spawnInAll);
+        EntityRegistry.addSpawn(EntityCreeperPrime.class, 16, 1, 3, EnumCreatureType.MONSTER, spawnInAll);
     }
 }
 

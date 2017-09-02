@@ -3,6 +3,7 @@ package halestormxv.eAngelus.crafting;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
+import halestormxv.eAngelus.main.init.eAngelusItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -27,6 +28,8 @@ public class DualFurnaceRecipes
     private DualFurnaceRecipes()
     {
         this.addDualSmeltingRecipe(new ItemStack(Blocks.DIAMOND_ORE), new ItemStack(Blocks.GOLD_ORE), new ItemStack(Items.EMERALD), 12.0F);
+        this.addDualSmeltingRecipe(new ItemStack(eAngelusItems.demonic_ingot), new ItemStack(eAngelusItems.angelic_ingot), new ItemStack(eAngelusItems.essence), 4.0F);
+        this.addDualSmeltingRecipe(new ItemStack(eAngelusItems.angelic_ingot), new ItemStack(eAngelusItems.demonic_ingot), new ItemStack(eAngelusItems.essence), 4.2F);
     }
 
     public void addDualSmeltingRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience)

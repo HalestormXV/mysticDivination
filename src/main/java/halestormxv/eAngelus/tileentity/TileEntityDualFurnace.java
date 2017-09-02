@@ -31,6 +31,8 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 
+import static halestormxv.eAngelus.blocks.DualFurance.BURNING;
+
 /**
  * Created by Blaze on 8/26/2017.
  */
