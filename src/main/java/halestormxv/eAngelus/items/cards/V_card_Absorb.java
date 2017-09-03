@@ -7,6 +7,7 @@ import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.network.packets.ChatUtil;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -39,7 +40,7 @@ public class V_card_Absorb extends Item
         ItemStack itemStack = playerIn.getHeldItem(handIn);
         IMorality morality = playerIn.getCapability(moralityProvider.MORALITY_CAP, null);
         //Check for Reagent and Morality Level
-        if (morality.getMorality() <= moralityRequirement)
+        if (morality.getMorality() >= moralityRequirement)
         {
             if (playerIn.inventory.hasItemStack(new ItemStack(eAngelusItems.mystalDust)))
             {
@@ -70,5 +71,12 @@ public class V_card_Absorb extends Item
 
     private void consumeReagent(ItemStack stack, World worldIn, EntityPlayer entityLiving) {
         entityLiving.inventory.clearMatchingItems(eAngelusItems.mystalDust, -1, 1, null);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return EnumRarity.UNCOMMON;
     }
 }

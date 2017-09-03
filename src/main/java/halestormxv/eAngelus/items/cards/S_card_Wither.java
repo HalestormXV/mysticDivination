@@ -7,13 +7,11 @@ import halestormxv.eAngelus.main.Reference;
 import halestormxv.eAngelus.main.handlers.EA_SoundHandler;
 import halestormxv.eAngelus.network.packets.ChatUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagList;
@@ -83,30 +81,35 @@ public class S_card_Wither  extends Item
     {
         ItemStack itemStack = player.getHeldItem(hand);
         NBTTagCompound nbt = itemStack.getTagCompound();
-        if (nbt == null)
+        if (!world.isRemote)
         {
-            nbt = new NBTTagCompound();
-            nbt.setLong("totalWorldTime", 0);
-            itemStack.setTagCompound(nbt);
-        }
-        long totWorldTime = this.getStoredWorldTime(itemStack);
-        long currentWorldTime = player.world.getTotalWorldTime();
-        if ((itemStack.getTagCompound() != null) && (currentWorldTime > totWorldTime + eAngelusConfig.witherCardCooldown ))
-        {
-            this.setNewWorldTime(itemStack, player);
-            IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
-            if (morality.getMorality() <= moralityRequirement)
+            if (nbt == null)
             {
-                if (!player.isHandActive() && world.isRemote)
-                {
-                    world.playSound(null, player.posX, player.posY, player.posZ, EA_SoundHandler.WITHER_CARD_CAST, SoundCategory.MASTER, 1.0F, 1.0F);
-                }
-                player.setActiveHand(hand);
-            } else {
-                ChatUtil.sendNoSpam(player, "\u00A74Your Sin level is not high enough to use this Order.");
+                nbt = new NBTTagCompound();
+                nbt.setLong("totalWorldTime", 0);
+                itemStack.setTagCompound(nbt);
             }
-        } else {
-            ChatUtil.sendNoSpam(player, "\u00A74This Order is on cooldown.");
+            long totWorldTime = this.getStoredWorldTime(itemStack);
+            long currentWorldTime = player.world.getTotalWorldTime();
+            if ((itemStack.getTagCompound() != null) && (currentWorldTime > totWorldTime + eAngelusConfig.witherCardCooldown)) {
+                this.setNewWorldTime(itemStack, player);
+                IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
+                if (morality.getMorality() <= moralityRequirement)
+                {
+                    if (!player.isHandActive())
+                    {
+                        world.playSound(null, player.posX, player.posY, player.posZ, EA_SoundHandler.WITHER_CARD_CAST, SoundCategory.MASTER, 1.0F, 1.0F);
+                    }
+                    player.setActiveHand(hand);
+                } else {
+                    ChatUtil.sendNoSpam(player, "\u00A74Your Sin level is not high enough to use this Order.");
+                    return new ActionResult<>(EnumActionResult.FAIL, itemStack);
+                }
+            } else {
+                ChatUtil.sendNoSpam(player, "\u00A74This Order is on cooldown.");
+                return new ActionResult<>(EnumActionResult.FAIL, itemStack);
+            }
+            return new ActionResult<>(EnumActionResult.FAIL, itemStack);
         }
         return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
     }
@@ -176,5 +179,12 @@ public class S_card_Wither  extends Item
             TimeLeftInMinutes = 0;
             return (int) TimeLeftInMinutes;
         }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return EnumRarity.UNCOMMON;
     }
 }
