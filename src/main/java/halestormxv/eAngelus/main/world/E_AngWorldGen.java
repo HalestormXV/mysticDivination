@@ -3,7 +3,7 @@ package halestormxv.eAngelus.main.world;
 import java.util.Random;
 
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
-import halestormxv.eAngelus.main.world.Structures.generateKnightAlter;
+import halestormxv.eAngelus.main.world.Structures.generateEssenceAlter;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -23,7 +23,6 @@ public class E_AngWorldGen implements IWorldGenerator
 	private WorldGenerator gen_MystalCite;
 	private WorldGenerator gen_SerpentineOre;
 	private WorldGenerator gen_TopazOre;
-	private WorldGenerator gen_KnightAlter;
 
 	public E_AngWorldGen()
 	{
@@ -48,7 +47,7 @@ public class E_AngWorldGen implements IWorldGenerator
 		}
 	}
 
-	private void generateKnightAlter(World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight)
+	private void generateEssenceAlter(World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight)
 	{
 		if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
 			throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
@@ -63,12 +62,12 @@ public class E_AngWorldGen implements IWorldGenerator
 			{
 				if (!spawned)
 				{
-					int randPosX = chunk_X * 256 + rand.nextInt(128);
+					int randPosX = chunk_X * 16 + rand.nextInt(512) + 128;
 					int randPosY = minHeight + rand.nextInt(heightDiff);
-					int randPosZ = chunk_Z * 256 + rand.nextInt(128);
+					int randPosZ = chunk_Z * 16 + rand.nextInt(512) + 128;
 					BlockPos position = new BlockPos(randPosX, randPosY, randPosZ);
 					if (!(world.getBlockState(world.getTopSolidOrLiquidBlock(position)).getBlock().equals(Blocks.WATER)))
-						new generateKnightAlter(world.getTopSolidOrLiquidBlock(position), world);
+						new generateEssenceAlter(world.getTopSolidOrLiquidBlock(position), world);
 						spawned = true;
 				}
 			}
@@ -88,7 +87,7 @@ public class E_AngWorldGen implements IWorldGenerator
 			this.runGenerator(this.gen_MystalCite, world, random, chunkX, chunkZ, 10, 12, 128);
 			this.runGenerator(this.gen_SerpentineOre, world, random, chunkX, chunkZ, 13, 12, 48);
 			this.runGenerator(this.gen_TopazOre, world, random, chunkX, chunkZ, 16, 12, 128);
-			this.generateKnightAlter(world, random, chunkX, chunkZ, 1, 72, 128);
+			this.generateEssenceAlter(world, random, chunkX, chunkZ, 1, 72, 128);
 			break;
 		case -1: //Nether
 			break;

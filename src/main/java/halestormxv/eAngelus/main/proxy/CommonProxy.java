@@ -5,7 +5,6 @@ import halestormxv.eAngelus.capabilities.MoralityCapability.moralityScale;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityStorage;
 import halestormxv.eAngelus.crafting.EARecipes;
 import halestormxv.eAngelus.main.world.E_AngWorldGen;
-import halestormxv.eAngelus.main.world.Structures.generateKnightAlter;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
