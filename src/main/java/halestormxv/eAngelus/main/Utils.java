@@ -1,5 +1,10 @@
 package halestormxv.eAngelus.main;
 
+import halestormxv.eAngelus.main.init.eAngelusItems;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,5 +22,32 @@ public class Utils
             logger = LogManager.getFormatterLogger((Reference.MODID));
         }
         return logger;
+    }
+
+    public static void consumeReagent(ItemStack stack, int dustRequirement, World worldIn, EntityPlayer entityLiving)
+    {
+        entityLiving.inventory.clearMatchingItems(eAngelusItems.mystalDust, -1, dustRequirement, null);
+    }
+
+    public static int checkForReagentQuantity(ItemStack itemStack, EntityPlayer player)
+    {
+        int count = 0;
+        Item mystalDustItem = itemStack.getItem();
+        boolean hasReagent = player.inventory.hasItemStack(itemStack);
+        if (hasReagent)
+        {
+            for (int slot = 0; slot < player.inventory.getSizeInventory(); slot++)
+            {
+                ItemStack stack = player.inventory.getStackInSlot(slot);
+                if (stack != null && stack.getItem().equals(mystalDustItem)) {
+                    int total = count += stack.getCount();
+                    //System.out.println("Player has: " + total);
+                    return total;
+                }
+            }
+        } else {
+            return 0;
+        }
+        return 0;
     }
 }

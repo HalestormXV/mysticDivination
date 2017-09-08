@@ -55,6 +55,7 @@ public class eAngelusItems
 	public static Item cTempus;
 	public static Item cDefluet;
 	public static Item cClypeus;
+	public static Item cFestina;
 
 	//Rare Drops
 	public static Item tarotPaper;
@@ -82,6 +83,7 @@ public class eAngelusItems
 		cTempus = registerItem(new N_card_Time("cTempus"), "cTempus");
 		cDefluet = registerItem(new S_card_Wither("cDefluet"), "cDefluet");
 		cClypeus = registerItem(new V_card_Absorb("cClypeus"), "cClypeus");
+		cFestina = registerItem(new N_card_Haste("cFestina"), "cFestina");
 
 		//Misc Items
 		scryingOrb = registerItem(new ModItemScryingOrb("scryingOrb"), "scryingOrb");
@@ -155,6 +157,7 @@ public class eAngelusItems
 		registerRender(cTempus); //Time Card
 		registerRender(cDefluet); //Wither Card
 		registerRender(cClypeus); //Absorb Card
+		registerRender(cFestina); //Haste Card
 
 		//Rare Drops
 		registerRender(tarotPaper);

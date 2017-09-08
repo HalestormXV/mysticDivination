@@ -39,6 +39,7 @@ public class eAngelusConfig
     public static int reagentCost_SpeedCard;
     public static int reagentCost_TimeCard;
     public static int reagentCost_ScryingOrb;
+    public static int reagentCost_HasteCard;
 
     public static void preInit()
     {
@@ -95,11 +96,15 @@ public class eAngelusConfig
         Property propertyScryingOrbCost = config.get(CATEGORY_NAME_ITEMS, "Scrying Orb: Mystal Dust Requirement", 4);
         propertyScryingOrbCost.setLanguageKey("gui.config.items.scryingorb_cost.name");
         propertyScryingOrbCost.setComment("gui.config.items.scryingorb_cost.comment");
-
         //===========================ORDER: TEMPUS===========================\\
         Property propCard_Time = config.get(CATEGORY_NAME_ITEMS, "ORDER: Tempus - Mystal Dust Requirement", 4);
         propCard_Time.setLanguageKey("gui.config.items.time_card_cost.name");
         propCard_Time.setComment("gui.config.items.time_card_cost.comment");
+        //===========================ORDER: FESTINA===========================\\
+        Property propCard_Haste = config.get(CATEGORY_NAME_ITEMS, "ORDER: Festina - Mystal Dust Requirement", 3);
+        propCard_Haste.setLanguageKey("gui.config.items.haste_card_cost.name");
+        propCard_Haste.setComment("gui.config.items.haste_card_cost.comment");
+
 
 
         //Morality Cost Values
@@ -133,14 +138,18 @@ public class eAngelusConfig
         List<String> propertyOrderItems = new ArrayList<String>();
         propertyOrderItems.add(propertyScryingOrbCooldown.getName());
         propertyOrderItems.add(propertyScryingOrbCost.getName());
-        propertyOrderItems.add(propWitherCardCooldown.getName());
         propertyOrderItems.add(propSoulChargeCost.getName());
+        //Morality Cards
+        propertyOrderItems.add(propWitherCardCooldown.getName());
         propertyOrderItems.add(propCard_Strength.getName());
         propertyOrderItems.add(propCard_Resistance.getName());
-        propertyOrderItems.add(propCard_Speed.getName());
-        propertyOrderItems.add(propCard_Time.getName());
         propertyOrderItems.add(propWither_Card.getName());
         propertyOrderItems.add(propAbsorb_Card.getName());
+        //Neutral Cards
+        propertyOrderItems.add(propCard_Speed.getName());
+        propertyOrderItems.add(propCard_Time.getName());
+        propertyOrderItems.add(propCard_Haste.getName());
+
 
         config.setCategoryPropertyOrder(CATEGORY_NAME_ITEMS, propertyOrderItems);
         config.setCategoryPropertyOrder(CATEGORY_NAME_MORALITYCOSTS, propertyOrderItems);
@@ -160,6 +169,7 @@ public class eAngelusConfig
             reagentCost_ScryingOrb = propertyScryingOrbCost.getInt();
             reagentCost_SpeedCard = propCard_Speed.getInt();
             reagentCost_TimeCard = propCard_Time.getInt();
+            reagentCost_HasteCard = propCard_Haste.getInt();
         }
 
         //Cooldowns Setup
@@ -173,6 +183,7 @@ public class eAngelusConfig
         //Reagent Costs Setup
         propCard_Speed.set(reagentCost_SpeedCard);
         propCard_Time.set(reagentCost_TimeCard);
+        propCard_Haste.set(reagentCost_HasteCard);
         //Misc
         propSoulChargeCost.set(soulChargeReq);
 

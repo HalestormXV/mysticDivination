@@ -22,6 +22,9 @@ gui.config.items.resistance_card_cost.comment=The morality level required for OR
 gui.config.items.speed_card_cost.name=Mystal Dust Required - Ventus
 gui.config.items.speed_card_cost.comment=The Mystal Dust amount required for ORDER: Ventus
 
+gui.config.items.haste_card_cost.name=Mystal Dust Required - Festina
+gui.config.items.haste_card_cost.comment=The Mystal Dust amount required for ORDER: Festina
+
 gui.config.items.soul_charge_cost.name=Soul Charges Required for Alterss
 gui.config.items.soul_charge_cost.comment=The amount of kills needed to convert a Blank Essence.
 
@@ -82,6 +85,7 @@ item.cVentus.name=ORDER: Ventus
 item.cTempus.name=ORDER: Tempus
 item.cDefluet.name=ORDER: Defluet
 item.cClypeus.name=ORDER: Clypeus
+item.cFestina.name=ORDER: Festina
 
 item.eaCardO.cIgnis.name=ORDER: Ignis
 item.eaCardO.cFortitudo.name=ORDER: Fortitudo
