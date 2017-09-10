@@ -81,7 +81,7 @@ public class eAngelusBlocks
 		registerRender(azureite_Ore);
 		registerRender(serpentine_Ore);
 		registerRender(oTable);
-		registerRender(dual_furnace);
+		//registerRender(dual_furnace);
 		
 		//Gems
 		registerRender(topazOre);
@@ -141,6 +141,4 @@ public class eAngelusBlocks
 		Item item = Item.getItemFromBlock(block);
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
-
-
 }

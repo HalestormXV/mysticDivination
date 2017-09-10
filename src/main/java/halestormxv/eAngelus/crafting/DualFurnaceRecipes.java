@@ -29,6 +29,8 @@ public class DualFurnaceRecipes
     {
         this.addDualSmeltingRecipe(new ItemStack(Blocks.DIAMOND_ORE), new ItemStack(Blocks.GOLD_ORE), new ItemStack(Items.EMERALD), 12.0F);
         this.addDualSmeltingRecipe(new ItemStack(eAngelusItems.demonic_ingot), new ItemStack(eAngelusItems.angelic_ingot), new ItemStack(eAngelusItems.essence), 4.0F);
+        this.addDualSmeltingRecipe(new ItemStack(eAngelusItems.essence), new ItemStack(eAngelusItems.topazStone), new ItemStack(eAngelusItems.runestone), 3.0F);
+        this.addDualSmeltingRecipe(new ItemStack(eAngelusItems.topazStone), new ItemStack(eAngelusItems.azuriteStone), new ItemStack(eAngelusItems.mystalDust), 2.2F);
     }
 
     public void addDualSmeltingRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience)

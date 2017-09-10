@@ -34,6 +34,7 @@ public class eAngelusItems
 	public static Item celBolt;
 	public static Item essence;
 	public static Item runestone;
+	public static Item talismans;
 	public static Item mysticKeystone;
 	public static Item divineKeystoneOP;
 
@@ -92,6 +93,7 @@ public class eAngelusItems
 		celBolt = registerItem(new EAItem("celBolt"), "celBolt");
 		essence = new CardEssence("essence");
 		runestone = new runeStones("runestone");
+		talismans = new ModItemTalismans("talisman");
 
 		//Rare Drops
 		tarotPaper = registerItem(new EAItem("tarotPaper"), "tarotPaper");
@@ -137,6 +139,7 @@ public class eAngelusItems
 		registerItem(sinfulfruit, "sinfulfruit");
 		goodRegisterItem(essence);
 		goodRegisterItem(runestone);
+		goodRegisterItem(talismans);
 	}
 
 
@@ -149,6 +152,10 @@ public class eAngelusItems
 		for (int i = 0; i < EA_EnumHandler.RuneStones.values().length; i++)
 		{
 			goodRegisterRender(runestone, i, Reference.MODID+":runestone_" + EA_EnumHandler.RuneStones.values()[i].getName());
+		}
+		for (int i = 0; i < EA_EnumHandler.ModTalismans.values().length; i++)
+		{
+			goodRegisterRender(talismans, i, Reference.MODID+":talisman_" + EA_EnumHandler.ModTalismans.values()[i].getName());
 		}
 		//Cards
 		registerRender(cFortitudo); //Strength Card

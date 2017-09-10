@@ -65,6 +65,8 @@ item.runestone.frost.name=Frost Runestone
 item.runestone.flame.name=Flame Runestone
 item.runestone.earth.name=Earth Runestone
 item.runestone.death.name=Death Runestone
+item.talisman.sintalisman.name=§4Sin Talisman
+item.talisman.virtuetalisman.name=§3Virtue Talisman
 
 #RECORDS
 item.eangel:recordmavis.name=Mavis Vermillion's Theme

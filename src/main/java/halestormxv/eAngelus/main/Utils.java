@@ -50,4 +50,25 @@ public class Utils
         }
         return 0;
     }
+
+    public static int checkForTalisman(EntityPlayer player)
+    {
+        Item whichTalisman = eAngelusItems.talismans;
+        for (int slot = 0; slot < player.inventory.getSizeInventory(); slot++)
+        {
+            ItemStack stack = player.inventory.getStackInSlot(slot);
+            if (!stack.isEmpty() && stack.getItem().equals(whichTalisman) && stack.getMetadata() == 0)
+            {
+                //System.out.println(player + " has the Sin Talisman in inventory.");
+                return 1;
+            }
+            else if (!stack.isEmpty() && stack.getItem().equals(whichTalisman) && stack.getMetadata() == 1)
+            {
+                //System.out.println(player + " has the Virtue Talisman in inventory.");
+                return 2;
+            }
+        }
+        //System.out.println(player + " has somehow triggered an error or has no talisman.");
+        return 0;
+    }
 }

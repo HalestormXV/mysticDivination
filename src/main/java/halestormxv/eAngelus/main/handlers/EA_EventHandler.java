@@ -2,6 +2,7 @@ package halestormxv.eAngelus.main.handlers;
 
 import halestormxv.eAngelus.capabilities.Interfaces.IMorality;
 import halestormxv.eAngelus.capabilities.MoralityCapability.moralityProvider;
+import halestormxv.eAngelus.main.Utils;
 import halestormxv.eAngelus.main.init.eAngelusBlocks;
 import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
@@ -118,9 +119,10 @@ public class EA_EventHandler {
     @SubscribeEvent
     public void entityDeath(LivingDeathEvent event)
     {
-        //Check for EmptyEssence
+        //Check for EmptyEssence and Talisman
         if ( (event.getSource().getEntity() instanceof EntityPlayer) && (event.getEntity() instanceof EntityMob) )
         {
+            ///===========ESSENCE CODE SEGMENT===============\\\
             Item blankEssence = eAngelusItems.essence;
             EntityPlayer player = (EntityPlayer) event.getSource().getEntity();
             for (int slot = 0; slot < player.inventory.getSizeInventory(); slot++)
@@ -142,6 +144,37 @@ public class EA_EventHandler {
                         nbt.setInteger("killCount", newKills);
                     }
                 }
+            }
+            ///===========TALISMAN CODE SEGMENT===============\\\
+            int whichTalisman = Utils.checkForTalisman(player);
+            if (whichTalisman == 1) //Sin Talisman
+            {
+                Random dChance = new Random();
+                int chance = dChance.nextInt(100) + 1;
+                if (chance < 25) {
+                    IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
+                    player.sendMessage(new TextComponentString("\u00A74" + "Your scales of morality have tipped to sin."));
+                    morality.addSin(1);
+                    if (!player.world.isRemote) {
+                        eAngelusPacketHandler.sendTo(new SyncMorality(morality.getMorality()), (EntityPlayerMP) player);
+                    }
+                    player.getEntityWorld().playSound(null, player.posX, player.posY, player.posZ, EA_SoundHandler.SIN_INCREASE_LEVEL, SoundCategory.MASTER, 2.0F, 1.0F);
+                }
+            }
+            else if (whichTalisman == 2) //Virtue Talisman
+            {
+                Random dChance = new Random();
+                int chance = dChance.nextInt(100) + 1;
+                if (chance < 25) {
+                    IMorality morality = player.getCapability(moralityProvider.MORALITY_CAP, null);
+                    player.sendMessage(new TextComponentString("\u00A73" + "Your scales of morality have tipped to virtue."));
+                    morality.addVirtue(1);
+                    if (!player.world.isRemote) {
+                        eAngelusPacketHandler.sendTo(new SyncMorality(morality.getMorality()), (EntityPlayerMP) player);
+                    }
+                    player.getEntityWorld().playSound(null, player.posX, player.posY, player.posZ, EA_SoundHandler.VIRTUE_INCREASE_LEVEL, SoundCategory.MASTER, 2.0F, 1.0F);
+                }
+
             }
         }
 

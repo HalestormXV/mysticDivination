@@ -64,30 +64,4 @@ public class N_card_Haste extends Item
         tooltip.add("");
         tooltip.add("\u00A7e" + "Item requires " + dustRequirement + " Mystal Dust");
     }
-
-    /*private void consumeReagent(ItemStack stack, World worldIn, EntityPlayer entityLiving) {
-        entityLiving.inventory.clearMatchingItems(eAngelusItems.mystalDust, -1, dustRequirement, null);
-    }
-
-    private int checkForReagentQuantity(ItemStack itemStack, EntityPlayer player)
-    {
-        int count = 0;
-        Item mystalDustItem = itemStack.getItem();
-        boolean hasReagent = player.inventory.hasItemStack(itemStack);
-        if (hasReagent)
-        {
-            for (int slot = 0; slot < player.inventory.getSizeInventory(); slot++)
-            {
-                ItemStack stack = player.inventory.getStackInSlot(slot);
-                if (stack != null && stack.getItem().equals(mystalDustItem)) {
-                    int total = count += stack.getCount();
-                    //System.out.println("Player has: " + total);
-                    return total;
-                }
-            }
-        } else {
-            return 0;
-        }
-        return 0;
-    }*/
 }
