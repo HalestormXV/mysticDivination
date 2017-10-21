@@ -8,6 +8,8 @@ import halestormxv.eAngelus.main.init.eAngelusItems;
 import halestormxv.eAngelus.main.proxy.ClientProxy;
 import halestormxv.eAngelus.mobs.MobRegistry;
 import halestormxv.eAngelus.network.eAngelusPacketHandler;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.Logger;

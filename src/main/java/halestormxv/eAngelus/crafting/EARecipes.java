@@ -31,6 +31,18 @@ public class EARecipes
 								'#', eAngelusItems.demonic_ingot
 						});
 
+		GameRegistry.addRecipe(new ItemStack(eAngelusBlocks.dual_furnace),
+				new Object[]
+						{
+							"DDD",
+							"FSF",
+							"AAA",
+								'D', eAngelusItems.demonic_ingot,
+								'F', Blocks.FURNACE,
+								'S', eAngelusItems.scryingOrb,
+								'A', eAngelusItems.angelic_ingot
+						});
+
 		GameRegistry.addRecipe(new ItemStack(eAngelusItems.serpentineSword),
 				"*S*",
 				"aSd",
@@ -105,14 +117,6 @@ public class EARecipes
 
 				'G', Items.GOLD_INGOT, 'T', eAngelusItems.tarotPaper);
 
-		/*GameRegistry.addRecipe(new ItemStack(eAngelusBlocks.dual_furnace),
-				"DDD",
-				"FSF",
-				"AAA",
-
-				'D', eAngelusItems.demonic_ingot, 'F', Blocks.FURNACE, 'S', eAngelusItems.scryingOrb, "A", eAngelusItems.angelic_ingot);*/
-		
-		
 		//Shapeless Crafting
 		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.angelic_ingot, 9), 
 				new Object [] {
