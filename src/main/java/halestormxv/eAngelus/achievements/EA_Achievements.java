@@ -12,19 +12,25 @@ public class EA_Achievements
 	public static Achievement AchievementGetAngelicOre;
 	public static Achievement AchievementGetDemonicOre;
 	public static Achievement AchievementMakeAngelicIngot;
-	
+	public static Achievement AchievementMakeSinfulFruit;
+	public static Achievement AchievementMakeVirtueFruit;
+
 	public static void AchievementRegistry()
 	{
 		AchievementGetAngelicOre = new Achievement("achievement.GetAngelicOre", "GetAngelicOre", 0, 0, eAngelusBlocks.angelicOre, null).registerStat();
 		AchievementGetDemonicOre = new Achievement("achievement.GetDemonicOre", "GetDemonicOre", 1, 0, eAngelusBlocks.demonicOre, null).registerStat();
 		AchievementMakeAngelicIngot = new Achievement("achievement.MakeAngelicIngot", "MakeAngelicIngot", 0, -1, eAngelusItems.angelic_ingot, AchievementGetAngelicOre).registerStat();
+		AchievementMakeSinfulFruit = new Achievement("achievement.MakeSinfulFruit", "MakeSinfulFruit", 0, -2, eAngelusItems.sinfulfruit, null).registerStat();
+		AchievementMakeVirtueFruit = new Achievement("achievement.MakeVirtueFruit", "MakeVirtueFruit", 1, -1, eAngelusItems.virtuefruit, null).registerStat();
 
 		//Achievement Page
 		AchievementPage.registerAchievementPage(new AchievementPage("Elementum Angelus", new Achievement[]
 				{
 						AchievementGetAngelicOre,
 						AchievementGetDemonicOre,
-						AchievementMakeAngelicIngot		
+						AchievementMakeAngelicIngot,
+						AchievementMakeSinfulFruit,
+						AchievementMakeVirtueFruit
 				}
 				));
 		

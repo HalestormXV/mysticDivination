@@ -67,7 +67,6 @@ public class CardEssence extends Item
                     tooltip.add("");
                     tooltip.add("\u00A73" + "Soul Charge: "+ killCounter);
                 }
-
             default:
         }
     }

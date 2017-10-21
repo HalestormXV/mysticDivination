@@ -55,6 +55,9 @@ item.celBolt.name=Energy Blast
 item.serpentineGunblade.name=Serpentine Gunblade [WIP]
 item.mysticKeystone.name=Mystic Keystone
 item.divineKeystone.name=Divine Keystone
+item.sinEssence.name=Sinful Essence
+item.virtueEssence.name=Virtuous Essence
+
 #META DATA ITEMS
 item.essence.empty.name=Empty Essence
 item.essence.chariot.name=Essence of the Chariot
@@ -134,6 +137,12 @@ achievement.GetDemonicOre.desc=Find Demonic Ore.
 
 achievement.MakeAngelicIngot=By Purest Metal
 achievement.MakeAngelicIngot.desc=Smelt Angelic Ore into Angelic Ingot.
+
+achievement.MakeSinfulFruit=Fruits of Eden
+achievement.MakeSinfulFruit.desc=You have eaten forbidden fruit. Don't put the blame on me.
+
+achievement.MakeVirtueFruit=Fruits of Obedience
+achievement.MakeVirtueFruit.desc=You have eaten a heavenly fruit. I'm only human, after all.
 
 #TABS
 itemGroup.eaCreativeTab=Mystic Divination

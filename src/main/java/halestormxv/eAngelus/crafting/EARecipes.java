@@ -118,6 +118,26 @@ public class EARecipes
 				'G', Items.GOLD_INGOT, 'T', eAngelusItems.tarotPaper);
 
 		//Shapeless Crafting
+		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.sinfulfruit, 1),
+				new Object [] {
+						eAngelusItems.sinEssence,
+						eAngelusItems.sinEssence,
+						eAngelusItems.sinEssence,
+						Items.BOWL,
+						Items.GOLDEN_APPLE,
+						eAngelusItems.esicuri
+				});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.virtuefruit, 1),
+				new Object [] {
+						eAngelusItems.virtueEssence,
+						eAngelusItems.virtueEssence,
+						eAngelusItems.virtueEssence,
+						Items.BOWL,
+						Items.PUMPKIN_PIE,
+						eAngelusItems.jolluna
+				});
+
 		GameRegistry.addShapelessRecipe(new ItemStack(eAngelusItems.angelic_ingot, 9), 
 				new Object [] {
 				eAngelusBlocks.angelic_block

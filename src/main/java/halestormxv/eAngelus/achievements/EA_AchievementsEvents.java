@@ -35,6 +35,23 @@ public class EA_AchievementsEvents
 			e.player.addStat(EA_Achievements.AchievementMakeAngelicIngot, 1);
 		}
 	}
-	
+
+	@SubscribeEvent
+	public void craftSinfulFruit(PlayerEvent.ItemCraftedEvent e)
+	{
+		if (e.crafting.isItemEqual(new ItemStack(eAngelusItems.sinfulfruit)))
+		{
+			e.player.addStat(EA_Achievements.AchievementMakeSinfulFruit, 1);
+		}
+	}
+
+	@SubscribeEvent
+	public void craftVirtueFruit(PlayerEvent.ItemCraftedEvent e)
+	{
+		if (e.crafting.isItemEqual(new ItemStack(eAngelusItems.virtuefruit)))
+		{
+			e.player.addStat(EA_Achievements.AchievementMakeVirtueFruit, 1);
+		}
+	}
 
 }

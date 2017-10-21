@@ -63,6 +63,8 @@ public class alter_Strength extends Block
                 }
                 return true;
             }
+        } else {
+            ChatUtil.sendNoSpam(playerIn,"\u00A73This alter will absorb the "+"\u00A74Soul Charges "+"\u00A73of an empty essence and convert it to an "+"\u00A76Essence of Strength.");
         }
         return false;
     }

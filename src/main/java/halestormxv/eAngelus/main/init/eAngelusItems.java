@@ -71,6 +71,10 @@ public class eAngelusItems
 	public static Item virtuefruit;
 	public static Item sinfulfruit;
 
+	//Misc
+	public static Item sinEssence;
+	public static Item virtueEssence;
+
 	//Materials
 	public static ToolMaterial Serpentine = EnumHelper.addToolMaterial("Serpentine", 4, 1800, 10.0F, 7.6F, 25);
 	public static ToolMaterial SpecialItems = EnumHelper.addToolMaterial("SpecialItems", 4, 2000, 11.0F, 9.2F, 25);
@@ -130,8 +134,14 @@ public class eAngelusItems
 		//Consumables
 		jolluna = new ModItemFood("jolluna", 6, 0.9f, false, new PotionEffect(Potion.getPotionById(10), 200, 3));
 		esicuri = new ModItemFood("esicuri", 4, 0.6f, false);
-		virtuefruit = new ModItemMoralityFoods("virtuefruit", 4, 0.6f, false);;
-		sinfulfruit = new ModItemMoralityFoods("sinfulfruit", 4, 0.6f, false);;
+		virtuefruit = new ModItemMoralityFoods("virtuefruit", 4, 0.6f, false);
+		sinfulfruit = new ModItemMoralityFoods("sinfulfruit", 4, 0.6f, false);
+
+
+		//Misc
+		sinEssence = registerItem(new EAItem("sinEssence"), "sinEssence");
+		virtueEssence = registerItem(new EAItem("virtueEssence"), "virtueEssence");
+
 
 		registerItem(jolluna, "jolluna");
 		registerItem(esicuri, "esicuri");
@@ -202,6 +212,10 @@ public class eAngelusItems
 		registerRender(esicuri);
 		registerRender(virtuefruit);
 		registerRender(sinfulfruit);
+
+		//Misc
+		registerRender(sinEssence);
+		registerRender(virtueEssence);
 	}
 
 	public static void registerRender(Item item)
